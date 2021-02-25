@@ -12,9 +12,12 @@ class CourseReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $reviews=CourseReview::where(function($q)use($request){
+            //$q->where('title','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.reviews.index',compact('reviews'));
     }
 
     /**
@@ -55,9 +58,9 @@ class CourseReviewController extends Controller
      * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function edit(CourseReview $courseReview)
+    public function edit(CourseReview $review)
     {
-        //
+       return view('admin.reviews.edit',compact('review'));
     }
 
     /**
@@ -67,9 +70,17 @@ class CourseReviewController extends Controller
      * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CourseReview $courseReview)
-    {
-        //
+    public function update(Request $request, CourseReview $review)
+    { 
+      
+        $review->update([
+            'description'=>$request->description,
+            'rate'=>$request->rate,
+            'reviewed'=>$request->reviewed==1?1:0,
+            'featured'=>$request->featured==1?1:0
+        ]);
+        emotify('success', 'تم التعديل بنجاح');
+        return redirect()->route('reviews.index');
     }
 
     /**
@@ -80,6 +91,8 @@ class CourseReviewController extends Controller
      */
     public function destroy(CourseReview $courseReview)
     {
-        //
+        $courseReview->delete();
+        emotify('success', 'تم الحذف بنجاح');
+        return redirect()->route('reviews.index');
     }
 }

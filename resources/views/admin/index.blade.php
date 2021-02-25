@@ -10,7 +10,7 @@
 			</div>
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">المستخدمين</h6>
-				<h6 class="font-3">1200</h6>
+				<h6 class="font-3">{{\App\Models\User::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 			</div>
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">الدورات</h6>
-				<h6 class="font-3">18</h6>
+				<h6 class="font-3">{{\App\Models\Lecture::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 			</div>
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">الشركاء</h6>
-				<h6 class="font-3">4</h6>
+				<h6 class="font-3">{{\App\Models\Partner::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -51,7 +51,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">الكورسات</h6>
-				<h6 class="font-3">84</h6>
+				<h6 class="font-3">{{\App\Models\Course::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">الفيديوهات</h6>
-				<h6 class="font-3">1720</h6>
+				<h6 class="font-3">{{\App\Models\Video::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -80,7 +80,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">التقييمات</h6>
-				<h6 class="font-3">96</h6>
+				<h6 class="font-3">{{\App\Models\CourseReview::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -94,7 +94,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">مدفوعات</h6>
-				<h6 class="font-3">26.280 ريال</h6>
+				<h6 class="font-3">{{\App\Models\Payment::where('status','DONE')->sum('amount')}} ريال</h6>
 			</div>
 		</div>
 	</div> 
@@ -108,7 +108,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">الطلبات</h6>
-				<h6 class="font-3">180</h6>
+				<h6 class="font-3">{{\App\Models\Order::count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -123,7 +123,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">مقال</h6>
-				<h6 class="font-3">19</h6>
+				<h6 class="font-3">{{\App\Models\Article::where('type','ARTICLE')->count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -138,7 +138,7 @@
 
 			<div style="width: calc(100% - 80px)" class="px-2 py-2">
 				<h6 class="font-1">أخبار</h6>
-				<h6 class="font-3">7</h6>
+				<h6 class="font-3">{{\App\Models\Article::where('type','NEWS')->count()}}</h6>
 			</div>
 		</div>
 	</div>
@@ -150,7 +150,7 @@
 					الدورات التعليمية
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('lectures.create')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>
@@ -161,7 +161,7 @@
 					شركاء النجاح
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('partners.create')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>
@@ -172,7 +172,7 @@
 					الكورسات
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('courses.create')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>
@@ -183,7 +183,7 @@
 					الفيديوهات
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('videos.index')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>
@@ -194,19 +194,19 @@
 					المقالات
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('articles.create')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>
 			</div>
-
+			
 			<div class="col-4 py-4 text-center">
 				<span class="fad fa-newspaper font-10" style="color: #795548;height: 65px"></span>
 				<div class="col-12 text-center font-2 mt-2">
 					الأخبار
 				</div>
 				<div class="col-12 text-center py-3">
-					<a href="#">
+					<a href="{{route('articles.create')}}">
 						<button class="btn pb-2 px-4 pt-1" style="border-radius: 50px;background: #03a9f4;color:#fff">إضافة</button>
 					</a>
 				</div>

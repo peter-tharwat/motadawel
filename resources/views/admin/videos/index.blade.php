@@ -9,9 +9,11 @@
 	 			</form> 
 	 		</div>
 	 		<div class="col-12 col-lg-4 px-2 justify-content-end d-flex mb-2">
+	 			@if(request()->get('course_id'))
 	 			<a href="{{route('videos.create',['course_id'=>request()->get('course_id')])}}">
 	 				<button class="btn btn-primary pb-2 rounded-0"><span class="fal fa-play"></span> إضافة فيديو إلى الكورس</button>
 	 			</a>
+	 			@endif
 	 		</div>
 
 	 	</div> 
@@ -20,7 +22,7 @@
 		    <tr>
 		      <th scope="col">#</th>
 		      <th scope="col">العنوان</th>
-		      <th scope="col">الوصف</th>
+		   {{--    <th scope="col">الوصف</th> --}}
 		      <th scope="col">الرابط</th>
 		      <th scope="col">تحكم</th>
 		    </tr>
@@ -30,7 +32,7 @@
 		    <tr>
 		      <td scope="col">{{$video->id}}</td>
 		      <td scope="col">{{$video->title}}</td>
-		      <td scope="col">{{$video->description}}</td>
+		    {{--   <td scope="col">{{$video->description}}</td> --}}
 		      <td scope="col">{{$video->url}}</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('videos.destroy',$video)}}" id="video_delete_{{$video->id}}">@csrf @method('DELETE')</form>
@@ -48,6 +50,9 @@
 		    @endforeach
 		  </tbody>
 		</table> 
+		<div class="col-12 px-0 py-2">
+			{{$videos->appends(request()->query())->render() }}
+		</div>
 	 </div> 
 </div>
 @endsection

@@ -49,7 +49,7 @@ class VideoController extends Controller
             'description'=>"required|min:3|max:2500",
             'thumbnail'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000', 
             'period'=>"nullable",
-            'cost_type'=>"required|in:FREE,PAID",
+            'cost_type'=>"required|string|in:FREE,PAID",
             'type'=>"required|in:LIVE,RECORDED,OFFLINE", 
             'available_at'=>'nullable|date'
         ]);
@@ -71,7 +71,9 @@ class VideoController extends Controller
             $origin="OFFLINE";
         }   
 
-        $request->validate([
+        /*dd($request->all());
+*/
+        $video = \App\Models\Video::create([
             'user_id'=>auth()->user()->id,
             'course_id'=>$request->course_id,
             'description'=>$request->description,
@@ -107,7 +109,7 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-        //
+        return view('admin.videos.edit',compact('video'));
     }
 
     /**
@@ -119,7 +121,44 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        //
+        $request->validate([ 
+            'title'=>"required|min:3|max:255",
+            'description'=>"required|min:3|max:2500",
+            'thumbnail'=>"nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000", 
+            'period'=>"nullable",
+            'cost_type'=>"required|string|in:FREE,PAID",
+            'type'=>"required|in:LIVE,RECORDED,OFFLINE", 
+            'available_at'=>'nullable|date'
+        ]); 
+        $url = "";  
+        if($request->type=="LIVE"){
+            $request->validate([
+                'url'=>"required|url"
+            ]);
+            $url=$request->url; 
+        }else if ($request->type=="RECORDED"){
+            $request->validate([
+                'video'=>'nullable|sometimes|mimes:mp4|max:1000000'
+            ]);
+            $url = $this->upload_file($request->file('video'),'videos','private'); 
+        } 
+        // dd($request->all());
+        if($url!=null)
+            $video->url=$url;
+        if($request->thumbnail!=null)
+            $video->thumbnail=$this->upload_file($request->file('thumbnail'),'thumbnail');
+        
+        $video->description=$request->description;
+        $video->title=$request->title; 
+        $video->period=$request->period;
+        $video->cost_type=$request->cost_type;
+        $video->type=$request->type; 
+        $video->available_at=$request->available_at;
+        $video->save(); 
+
+
+        emotify('success', 'تم تعديل الفيديو بنجاح');
+        return redirect()->route('videos.index',['course_id'=>$video->course_id]);
     }
 
     /**

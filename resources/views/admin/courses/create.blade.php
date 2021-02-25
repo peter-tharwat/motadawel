@@ -38,7 +38,7 @@
 	 				الصورة المصغرة
 	 			</div>
 	 			<div class="col-9 px-2">
-	 				<input type="file" name="image" class="form-control" >
+	 				<input type="file" name="image" class="form-control" accept="image/*">
 	 			</div> 
 	 		</div>
 	 		<div class="col-12 col-md-6 px-0 d-flex mb-3">

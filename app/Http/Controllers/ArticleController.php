@@ -12,9 +12,12 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $articles=Article::where(function($q)use($request){
+            $q->where('title','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.articles.index',compact('articles'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create');
     }
 
     /**
@@ -35,7 +38,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Article::create([
+        'user_id'=>auth()->user()->id,
+        'title'=>$request->title,
+        'image'=>$this->upload_file($request->file('image'),'images'),
+        'description'=>$request->description,
+        'type'=>$request->type
+       ]);
+       emotify('success', 'تمت الاضافة بنجاح');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -57,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin.articles.edit',compact('article'));
     }
 
     /**
@@ -69,7 +80,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update([
+            'title'=>$request->title, 
+            'description'=>$request->description,
+            'type'=>$request->type
+           ]);
+        if($request->hasFile('image'))
+            $article->update(['image'=>$this->upload_file($request->file('image'),'images')]); 
+       emotify('success', 'تم التعديل بنجاح');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -80,6 +99,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        emotify('success', 'تم الحذف بنجاح');
+        return redirect()->route('articles.index');
     }
 }

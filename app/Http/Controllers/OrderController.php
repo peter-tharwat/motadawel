@@ -12,9 +12,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $orders=Order::where(function($q)use($request){
+            $q->where('type','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.orders.index',compact('orders'));
     }
 
     /**
@@ -24,8 +27,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
+    
+
 
     /**
      * Store a newly created resource in storage.
@@ -57,7 +62,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('admin.orders.edit',compact('order'));
     }
 
     /**
@@ -69,7 +74,21 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->update([
+            'mohallel_user_name'=>$request->mohallel_user_name,
+            'mohallel_email'=>$request->mohallel_email,
+            'type'=>$request->type,
+            'status'=>$request->status
+        ]);
+        emotify('success', 'تم التعديل بنجاح');
+        return redirect()->route('reviews.index');
+/*        user_id
+course_id*/
+/*mohallel_user_name
+mohallel_email
+type*/
+
+
     }
 
     /**
@@ -80,6 +99,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+       
     }
 }

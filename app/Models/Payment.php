@@ -9,4 +9,12 @@ class Payment extends Model
 {
     use HasFactory;
     protected $guarded = ['id','created_at','updated_at'];
+    public function user()
+    {
+    	return $this->belongsTo('\App\Models\User');
+    }
+    public function order()
+    {
+    	return $this->belongsTo('\App\Models\Order');
+    }
 }

@@ -15,7 +15,8 @@ class LectureController extends Controller
     public function index(Request $request)
     {
         $lectures=Lecture::where(function($q)use($request){
-            $q->where('title','LIKE','%'.$request->key.'%');
+            if($request->key!=null)
+                $q->where('title','LIKE','%'.$request->key.'%');
         })->orderBy('id','DESC')->paginate();
         return view('admin.lectures.index',compact('lectures'));
     }

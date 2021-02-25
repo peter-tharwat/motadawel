@@ -12,9 +12,12 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $reviews=Review::where(function($q)use($request){
+            //$q->where('title','LIKE','%'.$request->key.'%');
+        })->orderBy('id','DESC')->paginate();
+        return view('admin.reviews.index',compact('reviews'));
     }
 
     /**

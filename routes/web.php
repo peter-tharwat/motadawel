@@ -9,7 +9,12 @@ use App\Http\Controllers\PartnerFeatureController;
 use App\Http\Controllers\PartnerLinkController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\VideoController;
-
+use App\Http\Controllers\CourseReviewController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +38,25 @@ Route::get('/', function () { return view('welcome'); });
 */
 
 
+
+Route::get('lectures',function(){return view('pages.lectures');});
+Route::get('partners',function(){return view('pages.partners');});
+Route::get('blog',function(){return view('pages.blog');});
+Route::get('article/{id}-{title?}',function($id){$article=\App\Models\Article::find($id); return view('pages.article',compact('article'));});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',function(){
 		return "test dashboard";
-	});
+	});  
+    Route::get('/payment/success',function(){
+        dd(\Request::all());
+    })->name('payment.success');
+    Route::get('/test',function(){
+        return (new PaymentController)->create_payment("MOHALLEL",null,'peter','ptharwat@gmail.com',1);
+    });
 });
+
+
 
 Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
     Route::get('/',[AdminController::class,'index'])->name('admin.index');
@@ -48,12 +67,18 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
     Route::resource('partners-links',PartnerLinkController::class);
     Route::resource('courses',CourseController::class);
     Route::resource('videos',VideoController::class);
+    Route::resource('reviews',CourseReviewController::class);
+    Route::resource('orders',OrderController::class);
+    Route::resource('payments',PaymentController::class);
+    Route::resource('articles',ArticleController::class);
+    //Route::resource('socials',SocialController::class);
+    Route::resource('settings',SettingController::class);
 });
 
 
 
 
 Route::get('/page', function () { return view('pages.page'); });
-Route::get('/course', function () { return view('pages.course'); });
+Route::get('/courses', function () { return view('pages.courses'); });
 Route::get('/carousel', function () { return view('pages.carousel'); });
 Route::get('/partners', function () { return view('pages.partners'); });

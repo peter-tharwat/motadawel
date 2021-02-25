@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/css/responsive-fonts.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>{{ config('app.name', 'Laravel') }}</title> 
 </head>
 
@@ -98,7 +99,8 @@
           </div>
         @endif
     </div>
-    
+    <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>
+
 
     <div class="col-12 d-flex">
         
@@ -111,6 +113,12 @@
                     <div class="d-flex d-md-none justify-content-center align-items-center px-0   asideToggle" style="width: 60px;height: 60px;">
                         <span class="fal fa-bars font-4"></span>
                     </div>
+
+
+
+
+
+
 
                 </div>
                 
@@ -175,7 +183,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('videos.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-play font-3"> </span> 
@@ -185,7 +193,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('reviews.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-stars font-3"> </span> 
@@ -195,7 +203,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('orders.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-box-check font-3"> </span> 
@@ -205,7 +213,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('payments.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-sack-dollar font-3"> </span> 
@@ -215,7 +223,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('articles.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-book font-3"> </span> 
@@ -225,7 +233,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="{{route('settings.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-wrench font-3"> </span> 
@@ -235,7 +243,7 @@
                             </div> 
                         </div>
                     </a>
-                    <a href="#" class="col-12 px-0">
+                    <a href="#" class="col-12 px-0" onclick="document.getElementById('logout-form').submit();">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
                                 <span class="fal fa-sign-out-alt font-3"> </span> 
@@ -259,17 +267,83 @@
                     <span class="fal fa-bars font-4"></span>
                 </div>
 
-                <div class="col-12 px-0 d-flex justify-content-center align-items-center btn btn-light" style="width: 120px;height: 60px;">
-                    <div class="col-12 px-0 d-flex justify-content-center align-items-center btn btn-light asideToggle" style="width: 60px;height: 60px;">
-                        <span class="fas fa-bell font-4 d-inline-block" style="color: #ff9800;transform: rotate(15deg)" style=";"></span>
+              
+
+
+
+
+
+
+
+                   {{--   <div class="col-12 px-0 d-flex justify-content-center align-items-center btn btn-light" style="width: 60px;height: 60px;">
+                     </div>
+ --}}
+
+                      
+
+
+                    <div class="col-12 px-0 d-flex justify-content-center align-items-center  " style="width: 120px;height: 60px;"> 
+
+
+
+                        <div class="btn-group" >
+
+                        @php 
+                        $notifications=auth()->user()->notifications()->orderBy('created_at','DESC')->limit(50)->get();
+
+                        $unreadNotifications=auth()->user()->unreadNotifications()->count();
+                        /*dd($notifications[0]->data['level']);*/
+                        @endphp
+
+                                        <div class="col-12 px-0 d-flex justify-content-center align-items-center btn btn-light " style="width: 60px;height: 60px;" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown-notifications">
+                                             
+                                            <span class="fas fa-bell font-4 d-inline-block"  style="color: #ff9800;transform: rotate(15deg)" ></span>
+                                            @if($unreadNotifications!=0)
+                                            <span style="position: absolute;min-width: 25px;min-height: 25px;display: inline-block;right: 0px;top: 0px;border-radius: 20px;background: #c00;color:#fff;font-size: 14px"  id="dropdown-notifications-icon">{{$unreadNotifications}}</span>
+                                            @endif
+                                        </div>
+                                        <!-- Example single danger button -->
+
+                      
+                      <ul class="dropdown-menu rounded-0 border-0 shadow pb-3" style="cursor: auto!important;">
+                        <div class="col-12 pb-3" style="overflow: auto;width: 350px;height: 390px;">
+                            @foreach($notifications as $notification)
+                            <div class="col-12 px-3 text-right" style="background: {{$notification->read_at==null?'#f7f7f7':''}}"> 
+                                    {!!$notification->data['message']!!} 
+                                <div class="col-12 border-bottom pb-3" >
+                                    <span class="font-1">
+                                        <span class="fas fa-clock"></span> {{\Carbon::parse($notification->created_at)->diffForHumans()}}
+                                    </span>
+                                </div> 
+                            </div>
+                            @endforeach
+
+                        </div>
+                      </ul>
                     </div>
 
-                    <div class="col-12 px-0 d-flex justify-content-center align-items-center  " style="width: 60px;height: 60px;background: #2381c6">
+
+
+                    
+
+<div class="col-12 px-0 d-flex justify-content-center align-items-center  " style="width: 60px;height: 60px;background: #2381c6" onclick="document.getElementById('logout-form').submit();">
                         <span class="fal fa-sign-out-alt font-4" style="color: #fff"></span>
                     </div>
 
 
-                </div>
+
+ 
+
+
+
+                    </div>
+
+
+
+                    
+
+
+                
             </div>
             <div class="col-12 px-0 py-2" style="margin-top: 60px;"> 
                  @yield('content') 
@@ -280,19 +354,18 @@
 
 
 
-
-  
+    
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+    <link rel="stylesheet" type="text/css" href="/css/editor.min.css">
+    <script type="text/javascript" src="/js/editor.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#editor").richText();
+         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
     <script>
         $('.asideToggle').on('click',function(){
             $('.aside').toggleClass('active');

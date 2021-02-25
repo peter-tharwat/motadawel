@@ -55,6 +55,9 @@
 		    @endforeach
 		  </tbody>
 		</table> 
+		<div class="col-12 px-0 py-2">
+			{{$partners->appends(request()->query())->render() }}
+		</div>
 	 </div> 
 </div>
 @endsection
