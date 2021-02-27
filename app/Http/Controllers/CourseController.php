@@ -45,7 +45,7 @@ class CourseController extends Controller
  
         $request->validate([
             'title'=>'required|min:3|max:255',
-            'description'=>'required|min:3|max:1000', 
+            'description'=>'required|min:3|max:100000', 
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'price'=>'required|min:0|max:10000',
@@ -103,7 +103,7 @@ url*/
     {
         $request->validate([
             'title'=>'required|min:3|max:255',
-            'description'=>'required|min:3|max:1000', 
+            'description'=>'required|min:3|max:100000', 
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'price'=>'required|min:0|max:10000',

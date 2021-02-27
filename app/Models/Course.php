@@ -30,4 +30,8 @@ class Course extends Model
     {
         return Carbon::parse($available_at)->format('Y-m-d\TH:i');
     }
+    public function videos()
+    {
+        return $this->hasMany('\App\Models\Video');
+    }
 }

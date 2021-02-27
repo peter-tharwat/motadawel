@@ -20,7 +20,7 @@
 		    <tr>
 		      <th scope="col">#</th>
 		      <th scope="col">العنوان</th>
-		      <th scope="col">الوصف</th>
+		      {{-- <th scope="col">الوصف</th> --}}
 		      <th scope="col">السعر</th>
 		      <th scope="col">تحكم</th>
 		    </tr>
@@ -31,7 +31,7 @@
 		    <tr>
 		      <td scope="col">{{$course->id}}</td>
 		      <td scope="col">{{$course->title}}</td>
-		      <td scope="col">{{$course->description}}</td>
+		      {{-- <td scope="col">{{$course->description}}</td> --}}
 		      <td scope="col">{{$course->price}}</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('courses.destroy',$course)}}" id="course_delete_{{$course->id}}">@csrf @method('DELETE')</form>

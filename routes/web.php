@@ -42,7 +42,12 @@ Route::get('/', function () { return view('welcome'); });
 Route::get('lectures',function(){return view('pages.lectures');});
 Route::get('partners',function(){return view('pages.partners');});
 Route::get('blog',function(){return view('pages.blog');});
-Route::get('article/{id}-{title?}',function($id){$article=\App\Models\Article::find($id); return view('pages.article',compact('article'));});
+Route::get('article/{id}-{title?}',function($id){$article=\App\Models\Article::where('id',$id)->firstOrFail(); return view('pages.article',compact('article'));})->name('article');
+Route::get('course/{id}-{title?}',function($id){$course=\App\Models\Course::where('id',$id)->firstOrFail(); return view('pages.course',compact('course'));})->name('course');
+
+Route::get('course/{id}-{title?}/videos',function($id){$videos=\App\Models\Video::where('course_id',$id)->get();$course=\App\Models\Course::where('id',$id)->firstOrFail(); return view('pages.videos',compact('videos','course'));})->name('videos');
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',function(){

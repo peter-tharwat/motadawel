@@ -159,7 +159,7 @@
                                 <span class="fab fa-youtube font-3"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2">
-                                الدورات التعليمية
+                                المحاضرات التعليمية
                             </div> 
                         </div>
                     </a>

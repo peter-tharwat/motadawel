@@ -19,7 +19,9 @@
           @php 
           $courses=\App\Models\Course::orderBy('id','DESC')->paginate(12);
           @endphp
-          @foreach($courses as $course)<div class="col-12 col-lg-3">
+          @foreach($courses as $course)
+          <div class="col-12 col-lg-3">
+            <a href="{{route('course',['id'=>$course->id,'title'=>str_replace(' ','-',$course->title)])}}" style="color: #333">
                 <div class="col-12 p-2 course my-3" style="border:2px solid #fff;border-radius: 3px;overflow: hidden;background: #fff">
                     <img src="{{$course->image()}}" style="
               border-radius: inherit!important;
@@ -32,10 +34,15 @@
               ">
                     <div class="col-12 px-0 py-3">
                         <h4 style="line-height: 1.5;" class="font-2">{{$course->title}}</h4>
-                        <h5 style="line-height: 1.5;font-size: 14px;color: #999">{{strip_tags($course->description,'<k>')}}</h5>
+                        <h5 style="line-height: 1.5;font-size: 14px;color: #999">{{
+                          substr(strip_tags($course->description,'<k>'), 0, 150)
+
+                          }}</h5>
                     </div>
                 </div>
+                </a>
         </div>
+        
         @endforeach
     </div>
 </div>
