@@ -44,6 +44,7 @@ Route::get('partners',function(){return view('pages.partners');});
 Route::get('blog',function(){return view('pages.blog');});
 Route::get('article/{id}-{title?}',function($id){$article=\App\Models\Article::where('id',$id)->firstOrFail(); return view('pages.article',compact('article'));})->name('article');
 Route::get('course/{id}-{title?}',function($id){$course=\App\Models\Course::where('id',$id)->firstOrFail(); return view('pages.course',compact('course'));})->name('course');
+Route::get('partner/{id}-{title?}',function($id){$partner=\App\Models\Partner::where('id',$id)->firstOrFail(); return view('pages.partner',compact('partner'));})->name('partner');
 
 Route::get('course/{id}-{title?}/videos',function($id){$videos=\App\Models\Video::where('course_id',$id)->get();$course=\App\Models\Course::where('id',$id)->firstOrFail(); return view('pages.videos',compact('videos','course'));})->name('videos');
 

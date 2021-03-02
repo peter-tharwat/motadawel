@@ -20,13 +20,13 @@
   
 <div class="col-12 px-0 d-flex row py-5 mb-5">
       
-    <div class="col-12 px-0 row d-flex">
+    <div class="col-12 px-3 py-4 row d-flex mx-auto" style="background: #fff;max-width: 1000px">
       <div class="col-12">
 
-        <h2 class="mb-3 text-center">شريك النجاح الأول</h2>
+        <h2 class="mb-3 text-center">{{$partner->title}}</h2>
 
         <div class="col-12 py-3 px-0">
-          <img src="https://ebtikar-it.com/wp-content/uploads/2017/01/BANNER-031-1.jpg" style="width: 100%;border-radius: 5px;"> 
+          <img src="{{$partner->banner()}}" style="width: 100%;border-radius: 5px;"> 
         </div>
 
         
@@ -34,22 +34,22 @@
         
         <div class="col-12 px-0 py-3 row d-flex" >
 
-          <div class="col-12 col-lg-7 px-0 my-lg-3 my-lg-0">
+          <div class="col-12 col-lg-7 px-0 my-lg-0 my-lg-0 ">
               
-              <h4 class=" text-justify px-0 font-2 font-lg-4 py-3" style="color: #222;line-height: 1.9;max-width: 80%">
-                إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
-              </h4>
+              <p style="line-height: 1.9;white-space: pre-line;">{!!$partner->description!!}</p>
+
+             
 
             </div>
             <div class="col-12 col-lg-5 px-0 ">
-              <div class="plyr__video-embed" id="player">
+             {{--  <div class="plyr__video-embed" id="player">
                 <iframe
                   src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                   allowfullscreen
                   allowtransparency
                   allow="autoplay"
                 ></iframe>
-              </div>
+              </div> --}}
 
             </div>
 
@@ -99,15 +99,37 @@
           
         </div>
 
-        <div class="col-12 px-0">
-          <div class="col-12 col-lg-6 px-2 py-2 mb-2 font-3" style="border:1px solid #ddd">
-            <div class=" d-inline-block text-center rounded" style="height: 60px;width: 60px;background: #ddd"> 
-              <span class="fal fa-link font-4 pt-3"></span> 
-            </div>
-            هذا رابط يوضح طريقة الاشتراك
+        <div class="col-12 px-0  mb-4">
+          @php 
+          $features=$partner->partner_features()->get();
+          @endphp
+          @foreach($features as $feature)
+          
+          <div class="col-12  px-0 font-3" >
+             
+              <span class="fas  fa-check  pt-3" style="color:#4caf50"></span> 
+          
+            {{$feature->title}}
           </div>
+           
+          @endforeach
+        </div>
+        <div class="col-12 px-0">
+          @php 
+          $links=$partner->partner_links()->get();
+          @endphp
+          @foreach($links as $link)
+          <a href="{{$link->url}}" style="color: #333">
+          <div class="col-12 col-lg-6 px-2 py-1 mb-2 font-3" style="border:1px solid #ddd">
+            <div class=" d-inline-block text-center rounded" style="height: 37px;width: 37px;background: #ddd"> 
+              <span class="fal  fa-{{$link->type}}  font-3 pt-2"></span> 
+            </div>
+            {{$link->title}}
+          </div>
+          </a>
+          @endforeach
 
-          <div class="col-12 col-lg-6 px-2 py-2 mb-2 font-3" style="border:1px solid #ddd">
+         {{--  <div class="col-12 col-lg-6 px-2 py-2 mb-2 font-3" style="border:1px solid #ddd">
             <div class=" d-inline-block text-center rounded" style="height: 60px;width: 60px;background: #ddd"> 
               <span class="fal fa-file-pdf font-4 pt-3"></span>
             </div>
@@ -119,12 +141,13 @@
               <span class="fal fa-link font-4 pt-3"></span> 
             </div>
             هذا رابط إضافي للتسجيل
-          </div>
+          </div> --}}
 
-          <div class="col-4 px-0 pt-2 pb-3 btn btn-success text-center font-2 mt-4"  style="border-radius: 0px ; background: #ffa725;border-color: #ffa725">
-                اشترك الآن
+          <a href="{{$partner->url}}" target="_blank">
+          <div class="col-4 px-0 pt-2 pb-3 btn btn-success text-center font-2 mt-4"  style="border-radius: 0px ;  ">
+                دخول الآن
               </div>
-
+              </a>
 
 
 
@@ -133,7 +156,9 @@
       </div>
     
     </div>
-      
+    <div class="col-12 px-0 py-0 row d-flex mx-auto mt-3" style="max-width: 1000px">
+    @include('include.share')
+    </div>
 
     
       </div>

@@ -58,6 +58,9 @@
     .hover-border-yellow:hover{
         border-color: #ff9800!important;
     }
+    body{
+        overflow-x: hidden;
+    }
     </style>
     <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>
     <div class="col-12 px-0" style=" ;position: relative;">

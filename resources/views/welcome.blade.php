@@ -16,20 +16,20 @@
     /*border-bottom: 60px solid #f16429*/
 </style>
 <div class="col-12 px-0 " style="position: relative;min-height:calc(40vh - 75px) ;background-image: url('/images/bg-final.jpeg');background-size: cover;background-position: center;">
-    <div class="col-12 px-2 d-flex justify-content-center py-lg-5 container" style="" style="">
+    <div class="col-12  d-flex justify-content-center py-lg-5 container px-0" >
         <div class="col-12 px-2 d-inline-block pt-lg-0 mb-lg-4 ">
             <div class="col-12 px-0 m-auto pt-lg-0 row d-flex ">
-                <div class="col-12 col-lg-7 px-0 my-5 my-lg-0">
+                <div class="col-12 col-lg-7 px-4 my-5 my-lg-0">
                     <h1 style="color: #fff;text-align: right;" class="mb-4  font-3 font-lg-8 pt-lg-3">مرحباً بك معنا !</h1>
-                    <h4 class=" text-justify px-0 font-2 font-lg-2 col-12 col-lg-8 pt-4" style="color: #fff;line-height: 1.9;max-width: 80%">
+                    <h4 class="text-justify px-0 font-2 font-lg-2 col-12 col-lg-8 pt-4" style="color: #fff;line-height: 1.9;">
                         إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد <br> النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية،
                     </h4>
-                    <div class="col-12 px-0">
-                        <button class="btn btn-primary px-5 font-3 py-2 pb-3 mt-3" style="border-radius: 50px">عرض الدورات</button>
+                    <div class="col-12 px-0 d-flex justify-content-lg-start justify-content-center">
+                        <button class="btn btn-primary px-5 font-lg-3 font-2 py-2 pb-3 mt-3" style="border-radius: 50px">عرض الدورات</button>
                     </div>
                 </div>
-                <div class="col-12 col-lg-5 px-0  pt-3">
-                    <video id="player" playsinline controls data-poster="/path/to/poster.jpg" >
+                <div class="col-12 col-lg-5 px-0  pt-3 pb-3 d-flex justify-content-center ">
+                    <video class="d-inline-block " id="player" playsinline controls data-poster="/images/video-chart.png" >
                       <source src="/videos/video.mp4" type="video/mp4" />
                     </video>
                     {{-- <div class="plyr__video-embed" id="player">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container px-0">
             <div style="position: absolute;bottom: 40px; left: 0px ;right:0px" class="text-center d-none d-xl-block">
             <a href="#how-it-works" class="d-inline-block text-center" style="cursor: pointer;text-decoration: unset;">
                 <span class="fal fa-mouse-alt font-3" style="color: #fff"></span>
@@ -67,7 +67,8 @@
             <h2>الأقسام</h2>
         </div>
         <div class="col-12 px-0 d-flex row py-5">
-            <div class="col-12 col-lg-4">
+            <a href="/courses" class="col-12 col-lg-4" style="color: #333">
+            <div >
                 <div class="col-12 p-2 course my-3" style="border:2px solid #f1f1f1;border-radius: 3px;overflow: hidden;">
                     <img src="/images/lectures.jpg" style="
                   border-radius: inherit!important;
@@ -84,7 +85,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            </a>
+            <a href="/partners" class="col-12 col-lg-4" style="color: #333">
+            <div >
                 <div class="col-12 p-2 course my-3" style="border:2px solid #f1f1f1;border-radius: 3px;overflow: hidden;">
                     <img src="/images/partners.jpg" style="
                   border-radius: inherit!important;
@@ -101,7 +104,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            </a>
+            <a href="https://saudi-trader.com/archives/1374" class="col-12 col-lg-4" style="color: #333" target="_blank">
+            <div >
                 <div class="col-12 p-2 course my-3" style="border:2px solid #f1f1f1;border-radius: 3px;overflow: hidden;">
                     <img src="/images/analytics.jpg" style="
                   border-radius: inherit!important;
@@ -118,6 +123,7 @@
                     </div>
                 </div>
             </div>
+        </a>
         </div>
     </div>
 </div>

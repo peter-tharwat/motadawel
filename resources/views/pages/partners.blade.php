@@ -15,7 +15,7 @@
           $partners=\App\Models\Partner::orderBy('id','DESC')->simplePaginate(9);
           @endphp
             @foreach($partners as $partner) <div class="col-12 col-lg-4">
-                <a href="#" style="color: #333">
+                <a href="{{route('partner',['id'=>$partner->id,'title'=>str_replace(' ','-',$partner->title)])}}" style="color: #333">
                 <div class="col-12 p-2 course my-3 hover-border-yellow" style="border:2px solid transparent;border-radius: 3px;overflow: hidden;background: #fff">
                     <img src="{{$partner->image()}}" style="height: 300px;">
                     <div class="col-12 px-0 py-3">

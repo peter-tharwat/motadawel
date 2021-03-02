@@ -22,6 +22,7 @@
 		      <th scope="col">العنوان</th>
 		      {{-- <th scope="col">الوصف</th> --}}
 		      <th scope="col">السعر</th>
+		      <th scope="col">عدد الفيديوهات</th>
 		      <th scope="col">تحكم</th>
 		    </tr>
 		  </thead>
@@ -33,13 +34,14 @@
 		      <td scope="col">{{$course->title}}</td>
 		      {{-- <td scope="col">{{$course->description}}</td> --}}
 		      <td scope="col">{{$course->price}}</td>
+		      <td scope="col">{{$course->videos->count()}}</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('courses.destroy',$course)}}" id="course_delete_{{$course->id}}">@csrf @method('DELETE')</form>
 		      	<a href="{{route('courses.edit',$course)}}" style="width: 30px;height: 30px;color: #fff;background: #2381c6;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1">
 		      		<span class="fal fa-edit"></span>
 		      	</a> 
 
-		      	<a href="{{route('videos.index',['course_id'=>$course->id])}}" style="width: 30px;height: 30px;color: #fff;background: #4caf50;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1" title="ميزات للشريك">
+		      	<a href="{{route('videos.index',['course_id'=>$course->id])}}" style="width: 30px;height: 30px;color: #fff;background: #4caf50;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1" title="اضافة فيديو">
 		      		<span class="fas fa-play"></span>
 		      	</a> 
 

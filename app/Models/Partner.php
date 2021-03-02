@@ -25,6 +25,10 @@ class Partner extends Model
     {
     	return $this->hasMany('\App\Models\PartnerFeature');
     }
+    public function partner_links()
+    {
+        return $this->hasMany('\App\Models\PartnerLink');
+    }
     public function getRouteKeyName()
     {
     	return 'id';
