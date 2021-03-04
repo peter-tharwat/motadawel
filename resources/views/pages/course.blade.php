@@ -57,7 +57,7 @@
         <div class="col-12">
           
         </div>
-        <p style="line-height: 1.9;white-space: pre-line;">{!!$course->description!!}</p>
+        <p style="line-height: 1.9;white-space: pre-line;" class="pb-3">{!!$course->description!!}</p>
         </div>
 
 
