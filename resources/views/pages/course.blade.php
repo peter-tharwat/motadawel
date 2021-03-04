@@ -54,10 +54,9 @@
           <img src="{{$course->banner()}}" style="width: 100%;border-radius: 0px"> 
         </div>
 
-        <div class="col-12">
-          
-        </div>
-        <p style="line-height: 1.9;white-space: pre-line;" class="pb-3">{!!$course->description!!}</p>
+        <div class="col-12 pb-3">
+          <p style="line-height: 1.9;white-space: pre-line;" class=" col-12">{!!$course->description!!}</p>
+        </div> 
         </div>
 
 
