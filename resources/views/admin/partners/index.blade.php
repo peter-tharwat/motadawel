@@ -20,7 +20,7 @@
 		    <tr>
 		      <th scope="col">#</th>
 		      <th scope="col">العنوان</th>
-		      <th scope="col">الوصف</th>
+		      {{-- <th scope="col">الوصف</th> --}}
 		      <th scope="col">الرابط</th>
 		      <th scope="col">تحكم</th>
 		    </tr>
@@ -31,7 +31,7 @@
 		    <tr>
 		      <td scope="col">{{$partner->id}}</td>
 		      <td scope="col">{{$partner->title}}</td>
-		      <td scope="col">{{$partner->description}}</td>
+		      {{-- <td scope="col">{{$partner->description}}</td> --}}
 		      <td scope="col">{{$partner->url}}</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('partners.destroy',$partner)}}" id="partner_delete_{{$partner->id}}">@csrf @method('DELETE')</form>
