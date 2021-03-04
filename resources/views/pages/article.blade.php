@@ -10,7 +10,7 @@
 </div>  --}}
 
 <div class="col-12 px-0 ">
-  <div class="col-12 px-0 py-2 container">
+  <div class="col-12 px-0 py-2 container" style="min-height: 100vh">
     <div class="col-12 px-0 d-flex row py-5" style="min-height: 100vh">
            <div class="col-12 mx-auto  col-lg-7 p-2" style="background: #fff;">
               <h2 style="color: #232323;font-weight: bold" class="font-3 font-lg-4 p-2 px-3 text-center">{{$article->title}}</h2>

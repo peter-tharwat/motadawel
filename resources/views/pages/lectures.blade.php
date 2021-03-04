@@ -14,7 +14,7 @@
         </svg></div>
 </div>  --}}
 <div class="col-12 px-0 py-0">
-    <div class="col-12 px-0 py-2 container">
+    <div class="col-12 px-0 py-2 container" style="min-height: 100vh">
         <div class="col-12 px-0 d-flex row py-5">
           @php 
           $lectures=\App\Models\Lecture::orderBy('id','DESC')->simplePaginate(9);

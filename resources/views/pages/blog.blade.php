@@ -17,7 +17,7 @@
 $articles=\App\Models\Article::orderBy('id','DESC')->simplePaginate(8);
 @endphp
 <div class="col-12 px-0 py-5">
-    <div class="col-12 px-0 py-2 container">
+    <div class="col-12 px-0 py-2 container" style="min-height: 100vh">
         <div class="col-12 px-0 d-flex row py-5">
             @foreach($articles as $article) 
             <a href="/article/{{$article->id}}-{{\Str::slug($article->title)}}" class="col-12 col-lg-3">
