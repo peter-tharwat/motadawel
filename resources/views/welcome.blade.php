@@ -14,8 +14,72 @@
         box-shadow: unset!important;
     }*/
     /*border-bottom: 60px solid #f16429*/
+    .carousel-indicators .active {
+        background: #2381c6!important;
+    }
 </style>
-<div class="col-12 px-0 " style="position: relative;min-height:calc(40vh - 75px) ;background-image: url('/images/bg-final.jpeg');background-size: cover;background-position: center;">
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators d-flex justify-content-end mb-3">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 20px;
+    height: 20px;
+    z-index: 11111;
+    background: white;
+    " class="mx-1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" style="width: 20px;
+    height: 20px;
+    z-index: 11111;
+    background: white;
+    " class="mx-1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" style="width: 20px;
+    height: 20px;
+    z-index: 11111;
+    background: white;
+    " class="mx-1"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/bg-final.jpeg" class="d-block w-100" alt="..." style="height: 40vh">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="color: #fff;text-align: right;" class="mb-4  font-3 font-lg-8 pt-lg-3">مرحباً بك معنا !</h1>
+        <h4 class="text-right px-0 font-2 font-lg-2 col-12 col-lg-8 pt-4" style="color: #fff;line-height: 1.9;">
+            إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد <br> النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية،
+        </h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/images/bg-final.jpeg" class="d-block w-100" alt="..." style="height: 40vh">
+      <div class="carousel-caption d-none d-md-block">
+       <h1 style="color: #fff;text-align: right;" class="mb-4  font-3 font-lg-8 pt-lg-3">مرحباً بك معنا !</h1>
+        <h4 class="text-right px-0 font-2 font-lg-2 col-12 col-lg-8 pt-4" style="color: #fff;line-height: 1.9;">
+            إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد <br> النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية،
+        </h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/images/bg-final.jpeg" class="d-block w-100" alt="..." style="height: 40vh">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="color: #fff;text-align: right;" class="mb-4  font-3 font-lg-8 pt-lg-3">مرحباً بك معنا !</h1>
+        <h4 class="text-right px-0 font-2 font-lg-2 col-12 col-lg-8 pt-4" style="color: #fff;line-height: 1.9;">
+            إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد <br> النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية،
+        </h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+{{-- <div class="col-12 px-0 " style="position: relative;min-height:calc(40vh - 75px) ;background-image: url('/images/bg-final.jpeg');background-size: cover;background-position: center;">
     <div class="col-12  d-flex justify-content-center py-lg-5 container px-0" >
         <div class="col-12 px-2 d-inline-block pt-lg-0 mb-lg-4 ">
             <div class="col-12 px-0 m-auto pt-lg-0 row d-flex ">
@@ -29,13 +93,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 px-0  pt-3 pb-3 d-flex justify-content-center ">
-                    <video class="d-inline-block " id="player" playsinline controls data-poster="/images/video-chart.png" >
-                      <source src="/videos/video.mp4" type="video/mp4" />
-                    </video>
-                    {{-- <div class="plyr__video-embed" id="player">
-
-                        <iframe src="https://www.youtube.com/embed/JLT4Oz5XRbc?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-                    </div> --}}
+                   
                 </div>
             </div>
         </div>
@@ -48,6 +106,58 @@
         </div>
         </div>
         
+    </div>
+</div> --}}
+
+<div class="col-12 px-0 px-0 py-5">
+    <div class="container">
+        <div class="col-12 px-0 row d-flex">
+            <div class="col-12 px-0 mb-5 text-center row">
+                <h2>لماذا فكرة شارت</h2>
+                <div class="col-12 px-0 row d-flex py-5">
+                     <div class=" col-12 col-lg-6">
+                       <div class="col-12">
+                           <div class="col-12 text-right mb-5">
+                               <h4 > <span class="fas fa-check-circle" style="color: #2381c6"></span> ميزة رقم 1 </h4>
+                               <div class="col-8">
+                                   <h6>النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة</h6>
+                               </div>
+                               
+                           </div>
+                           <div class="col-12 text-right  mb-5">
+                               <h4 > <span class="fas fa-check-circle" style="color: #2381c6"></span> ميزة رقم 2 </h4>
+                               <div class="col-8">
+                                   <h6>النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة</h6>
+                               </div>
+                               
+                           </div>
+                           <div class="col-12 text-right  mb-5">
+                               <h4 > <span class="fas fa-check-circle" style="color: #2381c6"></span> ميزة رقم 3 </h4>
+                               <div class="col-8">
+                                   <h6>النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، النص العربى زيادة</h6>
+                               </div>
+                               
+                           </div>
+                       </div>
+                    </div>
+                     <div class=" col-12 col-lg-6 row d-flex">
+                        
+                        <div class="col-12">
+                            <div class="col-12" style="width: 100%;height: 400px;background: #333">
+                                {{--  <video class="d-inline-block " id="player" playsinline controls data-poster="/images/video-chart.png" >
+                      <source src="/videos/video.mp4" type="video/mp4" />
+                    </video> --}}
+                    {{-- <div class="plyr__video-embed" id="player">
+
+                        <iframe src="https://www.youtube.com/embed/JLT4Oz5XRbc?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                    </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
     </div>
 </div>
 {{-- <div class="col-12 px-0 " style="max-height: 380px">
@@ -240,6 +350,68 @@
         </div>
     </div>
 </div>
+
+<div class="col-12 px-2 py-lg-5 " style="background: #f7f7f7">
+    <div class="col-12 container py-5">
+        <div class="col-12 px-0 mb-5 text-center">
+            <div class="col-12 px-0 row d-flex">
+                <div class="col-12 col-lg-8">
+                <h4 style="color: #4caf50" class="text-right font-4 mb-3">أبو رسيل الثقفي</h4>
+                <div class="col-12 px-0 font-3" style="text-align: justify;">
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
+                    إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
+                    ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.
+                    هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.
+                </div>
+                </div>
+                <div class="col-12 col-lg-4 px-3">
+                    <div class="col-12" style="width: 100%;height: 300px;background: #333">
+                        
+                    </div>
+                </div>
+                
+            </div>
+          
+        </div>
+    </div>
+</div>
+{{-- 
+<div class="col-12 px-2 py-lg-5 " style="background: #f1f1f1">
+    <div class="col-12 container py-5">
+        <div class="col-12 px-0 mb-5 text-center">
+            <div class="col-12 px-0 row d-flex py-4">
+                <div class="col-12 col-lg-12">
+                <h4 style="color: #4caf50" class="text-center ">من نحن</h4> 
+                </div>
+                <div class="col-12  px-3 row d-flex py-4">
+                    <div class="col-12 col-lg-3" >
+                        <div style="width: 100%;height: 200px;background: #333">
+                            
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3" >
+                        <div style="width: 100%;height: 200px;background: #333">
+                            
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3" >
+                        <div style="width: 100%;height: 200px;background: #333">
+                            
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3" >
+                        <div style="width: 100%;height: 200px;background: #333">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+          
+        </div>
+    </div>
+</div> --}}
+
 <div class="col-12 px-2 py-lg-5 " style="background: #fff">
     <div class="col-12 container py-5">
         <div class="col-12 px-0 mb-5 text-center">

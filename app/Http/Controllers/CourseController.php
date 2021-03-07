@@ -49,7 +49,9 @@ class CourseController extends Controller
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'price'=>'required|min:0|max:10000',
-            'available_at'=>'required|date'
+            'available_at'=>'required|date',
+            'accept_payments_untill'=>'required|date',
+            'type'=>"required|string|in:RECORDED,LIVE,OFFLINE"
         ]); 
         $course = Course::create([
             'user_id'=>auth()->user()->id,
@@ -58,7 +60,9 @@ class CourseController extends Controller
             'banner'=>$this->upload_file($request->file('banner'),'banners'),
             'image'=>$this->upload_file($request->file('image'),'images'),
             'price'=>$request->price,
-            'available_at'=>$request->available_at
+            'available_at'=>$request->available_at,
+            'accept_payments_untill'=>$request->accept_payments_untill,
+            'type'=>$request->type,
         ]); 
         emotify('success', 'تم إضافة الكورس بنجاح');
         return redirect()->route('courses.index');
@@ -107,7 +111,9 @@ url*/
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'price'=>'required|min:0|max:10000',
-            'available_at'=>"required|date"
+            'available_at'=>"required|date",
+            'accept_payments_untill'=>'required|date',
+            'type'=>"required|string|in:RECORDED,LIVE,OFFLINE"
         ]);
         $course->update([ 
             'title'=>$request->title,
@@ -116,7 +122,9 @@ url*/
             'banner'=>$request->hasFile('banner')?$this->upload_file($request->file('banner'),'banners'):$course->banner,
             'image'=>$request->hasFile('image')?$this->upload_file($request->file('image'),'images'):$course->image,
             'price'=>$request->price,
-            'available_at'=>$request->available_at
+            'available_at'=>$request->available_at,
+            'accept_payments_untill'=>$request->accept_payments_untill,
+            'type'=>$request->type,
         ]);
 
         emotify('success', 'تم تعديل الكورس بنجاح');

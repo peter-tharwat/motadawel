@@ -27,7 +27,24 @@
 		 		</div> 
 
 	 		</div>
+	 		
+
 	 		<div class="col-3">
+
+	 			<div class="col-12  px-0 d-flex mb-3">
+		 			<div class="col-3 px-2 text-start pt-1">
+		 				النوع
+		 			</div>
+		 			<div class="col-9 px-2"> 
+		 				<select name="type" class="form-control" required="" id="course-type" onchange="">
+		 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
+		 					<option value="LIVE" @if(old('LIVE')) selected="" @endif >مباشر</option>
+		 					<option value="RECORDED" @if(old('RECORDED')) selected="" @endif >مسجل</option> 
+		 					<option value="OFFLINE" @if(old('OFFLINE')) selected="" @endif >دورة حضورية</option> 
+		 				</select> 
+		 			</div> 
+		 		</div> 
+	 		
 	 			<div class="col-12  px-0 d-flex mb-3">
 		 			<div class="col-3 px-2 text-start pt-1" style="width: 100px;">
 		 				متاح في
@@ -36,6 +53,15 @@
 		 				<input type="datetime-local" name="available_at" class="form-control" value="{{old('price')}}" min="{{date('Y-m-d h:i:s')}}">
 		 			</div> 
 		 		</div>
+		 		<div class="col-12  px-0 d-flex mb-3">
+		 			<div class="col-3 px-2 text-start pt-1" style="width: 100px;">
+		 				الحجز متاح حتى
+		 			</div>
+		 			<div class="col-9 px-2">
+		 				<input type="datetime-local" name="accept_payments_untill" class="form-control"  min="{{date('Y-m-d h:i:s')}}">
+		 			</div> 
+		 		</div>
+		 		
 		 		<div class="col-12  px-0 d-flex mb-3">
 		 			<div class="col-3 px-2 text-start pt-1" style="width: 100px;">
 		 				الصورة المصغرة

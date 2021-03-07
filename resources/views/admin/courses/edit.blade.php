@@ -29,6 +29,19 @@
 	 		</div>
 	 		<div class="col-3">
 	 			<div class="col-12 px-0 d-flex mb-3">
+		 			<div class="col-3 px-2 text-start pt-1">
+		 				النوع
+		 			</div>
+		 			<div class="col-9 px-2"> 
+		 				<select name="type" class="form-control" required="" id="course-type" onchange="">
+		 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
+		 					<option value="LIVE" @if($course['type']=="LIVE") selected="" @endif >مباشر</option>
+		 					<option value="RECORDED" @if($course['type']=="RECORDED") selected="" @endif >مسجل</option> 
+		 					<option value="OFFLINE" @if($course['type']=="OFFLINE") selected="" @endif >دورة حضورية</option> 
+		 				</select> 
+		 			</div> 
+		 		</div> 
+	 			<div class="col-12 px-0 d-flex mb-3">
 		 			<div class=" px-2 text-start pt-1" style="width: 100px">
 		 				السعر
 		 			</div>
@@ -36,12 +49,21 @@
 		 				<input type="number" name="price" class="form-control" value="{{$course->price}}">
 		 			</div> 
 		 		</div>
+		 		
 		 		<div class="col-12 px-0 d-flex mb-3">
 		 			<div class=" px-2 text-start pt-1" style="width: 100px">
 		 				متاح في 
 		 			</div>
 		 			<div class="col px-2">
 		 				<input type="datetime-local" name="available_at" class="form-control" value="{{$course->available_at}}" >
+		 			</div> 
+		 		</div>
+		 		<div class="col-12 px-0 d-flex mb-3">
+		 			<div class=" px-2 text-start pt-1" style="width: 100px">
+		 				الحجز متاح حتى
+		 			</div>
+		 			<div class="col px-2">
+		 				<input type="datetime-local" name="accept_payments_untill" class="form-control" value="{{$course->accept_payments_untill}}" >
 		 			</div> 
 		 		</div>
 

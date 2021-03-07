@@ -1,6 +1,6 @@
  <div style="background: #fff" class="mt-3 d-flex row px-3 justify-content-start py-3">
     <div class="col-12 font-2 pb-3 border-bottom mb-3">
-      شارك
+      مشاركة مع المهتمين
     </div> 
     <div class="col-12 row d-flex px-0  ">  
       <a href="https://www.facebook.com/sharer/sharer.php?u={{\Request::fullUrl()}}" style="width: 120px;" class="px-0 mx-1 d-inline-block my-2">

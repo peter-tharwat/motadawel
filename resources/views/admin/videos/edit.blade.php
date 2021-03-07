@@ -72,13 +72,21 @@
 	 				</select> 
 	 			</div> 
 	 		</div> 
-	 		<div class="col-12 px-0  mb-3" id="video-url" style="display: none;">
+	 		<div class="col-12 px-0  mb-3" id="video-url" 
+	 		@if($video['type']!="LIVE")
+	 		style="display: none;"
+	 		@endif
+	 		>
 	 			<div class="col-12 px-0 d-flex">
 	 				<div class="col-3 px-2 text-start pt-1">
 		 				رابط الفيديو
 		 			</div>
 		 			<div class="col-9 px-2">
-		 				<input type="url" name="url" class="form-control" value="{{$video['url']}}" disabled>
+		 				<input type="url" name="url" class="form-control" value="{{$video['url']}}" 
+		 				@if($video['type']!="LIVE")
+				 			disabled="" 
+				 		@endif
+		 				>
 		 			</div> 
 	 			</div>
 	 			

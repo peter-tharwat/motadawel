@@ -62,9 +62,26 @@ $video=$course->videos()->firstOrFail();
          </div>
          <div class="col-12 col-lg-9 px-2">
            <div class="col-12 py-3 px-3" style="background: #fff">
+            @if($video['type']=="LIVE")
+            <div class="col-12 px-0 py-5">
+              
+            
+            <div class="col-12 font-3 text-center ">
+              يتم تشغيل المحاضرة عبر الضغط على الرابط ادناه في وقت المحاضرة الفعلية 
+            </div>
+            <div class="col-12 pt-5 d-flex justify-content-center" >
+              <a href="{{$video->url}}" target="_blank" style="color: #333;" class="font-4 text-center border px-4 py-2 d-inline-block"><span class="fas fa-play"></span> اضغط هنا لتشغيل المحاضرة</a>
+            </div>
+            </div>
+              
+            @elseif($video['type']=="RECORDED")
             <video  style="width: 100%" controls>
               <source src="/videos/video.mp4" type="video/mp4"> 
             </video>
+            @elseif($video['type']=="OFFLINE")
+
+            @endif
+
            </div>
            <div class="col-12 py-3 px-3 mt-3" style="background: #fff;">
             <div class="col-12 px-0">

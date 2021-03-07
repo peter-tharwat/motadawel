@@ -83,8 +83,14 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
 
 
 
+Route::get('/about', function () { return view('another.about'); });
+Route::get('/terms', function () { return view('another.terms'); });
+Route::get('/privacy', function () { return view('another.privacy'); });
+
+
 
 Route::get('/page', function () { return view('pages.page'); });
-Route::get('/courses', function () { return view('pages.courses'); });
+Route::get('/courses', function () { return view('pages.courses'); })->name('courses');
+Route::get('/courses-types', function () { return view('pages.courses-types'); });
 Route::get('/carousel', function () { return view('pages.carousel'); });
 Route::get('/partners', function () { return view('pages.partners'); });

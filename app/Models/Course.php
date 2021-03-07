@@ -30,6 +30,11 @@ class Course extends Model
     {
         return Carbon::parse($available_at)->format('Y-m-d\TH:i');
     }
+    public function getAcceptPaymentsUntillAttribute($accept_payments_untill)
+    {
+        return Carbon::parse($accept_payments_untill)->format('Y-m-d\TH:i');
+    }
+    
     public function videos()
     {
         return $this->hasMany('\App\Models\Video');

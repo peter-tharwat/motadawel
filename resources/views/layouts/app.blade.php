@@ -64,14 +64,9 @@
     </style>
     <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>
     <div class="col-12 px-0" style=" ;position: relative;">
-        <div class="col-12 px-0 " style="height: 40px;background: #232323">
-            <div class="container" style="color: #fff">
-                <span style="width: 60px;height: 40px;background: #da2b66;color: #fff;padding: 7px 12px" class="d-inline-block text-center ml-2">الأخبار</span> إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد
-النص العربى زيادة
-            </div>
-        </div>
+        
 
-        <nav class="navbar navbar-expand-lg  bg-dark py-2" style="box-shadow:0px 5px 10px #e8e8e8" id="main-nav">
+        <nav class="navbar navbar-expand-lg  bg-dark py-2" id="main-nav">
             <div class="container">
                 <a href="/">
                 <img src="/images/logo-abo.png" class="logo" alt="images" style="padding: 7px;max-width: 164px">
@@ -85,16 +80,27 @@
                             <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
                         </li> --}}
                         <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/courses">الدورات</a>
+                            <a class="nav-link" href="/"> <span class="fas fa-home"></span> الرئيسية</a>
+                        </li>
+
+                        <li class="nav-item mt-1 px-1">
+                            <a class="nav-link" href="/courses-types"><span class="fas fa-box-full"></span> الدورات</a>
                         </li>
                         <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/lectures">المحاضرات التعليمية</a>
+                            <a class="nav-link" href="#"> فلتر شرعي </a>
+                        </li>
+                         <li class="nav-item mt-1 px-1">
+                            <a class="nav-link" href="#"> آراء وتحليلات </a>
+                        </li>
+
+                        <li class="nav-item mt-1 px-1">
+                            <a class="nav-link" href="/lectures"><span class="fab fa-youtube"></span> المحاضرات التعليمية</a>
                         </li>
                         <li class="nav-item mt-1 px-1">
                             <a class="nav-link" href="/partners">شركاء النجاح</a>
                         </li>
                         <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="http://saudi-trader.com/archives/1374" target="_blank">{{-- منصة --}} المحلل الفني {{-- الإحترافية --}}</a>
+                            <a class="nav-link" href="http://saudi-trader.com/archives/1374" target="_blank">{{-- منصة --}} المحلل الفني الإحترافية{{-- الإحترافية --}}</a>
                         </li>
                         <li class="nav-item mt-1 px-1">
                             <a class="nav-link" href="/blog">المدونة</a>
@@ -135,6 +141,13 @@
                 </div>
             </div>
         </nav>
+        <div class="col-12 px-0 " style="height: 40px;background: #232323">
+            <div class="container" style="color: #fff">
+                <span style="width: 120px;height: 40px;background: #da2b66;color: #fff;padding: 7px 12px" class="d-inline-block text-center ml-2">أخبار فكرة شارت</span> إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد
+النص العربى زيادة
+            </div>
+        </div>
+
     </div>
     
         @yield('content')
@@ -175,7 +188,8 @@
                                 <h5 class="" style="color: #fff;font-size: 1.10rem">روابط</h5>
                                 <ul style="display: block;padding: 0px;list-style: none;" class="col-12 mt-2 pt-2 ">
                                     <li><a href="/terms" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">شروط الاستخدام </a></li>
-                                    <li><a href="/privacy-policy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
+                                    <li><a href="/privacy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
+                                    <li><a href="/about" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">من نحن</a></li>
                                     <li><a href="/support" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">الدعم الفني</a></li>
                                 </ul>
                             </div>
@@ -185,7 +199,8 @@
                                 <h5 class="" style="color: #fff;font-size: 1.10rem">روابط</h5>
                                 <ul style="display: block;padding: 0px;list-style: none;" class="col-12 mt-2 pt-2 ">
                                     <li><a href="/terms" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">شروط الاستخدام </a></li>
-                                    <li><a href="/privacy-policy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
+                                    <li><a href="/privacy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
+                                    <li><a href="/about" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">من نحن</a></li>
                                     <li><a href="/support" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">الدعم الفني</a></li>
                                 </ul>
                             </div>
