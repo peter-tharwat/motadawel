@@ -90,6 +90,7 @@ Route::get('/privacy', function () { return view('another.privacy'); });
 
 
 Route::get('/page', function () { return view('pages.page'); });
+Route::get('/filter', function () { return view('pages.filter'); });
 Route::get('/courses', function () { return view('pages.courses'); })->name('courses');
 Route::get('/courses-types', function () { return view('pages.courses-types'); });
 Route::get('/carousel', function () { return view('pages.carousel'); });
