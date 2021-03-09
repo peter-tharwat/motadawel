@@ -85,6 +85,7 @@ if($response->ok()){
             </div>
           </div>
           </form>
+          @if(isset($response) && $response->ok())
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
@@ -228,6 +229,7 @@ if($response->ok()){
             </div>
             
           </div>
+          @endif
       </div> 
   </div>
 </div>
