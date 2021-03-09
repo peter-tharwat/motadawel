@@ -141,11 +141,18 @@ if($response->ok()){
                   <td>{{$response["General"]["Code"]}}</td>
                   <td></td>
                 </tr>
+                
                 <tr>
                   <td>القيمة السوقية</td>
                   <td>{{number_format($response["Highlights"]["MarketCapitalization"],2)}} دولار</td>
                   <td></td>
                 </tr>
+                <tr>
+                  <td>الأسهم الحرة</td>
+                  <td>{{$response["SharesStats"]["SharesFloat"]}}</td>
+                  <td></td>
+                </tr>
+
                 <tr>
                   <td>دولة الشركة</td>
                   <td>{{$response["General"]["CountryName"]}}</td>
