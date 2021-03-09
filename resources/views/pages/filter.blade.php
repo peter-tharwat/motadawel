@@ -26,6 +26,7 @@ if($key!=null ){
 
 
 $response=\Http::get('https://eodhistoricaldata.com/api/fundamentals/'.strtoupper($key).'.US?api_token='.env('EOD_TOKEN'));
+
 if($response->ok()){
   $response=$response->json();
   //dd($response['Financials']["Balance_Sheet"]["yearly"]);  
@@ -85,7 +86,7 @@ if($response->ok()){
             </div>
           </div>
           </form>
-          @if(isset($response) && $response->ok())
+          @if(isset($response))
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
