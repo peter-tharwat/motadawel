@@ -82,7 +82,7 @@ if($response->ok() ){
                <input type="" name="key" class="form-control" value="{{\Request::get('key')}}" placeholder="قم بإدخال كود السهم او الشركة">
             </div>
             <div class="col-3 px-0">
-              <span class="btn btn-success rounded-0 col-12"><span class="fal fa-search"></span> بحث</span>
+              <button class="btn btn-success rounded-0 col-12"><span class="fal fa-search"></span> بحث</button>
             </div>
           </div>
           </form>
