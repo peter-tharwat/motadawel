@@ -149,7 +149,7 @@ if($response->ok()){
                 </tr>
                 <tr>
                   <td>الأسهم الحرة</td>
-                  <td>{{$response["SharesStats"]["SharesFloat"]}}</td>
+                  <td>{{number_format($response["SharesStats"]["SharesFloat"],2)}}</td>
                   <td></td>
                 </tr>
 
