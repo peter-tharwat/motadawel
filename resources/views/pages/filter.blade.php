@@ -91,7 +91,7 @@ if($response->ok() ){
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
                 <div class="col-12 row d-flex px-0">
-                  <div class="col-2 px-0">
+                  <div class="px-0" style="width: 120px;">
                     <div class="d-inline-block mb-3" style="width: 120px;border:5px solid #fff;border-radius: 50%!important;overflow: hidden;">
                     <img src="https://eodhistoricaldata.com/{{$response["General"]["LogoURL"]}}" style="width: 100%;"> 
                     </div>
