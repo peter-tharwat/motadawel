@@ -87,7 +87,7 @@
                             <a class="nav-link" href="/courses-types"><span class="fas fa-box-full"></span> الدورات</a>
                         </li>
                         <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="#"> فلتر شرعي </a>
+                            <a class="nav-link" href="/filter"> الفلتر الشرعي </a>
                         </li>
                          <li class="nav-item mt-1 px-1">
                             <a class="nav-link" href="#"> آراء وتحليلات </a>
