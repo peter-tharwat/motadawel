@@ -142,7 +142,7 @@ if($response->ok()){
                   <td></td>
                 </tr>
                 <tr>
-                  <td>رأس مال الشركة</td>
+                  <td>القيمة السوقية</td>
                   <td>{{number_format($response["Highlights"]["MarketCapitalization"],2)}} دولار</td>
                   <td></td>
                 </tr>
