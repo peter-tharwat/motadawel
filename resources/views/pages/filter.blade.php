@@ -27,7 +27,7 @@ if($key!=null ){
 
 $response=\Http::get('https://eodhistoricaldata.com/api/fundamentals/'.strtoupper($key).'.US?api_token='.env('EOD_TOKEN'));
 
-if($response->ok() && ){
+if($response->ok() ){
   $response=$response->json();
   //dd($response['Financials']["Balance_Sheet"]["yearly"]);  
   
