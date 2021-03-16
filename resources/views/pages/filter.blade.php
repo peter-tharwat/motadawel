@@ -36,8 +36,7 @@ if($response->ok() ){
   $response=$response->json();
 
   //dd($response['Financials']["Balance_Sheet"]["yearly"]);  
-  $filter1=false;
-
+ 
 
   $interestIncome=$response['Financials']["Income_Statement"]["yearly"][(array_keys($response['Financials']["Income_Statement"]["yearly"])[0])]["interestIncome"];   
   $totalRevenue=$response['Financials']["Income_Statement"]["yearly"][(array_keys($response['Financials']["Income_Statement"]["yearly"])[0])]["totalRevenue"];
@@ -45,7 +44,7 @@ if($response->ok() ){
   $filter1=(($interestIncome/$totalRevenue)*100<=5 && ($interestIncome/$totalRevenue)*100>=-5 )?true:false; 
     
 
-  $filter2=false;
+ 
 
 
   $totaldebt=
@@ -99,7 +98,7 @@ if($response->ok() ){
             </div>
           </div>
           </form>
-          @if(isset($response) && isset($response['Financials']["Income_Statement"]))
+          @if(isset($interestIncome))
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
