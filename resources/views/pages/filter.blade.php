@@ -28,23 +28,36 @@ if($key!=null ){
 $response=\Http::get('https://eodhistoricaldata.com/api/fundamentals/'.strtoupper($key).'.US?api_token='.env('EOD_TOKEN'));
 
 if($response->ok() ){
+
+  try{
+
+
+
   $response=$response->json();
+
   //dd($response['Financials']["Balance_Sheet"]["yearly"]);  
-  
-  $interestIncome=$response['Financials']["Income_Statement"]["yearly"][(array_keys($response['Financials']["Income_Statement"]["yearly"])[0])]["interestIncome"];  
-  //[date('Y')-1 . "-06-30"]["interestIncome"];
+  $filter1=false;
+
+
+  $interestIncome=$response['Financials']["Income_Statement"]["yearly"][(array_keys($response['Financials']["Income_Statement"]["yearly"])[0])]["interestIncome"];   
   $totalRevenue=$response['Financials']["Income_Statement"]["yearly"][(array_keys($response['Financials']["Income_Statement"]["yearly"])[0])]["totalRevenue"];
 
-  $filter1=(($interestIncome/$totalRevenue)*100<5)?true:false;
- //dd($filter1);
- 
-   
-  //dd($response);
+  $filter1=(($interestIncome/$totalRevenue)*100<=5 && ($interestIncome/$totalRevenue)*100>=-5 )?true:false; 
+    
+
+  $filter2=false;
+
+
   $totaldebt=
     $response['Financials']["Balance_Sheet"]["yearly"][(array_keys($response['Financials']["Balance_Sheet"]["yearly"])[0])]["longTermDebtTotal"]+
     $response['Financials']["Balance_Sheet"]["yearly"][(array_keys($response['Financials']["Balance_Sheet"]["yearly"])[0])]["shortLongTermDebt"];
   $totalassets=$response['Financials']["Balance_Sheet"]["yearly"][(array_keys($response['Financials']["Balance_Sheet"]["yearly"])[0])]["totalAssets"]; 
-  $filter2=(($totaldebt/$response["Highlights"]["MarketCapitalization"])*100<35)?true:false;
+  $filter2=(($totaldebt/$response["Highlights"]["MarketCapitalization"])*100<30)?true:false;
+
+  }catch(\Exception $e){
+    
+  }
+
 
 /*  dd((($totaldebt/$response["Highlights"]["MarketCapitalization"])*100));
 
@@ -86,7 +99,7 @@ if($response->ok() ){
             </div>
           </div>
           </form>
-          @if(isset($response) && isset($response["General"]["Name"]))
+          @if(isset($response) && isset($response['Financials']["Income_Statement"]))
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
@@ -103,7 +116,7 @@ if($response->ok() ){
                     </a>
                 </h4> 
                     <h6 class="font-1 text-left" style="    text-align: justify;line-height: 1.7">
-                    {{mb_strimwidth($response["General"]["Description"], 0, 300, "...")}}</h6>
+                    {{mb_strimwidth($response["General"]["Description"], 0, 600, "...")}}</h6>
                   </div>
                 </div>
 
@@ -160,8 +173,16 @@ if($response->ok() ){
                 </tr>
                 <tr>
                   <td>القطاع</td>
-                  <td>{{$response["General"]["Sector"]}}</td>
-                  <td></td>
+                  <td>
+                  {{$response["General"]["Sector"]}}</td>
+                  <td>
+
+                     @if($response["General"]["Sector"]!="Financial Services")
+                    <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
+                    @else
+                    <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>  
+                    @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>الصناعة</td>
@@ -186,7 +207,7 @@ if($response->ok() ){
                 </tr> --}}
                 <tr>
                   <td>نسبة الدخل إلى الفوائد</td>
-                  <td>
+                  <td> 
                     @if($filter1)
                     <span class="fas fa-check font-3" style="color: #198754"></span>  {{number_format(($interestIncome/$totalRevenue)*100,2)}} %
                     @else
@@ -221,7 +242,7 @@ if($response->ok() ){
                 <tr>
                   <td>الشرعية</td>
                   <td>
-                    @if($filter1&&$filter2)
+                    @if($filter1&&$filter2 && $response["General"]["Sector"]!="Financial Services")
                     <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
                     @else
                     <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>  
