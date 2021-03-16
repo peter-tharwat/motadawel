@@ -177,17 +177,45 @@ if($response->ok() ){
                   {{$response["General"]["Sector"]}}</td>
                   <td>
 
-                     @if($response["General"]["Sector"]!="Financial Services")
-                    <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
+                     @php 
+                    $filter3=true;
+                    @endphp
+                    @if( in_array($response["General"]["Sector"], [
+                        'Financial Services'
+                      ]))
+                    @php 
+                    $filter3=false;
+                    @endphp 
+                    <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>   
                     @else
-                    <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>  
+                     <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
                     @endif
+ 
                   </td>
                 </tr>
                 <tr>
                   <td>الصناعة</td>
-                  <td>{{$response["General"]["Industry"]}}</td>
-                  <td></td>
+                  <td>
+
+
+                  {{$response["General"]["Industry"]}}</td>
+                  <td>
+                    @php 
+                    $filter4=true;
+                    @endphp
+                    @if( in_array($response["General"]["Industry"], [
+                        'Tobacco','Beverages-Wineries & Distilleries','Beverages-Brewers','Shell Companies','Mortgage Finance','Insurance Brokers','Insurance-Specialty','Insurance-Reinsurance','Insurance - Property & Casualty','Insurance-Life','Insurance-Diversified','Financial Data & Stock Exchanges','Financial Conglomerates','Credit Services','Capital Markets','Banks - Regional','Banks - Diversified','Asset Management'
+                      ]))
+                    @php 
+                    $filter4=false;
+                    @endphp
+
+                    <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>   
+                    @else
+                     <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
+                    @endif
+                    
+                  </td>
                 </tr>
                 <tr>
                   <td>Insiders Ownership</td>
@@ -238,22 +266,47 @@ if($response->ok() ){
                     <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>  
                     @endif </td>
                 </tr>
-
+{{-- 
                 <tr>
                   <td>الشرعية</td>
                   <td>
-                    @if($filter1&&$filter2 && $response["General"]["Sector"]!="Financial Services")
+                    @if($filter1&&$filter2 && $filter3 && $filter4)
                     <span class="btn btn-success px-5 pt-1 pb-2" style="border-radius: 30px">شرعي</span>
                     @else
                     <span class="btn btn-danger px-5 pt-1 pb-2" style="border-radius: 30px" >غير شرعي</span>  
                     @endif
                   </td>
                   <td></td>
-                </tr>
+                </tr> --}}
                 
                 
               </tbody>
             </table>
+
+            <div class="col-12 px-0" >
+              <div class="container"  >
+                <div class="col-12 px-0  d-flex justify-content-center">
+
+
+                  <div class="mx-auto col-12"  style="max-width: 800px">
+                    @if($filter1&&$filter2 && $filter3 && $filter4)
+                      <div class="col-12 alert-success text-center font-4 py-4">
+                        مطابق للضوابط الشرعية الإسلامية
+                      </div>
+                      @else
+                      <div class="col-12 alert-danger text-center font-4 py-4">
+                        غير مطابق للضوابط الشرعية الإسلامية
+                      </div>
+                      @endif
+                  </div>
+
+
+
+                </div>
+                
+              </div>
+            </div>
+
 
             </div>
             
