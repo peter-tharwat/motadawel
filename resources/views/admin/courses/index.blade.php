@@ -7,6 +7,17 @@
 	 			<form method="get" action="{{route('courses.index')}}">
 	 				<input type="" name="key" class="form-control" style="border-radius: 0px;border:1px solid #ddd" placeholder="بحث .. " autofocus="" value="{{request()->get('key')}}">
 	 			</form> 
+	 			<div class="col-12 px-0  d-flex pt-2">
+	 				<a href="/admin/courses?type=LIVE&&key={{\Request::get('key')}}">
+	 					<span class="btn btn-primary d-inline-block font-1 ml-1">Live Trading</span>
+	 				</a>
+	 				<a href="/admin/courses?type=RECORDED&&key={{\Request::get('key')}}">
+	 					<span class="btn btn-success d-inline-block font-1 ml-1">دورة مسجلة</span>
+	 				</a>
+	 				<a href="/admin/courses?type=OFFLINE&&key={{\Request::get('key')}}">
+	 					<span class="btn btn-secondary d-inline-block font-1 ml-1">دورة حضورية</span>
+	 				</a>
+	 			</div>
 	 		</div>
 	 		<div class="col-12 col-lg-4 px-2 justify-content-end d-flex mb-2">
 	 			<a href="{{route('courses.create')}}">
@@ -22,6 +33,7 @@
 		      <th scope="col">العنوان</th>
 		      {{-- <th scope="col">الوصف</th> --}}
 		      <th scope="col">السعر</th>
+		      <th scope="col">النوع</th>
 		      <th scope="col">عدد الفيديوهات</th>
 		      <th scope="col">تحكم</th>
 		    </tr>
@@ -34,6 +46,17 @@
 		      <td scope="col">{{$course->title}}</td>
 		      {{-- <td scope="col">{{$course->description}}</td> --}}
 		      <td scope="col">{{$course->price}}</td>
+		      <td scope="col">
+		      	@if($course->type=="OFFLINE")
+		         <span class="badge bg-secondary">دورة حضورية</span>
+		      	@elseif($course->type=="LIVE")
+		      	<span class="badge bg-primary">Live Trading</span>
+		      	@elseif($course->type=="RECORDED")
+		      	<span class="badge bg-success">دورة مسجلة</span>
+		      	@endif
+		      	
+
+		      </td>
 		      <td scope="col">{{$course->videos->count()}}</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('courses.destroy',$course)}}" id="course_delete_{{$course->id}}">@csrf @method('DELETE')</form>

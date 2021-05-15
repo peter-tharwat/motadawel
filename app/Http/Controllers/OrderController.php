@@ -62,6 +62,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        /*return $order;*/
         return view('admin.orders.edit',compact('order'));
     }
 
@@ -75,13 +76,13 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $order->update([
-            'mohallel_user_name'=>$request->mohallel_user_name,
+           /* 'mohallel_user_name'=>$request->mohallel_user_name,
             'mohallel_email'=>$request->mohallel_email,
-            'type'=>$request->type,
+            'type'=>$request->type,*/
             'status'=>$request->status
         ]);
         emotify('success', 'تم التعديل بنجاح');
-        return redirect()->route('reviews.index');
+        return redirect()->route('orders.index');
 /*        user_id
 course_id*/
 /*mohallel_user_name

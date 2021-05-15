@@ -60,6 +60,7 @@
 	 					<option disabled="" selected="" hidden="" value="">اختر النوع</option> 
 	 						<option value="NEWS">خبر</option> 
 	 						<option value="ARTICLE">مقال</option> 
+	 						<option value="IDEAS">آراء وتحليلات</option> 
 	 				</select> 
 	 			</div> 
 	 		</div>

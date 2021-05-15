@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Devinweb\LaravelHyperpay\Traits\ManageUserTransactions;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use ManageUserTransactions;
 
     /**
      * The attributes that are mass assignable.
@@ -57,13 +59,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
+  
     public function articles()
     {
         return $this->hasMany('\App\Models\Article');
     }
+    public function payments()
+    {
+        return $this->hasMany('\App\Models\Payment');
+    }
     public function orders()
     {
         return $this->hasMany('\App\Models\Order');
+    }
+    public function getUserAvatar()
+    {
+        if($this->profile_photo_path==null)
+            return '/images/profile.png';
+        else
+            return 'https://fkrachart.s3.eu-west-3.amazonaws.com/avatars/'.$this->profile_photo_path;
+
     }
 }

@@ -1,255 +1,268 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!doctype html>
+<html lang="ar" dir="rtl">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <script src="/assets/js/jquery.min.js"></script>
+      <link rel="stylesheet" href="/assets/css/bootstrap.rtl.min.css">
+      <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/assets/css/magnific-popup.min.css">
+      <link rel="stylesheet" href="/assets/css/animate.min.css">
+      <link rel="stylesheet" href="/assets/css/boxicons.min.css">
+      <link rel="stylesheet" href="/assets/css/flaticon.css">
+      <link rel="stylesheet" href="/assets/css/meanmenu.min.css">
+      <link rel="stylesheet" href="/assets/css/nice-select.min.css">
+      <link rel="stylesheet" href="/assets/css/odometer.min.css">
+      <link rel="stylesheet" href="/assets/css/style.css">
+      <link rel="stylesheet" href="/assets/css/responsive.css">
+      <link rel="stylesheet" href="/assets/css/rtl.css">
+      <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/fontawsome.min.css">
+      <link rel="stylesheet" type="text/css" href="/css/responsive-fonts.css">
+      <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+      <title>فكرة شارت </title>
+      @php 
+      $setting=\App\Models\Setting::first();
+      @endphp
+   </head>
+   <body>
+      <style type="text/css">
+         .main-font-inside ,.main-font-inside *{
+            font-family:  var(--font-family)!important;
+         }
+      </style>
+      <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>
+      @notifyCss
+      
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
-    <script src="https://cdn.plyr.io/3.6.3/plyr.polyfilled.js"></script>
-    @livewireStyles
-    @notifyCss
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/fontawsome.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/responsive-fonts.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>{{ config('app.name', 'Laravel') }}</title> 
-</head>
 
-<body style="background: #f1f1f1">
-    <x:notify-messages />
-    <style type="text/css">
-    .navbar-dark .navbar-nav .nav-link {
-        color: #333;
-    }
-
-    #player * {
-        direction: ltr !important;
-    }
-
-    .course {
-        transition: all .2s ease-in-out;
-        cursor: pointer;
-    }
-
-    .course:hover {
-        border-color: #ff9800 !important;
-    }
-
-    .row {
-        margin: 0px
-    }
-
-    a {
-        text-decoration: none !important;
-    }
-    .navbar{
-        background-color: #fff!important
-    }
-    .navbar .nav-link{
-        color:#555;
-        font-size: 16px
-    }
-
-    /*nav{
-        box-shadow: 0px 0px 10px #ddd;
-    }*/
-    .hover-border-yellow:hover{
-        border-color: #ff9800!important;
-    }
-    body{
-        overflow-x: hidden;
-    }
-    </style>
-    <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>
-    <div class="col-12 px-0" style=" ;position: relative;">
-        
-
-        <nav class="navbar navbar-expand-lg  bg-dark py-2" id="main-nav">
-            <div class="container">
-                <a href="/">
-                <img src="/images/logo-abo.png" class="logo" alt="images" style="padding: 7px;max-width: 164px">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fas fa-bars" style="color: #333"></span> 
-                </button>
-                <div class="collapse navbar-collapse pb-2" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        {{-- <li class="nav-item mt-1 px-1">
-                            <a class="nav-link active" aria-current="page" href="#">الرئيسية</a>
-                        </li> --}}
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/"> <span class="fas fa-home"></span> الرئيسية</a>
+      <div class="loader-wrapper">
+         <div class="loader">
+            <div class="dot-wrap">
+               <span class="dot"></span>
+               <span class="dot"></span>
+               <span class="dot"></span>
+               <span class="dot"></span>
+            </div>
+         </div>
+      </div>
+      <div class="navbar-area navbar-area-two">
+         <div class="mobile-nav">
+            <a href="/" class="logo">
+            <img src="/assets/img/logo.png" alt="Logo">
+            </a>
+         </div>
+         <div class="main-nav">
+            <div class="container-fluid">
+               <nav class="navbar navbar-expand-md">
+                  <a class="navbar-brand" href="/">
+                  <img src="/assets/img/logo.png" alt="Logo">
+                  </a>
+                  <div class="collapse navbar-collapse mean-menu">
+                     <ul class="navbar-nav m-auto">
+                        <li class="nav-item"><a href="/" class="nav-link"> الرئيسية</a></li>
+                  
+                        <li class="nav-item"><a href="/courses" class="nav-link">الدورات</a>
                         </li>
-
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/courses-types"><span class="fas fa-box-full"></span> الدورات</a>
+                  <li class="nav-item"><a href="/filter" class="nav-link">الفلتر الشرعي</a>
                         </li>
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/filter"> الفلتر الشرعي </a>
+                  <li class="nav-item"><a href="/ideas" class="nav-link">أراء وتحليلات</a>
                         </li>
-                         <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="#"> آراء وتحليلات </a>
+                  <li class="nav-item"><a href="/lectures" class="nav-link">المحاضرات التعليمية</a>
+                        </li><li class="nav-item"><a href="/blog" class="nav-link">المدونة</a>
                         </li>
-
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/lectures"><span class="fab fa-youtube"></span> المحاضرات التعليمية</a>
+                  </li><li class="nav-item"><a href="/mohallel" class="nav-link">المحلل الفني الإحترافي</a>
                         </li>
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/partners">شركاء النجاح</a>
+                  <li class="nav-item"><a href="/partners" class="nav-link">شركاء النجاح</a>
                         </li>
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="http://saudi-trader.com/archives/1374" target="_blank">{{-- منصة --}} المحلل الفني الإحترافية{{-- الإحترافية --}}</a>
-                        </li>
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/blog">المدونة</a>
-                        </li>
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/#reviews">قالوا عنا</a>
-                        </li>
-                        
-                        @if(!auth()->check())
-                        <li class="nav-item mt-1 px-1">
-                            <a class="nav-link" href="/login">دخول</a>
-                        </li>
-
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="/login">
-                                <div style="background: #03a7ee;width: 126px;text-align: center;border-radius: 73px;color: #ffffff;height: 44px;padding-top: 7px;box-shadow: 0px 0px 12px #03a7ee;" class="pb-2">
-                                    سجل الآن
-                                </div>
-                            </a>
-                        </li> --}}
+                     </ul>
+                     <div class="others-option">
+                        @if(auth()->check())
+                        <!-- Example split danger button -->
+                        <div class="btn-group">
+                           <a href="{{\Auth::user()->power=="ADMIN"?'/admin':'/dashboard'}}">
+                          <button type="button" class="btn default-btn" style="font-weight: normal;">لوحة التحكم</button>
+                          </a>
+                          <button type="button" class="btn default-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="$('#logout-form').submit();" >تسجيل خروج</a></li> 
+                          </ul>
+                        </div>
+ 
                         @else
-                        <div class="dropdown">
-                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="box-shadow: unset!important">
-                                <span class="fas fa-user font-4 p-2" style="width: 40px;height: 40px;background: #fff;border-radius: 50%; color: #2b5bbb"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item text-start d-flex" href="#">دوراتي</a></li>
-                                @if(\Auth::user()->power=="ADMIN")
-                                <li><a class="dropdown-item text-start d-flex" href="/admin">لوحة التحكم</a></li>
-                                @else
-                                <li><a class="dropdown-item text-start d-flex" href="/dashboard">لوحة التحكم</a></li>
-                                @endif
-                                <li><a class="dropdown-item text-start d-flex" href="#" onclick="document.getElementById('logout-form').submit();">تسجيل خروج</a></li>
-                            </ul>
-                        </div>
+                        <div class="register">
+                           <a href="/login" class="default-btn">
+                           تسجيل الدخول / حساب جديد
+                           </a>
+                        </div> 
                         @endif
-                    </ul>
-                </div>
+                     </div>
+                  </div>
+               </nav>
             </div>
-        </nav>
-        <div class="col-12 px-0 " style="height: 40px;background: #232323">
-            <div class="container" style="color: #fff">
-                <span style="width: 120px;height: 40px;background: #da2b66;color: #fff;padding: 7px 12px" class="d-inline-block text-center ml-2">أخبار فكرة شارت</span> إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد
-النص العربى زيادة
-            </div>
-        </div>
+         </div>
+         <x:notify-messages />
+         <div class="col-12 justify-content-end d-flex">
+           @if($errors->any())
+           <div class="col-12" style="position: absolute;top: 80px;left: 10px;"> 
+               {!! implode('', $errors->all('<div class="alert-click-hide alert alert-danger alert alert-danger col-9 col-xl-3 rounded-0 mb-1" style="position: fixed!important;z-index: 11;opacity:.9;left:25px;cursor:pointer;">:message</div>')) !!}
+             </div>
+           @endif
+         </div>
 
-    </div>
-    
-        @yield('content')
-   
-    <div class="col-12 px-3 py-3" style="background: #131625">
-        <div class="col-12 footer-area  py-0 px-0 pb-0 " style=" border-top: 1px solid var(--bg-main-bg)">
-            <div class="container  px-0">
-                <div class="col-12 px-0  pt-4 row mt-md-3 pb-4">
-                    <div class="col-12  col-md-6   pt-2 pt-4 px-0 p-md-2">
-                        <div class="p-md-0 col-12 px-0 mt-4">
-                            <div class="col-12 px-0">
-                                <div class="col-12">
-                                    <h5 class="" style="color: #fff;font-size: 1.10rem">تابعنا</h5>
-                                    <ul style="display: block;padding: 0px;list-style: none;" class="mt-2 mb-2">
-                                        <a href="#" class="d-inline-block p-1">
-                                            <span class="fab fa-facebook-f d-inline-block " style="width: 40px;height: 40px;padding: 11px 14px ;border:1px #666;color: #3b5998;cursor: pointer;border-radius: 50%!important"></span>
-                                        </a>
-                                        <a href="#" class="d-inline-block p-1">
-                                            <span class="fab fa-twitter d-inline-block " style="width: 40px;height: 40px;padding: 11px 11px ;border:1px #666;color: #00aced;cursor: pointer;border-radius: 50%!important"></span>
-                                        </a>
-                                        <a href="#" class="d-inline-block p-1">
-                                            <span class="fab fa-youtube d-inline-block " style="width: 40px;height: 40px;padding: 11px 10px ;border:1px #666;color: #FF0000;cursor: pointer;border-radius: 50%!important"></span>
-                                        </a>
-                                        <a href="#" class="d-inline-block p-1">
-                                            <span class="fab fa-instagram d-inline-block " style="width: 40px;height: 40px;padding: 11px 12px ;border:1px #666;color: #f1f1f1;cursor: pointer;border-radius: 50%!important"></span>
-                                        </a>
-                                        <a href="#" class="d-inline-block p-1">
-                                            <span class="fab fa-telegram-plane d-inline-block " style="width: 40px;height: 40px;padding: 11px 12px ;border:1px #666;color: #1e96c8;cursor: pointer;border-radius: 50%!important"></span>
-                                        </a>
-                                    </ul>
-                                </div>
-                            </div>
+         <div class="others-option-for-responsive">
+            <div class="container">
+               <div class="dot-menu">
+                  <div class="inner">
+                     <div class="circle circle-one"></div>
+                     <div class="circle circle-two"></div>
+                     <div class="circle circle-three"></div>
+                  </div>
+               </div>
+               <div class="container">
+                  <div class="option-inner">
+                     <div class="others-option justify-content-center d-flex align-items-center">
+                        
+                         @if(auth()->check())
+                        <!-- Example split danger button -->
+                        <div class="btn-group">
+                           <a href="{{\Auth::user()->power=="ADMIN"?'/admin':'/dashboard'}}">
+                          <button type="button" class="btn default-btn" style="font-weight: normal;">لوحة التحكم</button>
+                          </a>
+                          <button type="button" class="btn default-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="$('#logout-form').submit();" >تسجيل خروج</a></li> 
+                          </ul>
                         </div>
-                    </div>
-                    <div class="col-12  col-md-6   py-1 row px-0 px-md-2">
-                        <div class="col-md-6 px-0">
-                            <div class="col-12 pt-2">
-                                <h5 class="" style="color: #fff;font-size: 1.10rem">روابط</h5>
-                                <ul style="display: block;padding: 0px;list-style: none;" class="col-12 mt-2 pt-2 ">
-                                    <li><a href="/terms" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">شروط الاستخدام </a></li>
-                                    <li><a href="/privacy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
-                                    <li><a href="/about" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">من نحن</a></li>
-                                    <li><a href="/support" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">الدعم الفني</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 px-0">
-                            <div class="col-12 pt-2">
-                                <h5 class="" style="color: #fff;font-size: 1.10rem">روابط</h5>
-                                <ul style="display: block;padding: 0px;list-style: none;" class="col-12 mt-2 pt-2 ">
-                                    <li><a href="/terms" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">شروط الاستخدام </a></li>
-                                    <li><a href="/privacy" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">سياسة الخصوصية</a></li>
-                                    <li><a href="/about" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">من نحن</a></li>
-                                    <li><a href="/support" style="color: #f1f1f1;font-size: 15px;" class="kufi py-1 d-inline-block">الدعم الفني</a></li>
-                                </ul>
-                            </div>
-                        </div>
+ 
+                        @else
+                        <div class="register">
+                           <a href="/login" class="default-btn">
+                           تسجيل الدخول / حساب جديد
+                           </a>
+                        </div> 
+                        @endif
 
-                      {{--   <div class="col-md-6 px-0">
-                            <div class="col-12 pt-2">
-                                <h5 class="" style="color: #fff;font-size: 1.10rem">وسائل الدفع</h5>
-                                <ul style="display: block;padding: 0px;list-style: none;" class="mt-3">
-                                    <img src="https://i.pinimg.com/originals/54/e3/0e/54e30edf9d8e3f86b1935d5d3d1317d8.png" style="width: 100px;padding: 5px 0px;border-radius: 0px!important; max-width: 100%!important" alt="وسائل الدفع">
-                                </ul>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-12 " style="background: #0d0e17">
-        <div class="container" >
-            <div class="col-12 row text-center">
-                <div class="col-12  mt-1 mb-2 pt-3 pb-2 ">
-                    <h6 style="color: #fff;font-size: 14px;line-height: 1" class="my-2 text-center">جميع الحقوق محفوظة © المتداول 2021 </h6>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- <h1 class="helvet">أهلاً بكم!</h1> --}}
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    -->
-    <script>
-    const player = new Plyr('#player');
 
-    </script>
-    <script type="text/javascript">
-        var myDropdown = document.getElementById('notifications-list')
-        myDropdown.addEventListener('show.bs.dropdown', function () {
-          // do something...
-        })
-    </script>
-</body>
-@livewireScripts
-@notifyJs
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      @yield('content')
+      <footer class="footer-top-area pt-20 ">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-4 col-sm-6">
+                  <div class="footer-widget">
+                     <h3>تواصل معنا</h3>
+                     <ul class="address">
+                        <li>
+                           <i class="bx bxs-envelope"></i>
+                           <a href="#">{{$setting->email}}</a>
+                        </li>
+                        <li>
+                           <i class="bx bxs-phone-call"></i>
+                           <a href="tel:{{$setting->phone}}">{{$setting->phone}}</a> 
+                        </li>
+						
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-sm-6">
+                  <div class="footer-widget">
+                     <h3>اهم الروابط</h3>
+                     <ul class="link">
+                        <li><a href="/">الرئيسية</a></li>
+                        <li><a href="/about">حولنا</a></li>
+                        <li><a href="/courses">الدورات</a></li>
+                        <li><a href="/filter">فلتر شرعي</a></li>
+                        <li><a href="/ideas">أراء وتحليلات</a></li>
+                        <li><a href="/lectures">المحاضرات التعليمية</a></li>
+                     </ul>
+                  </div>
+               </div>
+			   <div class="col-lg-4 col-sm-6">
+                  <div class="footer-widget">
+                     <h3>اهم الروابط</h3>
+                    
+                     <ul class="link">
+                        <li><a href="/blog">المدونة</a></li>
+                        <li><a href="/mohallel">المحلل الفني الإحترافي</a></li>
+                        <li><a href="/partners">شركاء النجاح</a></li>
+                        <li><a href="/terms">شروط الاستخدام</a></li>
+                        <li><a href="/privacy">سياسة الخصوصية</a></li>
+                        <li><a href="/support">الدعم الفني</a></li>
+                     </ul>
+                  </div>
+               </div>
+			   <div class="col-lg-12 col-sm-6">
+                  <div class="footer-widget">
+                     
+
+
+
+
+                     <div class="Social-media">
+						  <a href="{{$setting->twitter_link}}"><i class="bx bxl-snapchat"></i></a>
+						  <a href="{{$setting->snap_link}}"><i class="bx bxl-twitter"></i></a>
+						  <a href="{{$setting->instagram_link}}"><i class="bx bxl-youtube"></i></a>
+						  <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&amp;text&amp;app_absent=0"><i class="bx bxl-whatsapp"></i></a>
+						  <a href="{{$setting->youtube_link}}"><i class="bx bxl-instagram-alt"></i></a>
+						  
+						</div>
+                  </div>
+               </div>
+			   
+
+            </div>
+         </div>
+      </footer>
+      <footer class="footer-bottom-area">
+         <div class="container">
+            <div class="copyright-wrap">
+				<p>
+				<i class="bx bx-copyright"></i>جميع الحقوق محفوظة
+				</b>لفكرة  شارت  2021 . 
+				</p>
+				<p>
+				حقوق التصميم والبرمجة محفوظة <a href="https://shannanadv.com/" target="blank">    لوكالة  شنان للدعاية والإعلان</a>
+				</p>
+			</div>
+         </div>
+      </footer>
+      <div class="go-top">
+         <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a>
+          <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a>
+      </div>
+      <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+      <script src="/assets/js/bootstrap.bundle.min.js"></script>
+      <script src="/assets/js/meanmenu.min.js"></script>
+      <script src="/assets/js/owl.carousel.min.js"></script>
+      <script src="/assets/js/wow.min.js"></script>
+      <script src="/assets/js/nice-select.min.js"></script>
+      <script src="/assets/js/magnific-popup.min.js"></script>
+      <script src="/assets/js/ajaxchimp.min.js"></script>
+
+      <script src="/assets/js/jarallax.min.js"></script>
+      <script src="/assets/js/appear.min.js"></script>
+      <script src="/assets/js/odometer.min.js"></script>
+      <script src="/assets/js/form-validator.min.js"></script>
+      <script src="/assets/js/contact-form-script.js"></script>
+      <script src="/assets/js/ajaxchimp.min.js"></script>
+
+      <script src="/assets/js/custom.js"></script>
+      <script type="text/javascript">
+         // Others Option For Responsive JS
+      $(".others-option-for-responsive .dot-menu").on("click", function(){
+         $(".others-option-for-responsive .container .container").toggleClass("active");
+      });
+      </script>
+      @notifyJs
+   </body>
 </html>

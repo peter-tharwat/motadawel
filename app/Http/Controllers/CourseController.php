@@ -16,6 +16,8 @@ class CourseController extends Controller
     {
         $courses=Course::where(function($q)use($request){
             $q->where('title','LIKE','%'.$request->key.'%');
+            if($request->id!=null)
+                $q->where('id',$request->id);
         })->orderBy('id','DESC')->paginate();
         return view('admin.courses.index',compact('courses'));
     }
@@ -63,6 +65,7 @@ class CourseController extends Controller
             'available_at'=>$request->available_at,
             'accept_payments_untill'=>$request->accept_payments_untill,
             'type'=>$request->type,
+            'whatsapp_phone'=>$request->whatsapp_phone,
         ]); 
         emotify('success', 'تم إضافة الكورس بنجاح');
         return redirect()->route('courses.index');
@@ -125,6 +128,7 @@ url*/
             'available_at'=>$request->available_at,
             'accept_payments_untill'=>$request->accept_payments_untill,
             'type'=>$request->type,
+            'whatsapp_phone'=>$request->whatsapp_phone 
         ]);
 
         emotify('success', 'تم تعديل الكورس بنجاح');

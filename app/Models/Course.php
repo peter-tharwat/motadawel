@@ -39,4 +39,59 @@ class Course extends Model
     {
         return $this->hasMany('\App\Models\Video');
     }
+    public function order()
+    {
+        return $this->hasMany('\App\Models\Order');
+    }
+    public function ratings()
+    {
+        return $this->hasMany('\App\Models\CourseReview');
+    } 
+    public function has_access_to_rate_course(){
+        if(!auth()->check())return 0; 
+        else if($this->price==0){
+            return 1;
+        }else if(auth()->check()){
+            if(auth()->user()->power=="ADMIN")return 1; 
+            $order=\App\Models\Order::where([
+                ['user_id','=',auth()->user()->id],
+                ['course_id','=',$this->id],
+                ['status','=','DONE'],
+                ['type','=','COURSE']
+            ])->first();
+            if($order==null){
+                return 0;
+            } else{
+                return 1;
+            }
+        } 
+        return 0;
+    }
+    public function has_access_to_course(){
+        if($this->price==0)
+            return 1;
+        else{
+            if(auth()->check()){
+                if(auth()->user()->power=="ADMIN")return 1;
+                else{
+                    if($this->price==0)return 1;
+                    else{
+                        $order=\App\Models\Order::where([
+                            ['user_id','=',auth()->user()->id],
+                            ['course_id','=',$this->id],
+                            ['status','=','DONE'],
+                            ['type','=','COURSE']
+                        ])->first();
+                        if($order==null){
+                            return 0;
+                        }else{
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
 }

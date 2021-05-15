@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Models\Setting;
 class SettingController extends Controller
 {
     /**
@@ -13,7 +13,10 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $settings=\App\Models\Setting::first(); 
+        if($settings==null){\App\Models\Setting::create();}
+        return view('admin.settings.edit');
+        
     }
 
     /**
@@ -66,10 +69,29 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Setting $setting)
     {
-        //
-    }
+       
+        $setting->update([ 
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'whatsapp_phone'=>$request->whatsapp_phone,
+            'twitter_link'=>$request->twitter_link,
+            'snap_link'=>$request->snap_link,
+            'instagram_link'=>$request->instagram_link,
+            'youtube_link'=>$request->youtube_link,
+            'youtube_video_link'=>$request->youtube_video_link,
+            'bio'=>$request->bio,
+            'why_chart'=>$request->why_chart,
+            'target'=>$request->target,
+            'message'=>$request->message,
+            'vision'=>$request->vision,
+            'terms'=>$request->terms,
+            'privacy'=>$request->privacy
+        ]);
+        emotify('success', 'تم التحديث بنجاح');
+        return redirect()->back();
+     }
 
     /**
      * Remove the specified resource from storage.

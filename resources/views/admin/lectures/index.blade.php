@@ -31,7 +31,7 @@
 		      <td scope="col">{{$lecture->id}}</td>
 		      <td scope="col">{{$lecture->title}}</td>
 		      <td scope="col">{{$lecture->description}}</td>
-		      <td scope="col">{{$lecture->url}}</td>
+		      <td scope="col"><a href="{{$lecture->url}}" target="_block">{{$lecture->url}}</a></td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('lectures.destroy',$lecture)}}" id="lecture_delete_{{$lecture->id}}">@csrf @method('DELETE')</form>
 		      	<a href="{{route('lectures.edit',$lecture)}}" style="width: 30px;height: 30px;color: #fff;background: #2381c6;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1">

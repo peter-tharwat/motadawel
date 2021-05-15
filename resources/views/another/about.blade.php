@@ -1,28 +1,163 @@
 @extends('layouts.app')
 @section('content')
-{{-- @livewire('search-test')
---}}
-<div class="col-12 px-0 py-2" style="background: #f7f7f7">
-    <div class="container py-3 ">
-        <h2 style="color: #232323" class="font-3">صفحة عنا</h2>
-        {{-- <h4 style="color: #333" class="mt-3 font-2">دائماً ستجد شركائنا معك حيثما تكون . معك لتقديم الدعم لك و تعزيز عملية التداول الخاصة بك</h4> --}}
-    </div>
-</div>
-{{-- <div class="col-12 px-0 " style="max-height: 30px;">
-    <div style="height: 120px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-            <path d="M-55.30,-42.92 C78.43,114.95 357.22,67.59 523.69,1.48 L491.53,-115.95 L-34.99,-72.53 Z" style="stroke: none; fill: #f7f7f7;"></path>
-        </svg></div>
-</div>  --}}
-<div class="col-12 px-0 py-0">
-    <div class="col-12 px-0 py-2 container">
-        <div class="col-12 px-0 d-flex row py-5" style="min-height: 100vh">
-            <div class="col-12 font-2" style="text-align: justify;">
-              هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
-إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
-ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.
-هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.
+@php 
+$setting=\App\Models\Setting::first();
+@endphp
+      <div class="page-title-area bg-17">
+         <div class="container">
+            <div class="page-title-content">
+               <h2>معلومات عنا</h2>
+               <ul>
+                  <li>
+                     <a href="/">
+                     الرئيسية
+                     </a>
+                  </li>
+                  <li class="active">من نحن</li>
+               </ul>
             </div>
-        </div>
-    </div>
-</div>
+         </div>
+      </div>
+      <section class="education-area-two ptb-100">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="education-content">
+                     <span class="top-title">طريقك نحو النجاح</span>
+                     <h2>لماذا انضم لدورات عبر الإنترنت مع <span>فكرة شارت</span> ؟ </h2>
+                     <div class="col-12 main-font-inside">
+                     	{{$setting->why_chart}}
+                     </div>
+                     <div class="row">
+                        <div class="col-lg-6">
+                           <ul>
+                              <li>
+                                 <i class="bx bx-check"></i>
+                                 تعلم
+                              </li>
+                              <li>
+                                 <i class="bx bx-check"></i>
+                                طبق
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="col-lg-6">
+                           <ul>
+                              <li>
+                                 <i class="bx bx-check"></i>
+                                 تفاعل
+                              </li>
+                              <li>
+                                 <i class="bx bx-check"></i>
+                                 اربح
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <a href="/courses" class="default-btn">
+                     عرض جميع الدورات التدربية
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="education-img-wrap">
+                     <div class="education-img-2" style="margin-top:70px">
+                        <img src="assets/img/aboutimg.jpg" alt="Image">
+                     </div>
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+	  <section class="tutor-area pt-100 pb-70 jarallax" data-jarallax='{"speed": 0.3}'>
+	   <div class="container">
+		  <div class="section-title">
+			 <span>حولنا</span>
+			 <h2>أهدافنا، رسالتنا، رؤيتنا</h2>
+		  </div>
+		  <div class="row">
+			 <div class="col-lg-4 col-sm-6">
+				<div class="single-tutor custom">
+				   <i class="flaticon-instructor-1"></i>
+				   <h3>أهدافنا</h3>
+				   <div class="main-font-inside">
+				   	{{$setting->target}}
+				   </div>
+				</div>
+			 </div>
+			 <div class="col-lg-4 col-sm-6">
+				<div class="single-tutor custom">
+				   <i class="flaticon-instructor"></i>
+				   <h3>رسالتنا</h3>
+				   <div class="main-font-inside">
+				   	{{$setting->message}}
+				   </div>
+				</div>
+			 </div>
+			 <div class="col-lg-4 col-sm-6">
+				<div class="single-tutor custom">
+				   <i class="flaticon-certificate-1"></i>
+				   <h3>رؤيتنا</h3>
+				   <div class="col-12">
+				   	{{$setting->vision}}
+				   </div>
+				</div>
+			 </div>
+
+		  </div>
+	   </div>
+	</section>
+
+	<section class="counter-area  pt-100 pb-70">
+	   <div class="container">
+		  <div class="row">
+			 <div class="col-lg-3 col-sm-6">
+				<div class="single-counter">
+				   <div class="counter-shape shape-1">
+					  <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+					  <h2>
+						 <span class="odometer" data-count="100">00</span>
+						 <span class="target">%</span>
+					  </h2>
+				   </div>
+				   <p>معدل النجاح</p>
+				</div>
+			 </div>
+			 <div class="col-lg-3 col-sm-6">
+				<div class="single-counter">
+				   <div class="counter-shape shape-2">
+					  <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+					  <h2>
+						 <span class="odometer" data-count="{{\App\Models\User::count()}}">00</span>
+					  </h2>
+				   </div>
+				   <p>عدد الطلاب</p>
+				</div>
+			 </div>
+			 <div class="col-lg-3 col-sm-6">
+				<div class="single-counter">
+				   <div class="counter-shape shape-3">
+					  <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+					  <h2>
+						 <span class="odometer" data-count="{{\App\Models\Lecture::count()}}">00</span>
+					  </h2>
+				   </div>
+				   <p>عدد المحاضرات التدربية</p>
+				</div>
+			 </div>
+			 <div class="col-lg-3 col-sm-6">
+				<div class="single-counter">
+				   <div class="counter-shape shape-4">
+					  <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+					  <h2>
+						 <span class="odometer" data-count="{{\App\Models\Course::count()}}">00</span>
+					  </h2>
+				   </div>
+				   <p>عدد الدورات</p>
+				</div>
+			 </div>
+		  </div>
+	   </div>
+	</section>
 @endsection

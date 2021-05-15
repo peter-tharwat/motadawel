@@ -1,146 +1,382 @@
 @extends('layouts.app')
 @section('content')
- 
-{{-- <div class="col-12 px-0 py-5" style="background: #22359e">
-  <div class="container py-5 mt-3">
-    <h2 style="color: #fff">إسم الكورس </h2>
-    <h4 style="color: #fff" class="mt-3">وصف الكورس ، هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى</h4>
-  </div>
-</div> --}}
-{{-- <div class="col-12 px-0 " style="max-height: 30px;">
-<div style="height: 120px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-55.30,-42.92 C78.43,114.95 357.22,67.59 523.69,1.48 L491.53,-115.95 L-34.99,-72.53 Z" style="stroke: none; fill: #f7f7f7;"></path></svg></div>
-</div> --}}
-<div class="col-12 px-0 py-2" style="background: #f7f7f7">
-    <div class="container py-3 ">
-      <div class="col-12 px-0 row d-flex ">
-        <div class="col-12 col-lg-8 mt-2 mt-lg-0">
-          <h2 style="color: #232323" class="font-lg-4 font-2">{{$course->title}}</h2>
-        </div>
-        <div class="col-12 col-lg-4 justify-content-end d-flex mt-2 mt-lg-0">
-          @if($course->available_at>date('Y-m-d h:i:s'))
-          <span class="font-2 mt-2" >
-          <span class="fas fa-info-circle" style="color: #ff9800"></span> ستكون الفيديوهات متاحة بعد  {{\Carbon::parse($course->available_at)->diffForHumans()}}
-          </span>
-          @else
-            @if($course->videos->count()>0)
-            <a href="{{route('videos',['id'=>$course->id,'title'=>str_replace(' ','-',$course->title)])}}">
-            <span class="btn btn-primary rounded-0">
-              <span class="fas fa-play" style="color: #fff"></span> عرض الفيديوهات
-            </span> 
-          </a>
-            @endif
-          @endif
-        </div>
-      </div>
-        
-      {{--   <h4 style="color: #333" class="mt-3 font-2"></h4> --}}
-    </div>
-</div>
-
-<div class="col-12 px-0 py-3" style="min-height: 100vh">
-  
-
-<div class="col-12 px-0 py-0 container" >
-  
-<div class="col-12 px-0 d-flex row py-0">
-      
-    <div class="col-12 px-0 row d-flex">
-      <div class="col-12 col-lg-9 mt-2">
-
-       <div class="col-12 px-3"  style="background: #fff">
-         
-       
-        <div class="col-12 py-3 px-0">
-          <img src="{{$course->banner()}}" style="width: 100%;border-radius: 0px"> 
-        </div>
-
-        <div class="col-12 pb-3">
-          <p style="line-height: 1.9;white-space: pre-line;" class=" col-12">{!!$course->description!!}</p>
-        </div> 
-        </div>
-
-
-        @include('include.share')
-       
-
-
-
-        <div style="background: #fff" class="mt-3 d-flex row px-3 justify-content-start py-3">
-          <div class="col-12 font-2 pb-3 border-bottom mb-3">
-            دورات آخرى
-          </div>
-          @php 
-          $courses=\App\Models\Course::where('id','<>',$course->id)->inRandomOrder()->limit(4)->get();
-          @endphp
-          @foreach($courses as $coursex)
-          <div class="col-12 col-lg-3 px-2">
-            <a href="{{route('course',['id'=>$coursex->id,'title'=>str_replace(' ','-',$coursex->title)])}}" style="color: #333">
-                <div class="col-12 p-2 course my-3" style="border:2px solid #fff;border-radius: 3px;overflow: hidden;background: #fff">
-                    <img src="{{$coursex->image()}}" style="
-              border-radius: inherit!important;
-              width: 100%;
-              height: 200px;
-              object-fit: cover;
-              font-family: 'object-fit: cover; object-position: bottom;';
-              vertical-align: middle;
-              border-radius: 0!important;
-              ">
-                    <div class="col-12 px-0 py-3">
-                        <h4 style="line-height: 1.5;" class="font-2">{{$coursex->title}}</h4>
-                        
-                    </div>
-                </div>
-                </a>
-        </div>
-        
-        @endforeach
-
-        </div>
-        
-      </div>
-      <div class="col-12 col-lg-3 mt-2" style="">
-        
-        <div class="col-12 p-3 " style="border-radius: 3px;overflow: hidden;background: #fff">
-          <img src="{{$course->image()}}" style="
-              border-radius: inherit!important;
-              width: 100%;
-              height: 200px;
-              object-fit: cover;
-              font-family: 'object-fit: cover; object-position: bottom;';
-              vertical-align: middle;
-              border-radius: 0!important;
-              ">
-          <div class="col-12 px-0 pt-3">
-            <h5 style="color: #4caf50" class="pt-1 pb-2"><span class="fas fa-sack" style="color: #4caf50" ></span> سعر الدورة {{$course->price}} ريال</h5>
-            {{-- <h4 style="line-height: 1.5;" class="text-center">احجز الدورة الآن</h4> --}}
-            <div class="col-12 px-0 ">
-              <div class="col-12 px-0 pt-2 pb-3 btn btn-success text-center font-2"  style="border-radius: 0px ; background: #4caf50;border-color: #4caf50;color: #fff">
-                إحجز الآن
-              </div>
+<style>
+   .description-of-article *{
+      font-family: var(--font-family)!important;
+      line-height: 2;
+   }
+</style>
+      <div class="page-title-area bg-17">
+         <div class="container">
+            <div class="page-title-content">
+               <h2>{{$course->title}}</h2>
+               <ul>
+                  <li>
+                     <a href="/">
+                     الرئيسية
+                     </a>
+                  </li>
+                  <li class="active">الدورات التدربية</li>
+               </ul>
             </div>
-          </div>
-        </div>
- 
+         </div>
       </div>
+      <section class="single-course-area  ptb-100">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-7 custom-card">
+                  <div class="single-course-content ">
+                     <h3>{{$course->title}}</h3>
+                     <div class="row align-items-center">
+                        <div class="col-lg-6 col-sm-4">
+                           <div class="course-rating">
+                              <img src="/assets/img/manager.png" alt="Image">
+                              <h4><a href="#">المحاضر:</a></h4>
+                              <span>أبو رسيل الثقفي</span>
+                           </div>
+                        </div>
 
-    </div>
-   
-    {{--   @for($i=0;$i<8;$i++)
-      <div class="col-12 col-lg-3"  >
-        
-      </div>
-      @endfor
- --}}
-    
-      </div>
+                        
+                        <div class="col-lg-6 col-sm-4">
+                           <div class="course-rating star pl-0">
+                              <h4>التقييم</h4>
+                              <div class="product-review">
+                                 @include('templates.stars',['score'=>($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0,'size'=>14])
+                              <span>
+                                {{sprintf('%0.2f',($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0)}}</span> 
+                                 <a href="#" class="rating-count">( {{$course->ratings_count}} من التقييمات )</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="">
+                        <div class="col-12 px-0">
+                              <img src="{{$course->banner()}}" style="width: 100%;">
+                        </div>
+					{{-- 	<iframe width="100%" height="300" src="https://www.youtube.com/embed/gSfX7Q-J0ik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+					 </div>
+                  </div>
+                  <div class="tab single-course-tab">
+                     <ul class="tabs">
+                        <li>
+                           <a href="#">معلومات عامة</a>
+                        </li>
+                        <li>
+                           <a href="#">الفيديوهات</a>
+                        </li>
+                      
+                        <li>
+                           <a href="#">التقييمات</a>
+                        </li>
+                     </ul>
+                     <div class="tab_content">
+                        <div class="tabs_item">
+                           <h3>وصف الكورس</h3>
+                           <div style="white-space: pre-line;" class="description-of-article main-font-inside">{!!$course->description!!}</div>
+                        </div>
+                        <div class="tabs_item">
+                           <div class="curriculum-content">
+                              <h3>فيديوهات الكورس</h3>
+                              <div class="curriculum-list"> 
+                                 <ul>
+                                    @foreach($course->videos as $video )
+                                    <li class="get-video-url" data-src="{{$video->id}}" data-type="{{$video->type}}">
+										<a href="#product-view-one" data-bs-toggle="modal" class="meet-title "  >
+                                       <i class="bx bx-right-arrow"></i>
+                                       {{$video->title}}
+                                       </a>
+									   
+                                       <a  href="#product-view-one" data-bs-toggle="modal" class="meet-time ">
+                                       <span class="min">{{$video->period}} دقيقة</span>
+                                       <span class="preview">عرض</span>
+                                       @if($video->cost_type=="FREE")
+                                       <span class="fas fa-check"></span>
+                                       @elseif($video->cost_type=="PAID" && $video->has_access_to_video())
+                                       <span class="fas fa-lock-open"></span>
+                                       @elseif($video->cost_type=="PAID" && !$video->has_access_to_video())
+                                       <span class="fas fa-lock"></span>
+                                       @endif
+                                       </a>
+                                    </li>
+                                    @endforeach
+                                 </ul>
+                              </div>
+                        
+                           </div>
+                        </div>
+                       
+                        <div class="tabs_item">
+                           <div class="review-content">
+                              <h3> التقييمات <span>{{sprintf('%0.2f',($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0)}} ({{$course->ratings_count}} من التقييمات)</span></h3>
+                            
+                              
+
+                              {{-- <div class="rating-bar-content">
+                                 <div class="single-bar">
+                                    <p class="start">الوضوح</p>
+                                    <div class="rating-bar">
+                                       <div class="skills html"></div>
+                                    </div>
+                                    <p class="percent">90%</p>
+                                 </div>
+                                 <div class="single-bar">
+                                    <p class="start">الجودة</p>
+                                    <div class="rating-bar">
+                                       <div class="skills css"></div>
+                                    </div>
+                                    <p class="percent">80%</p>
+                                 </div>
+                                 <div class="single-bar">
+                                    <p class="start">تسلسل الأفكار</p>
+                                    <div class="rating-bar">
+                                       <div class="skills js"></div>
+                                    </div>
+                                    <p class="percent">90%</p>
+                                 </div>
+                                 <div class="single-bar">
+                                    <p class="start">الشرح</p>
+                                    <div class="rating-bar">
+                                       <div class="skills php"></div>
+                                    </div>
+                                    <p class="percent">80%</p>
+                                 </div>
+                              </div> --}}
+
+                              <div class="course-reviews-content">
+                                 <h3>التقييمات</h3>
+                                 <ul class="course-reviews">
+                                    @foreach($course->ratings as $review)
+                                    <li class="mb-3 border-bottom pb-3">
+                                       <img src="{{$review->user->getUserAvatar()}}" alt="Image" style="width: 60px;overflow: hidden;max-height: 60px;border-radius: 50%;">
+                                       <h3>{{$review->user->name}} <span class="font-1" style="color:#666">{{\Carbon::parse($review->created_at)->diffForHumans()}}</span></h3>
+                                       <p style="display: flex"> @include('templates.stars',['score'=>$review->rate,'size'=>10])</p>
+                                       <p>{{$review->description}}</p>
+                                    </li>
+                                    @endforeach
+                                 </ul>
+                                 
+                              </div> 
+                           </div>
+
+                           @php
+                           if(auth()->check()){
+                              $user_rating= $course->ratings()->where('user_id',auth()->user()->id)->first();
+                           }  
+                           @endphp
+
+                           
+                           @if($course->has_access_to_rate_course())
+                           <div class="col-12 px-0 py-3">
+                              <form method="POST" action="/rate/create" >
+                                 @csrf
+                                 <input type="hidden" name="course_id" value="{{$course->id}}" >
+                                    <div class="col-12 " style="box-shadow: 0px 0px 23px #d5d5d5;border-radius: 7px;">
+                                       <div class="col-12 px-3 py-3 border-bottom">
+                                          إضافة تقييم 
+                                       </div>
+                                       <div class="col-12 px-3"> 
+                                          <div class="col-12 py-2">
+                                            <label for="customRange1" class="form-label">التقييم</label>
+                                          </div>
+                                          <div class="col-12">
+                                             <input type="range" name="rate" class="form-range border-0" id="customRange1" min="1" max="5" value="{{(isset($user_rating))?$user_rating->rate:'0'}}">
+                                             <div class="col-12 justify-between d-flex">
+
+                                                <span class="m-0 font-2 badge bg-success 
+                                                " style="font-weight: bold;background: #f16327!important">1</span>
+                                                <span class="m-0 font-2 badge bg-success 
+                                                " style="font-weight: bold;background: #f16327!important">2</span>
+                                                <span class="m-0 font-2 badge bg-success 
+                                                " style="font-weight: bold;background: #f16327!important">3</span>
+                                                <span class="m-0 font-2 badge bg-success 
+                                                " style="font-weight: bold;background: #f16327!important">4</span> 
+                                                 <span class="m-0 font-2 badge bg-success " style="font-weight: bold;background: #f16327!important">5</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-12 px-3"> 
+                                          <div class="col-12 py-2">
+                                             تعليقك
+                                          </div>
+                                          <div class="col-12">
+                                             <textarea class="form-control" style="min-height: 130px;" name="description">{{(isset($user_rating))?$user_rating->description:''}}</textarea> 
+                                          </div>
+                                       </div>
+                                       <div class="col-12 px-3 pb-4">  
+                                          <div class="col-12">
+                                             <button class="default-btn">تقييم</button>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                              </form>
+                           </div>
+                           @endif
+
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4">
+                  <div class="account-wrap">
+				  <img src="{{$course->image()}}" alt="Image">
+                     <ul>
+                        <li>
+                           السعر <span class="bold">${{sprintf('%0.2f',$course->price)}}</span>
+                        </li>
+                        @php 
+                     
+
+                     @endphp
+                     @if(!$course->has_access_to_course())
+                        @if($course->accept_payments_untill> date('Y-m-d h:i:s') && $course->type=="LIVE")
+                        <li>
+                           متاح للحجز حتى <span>{{
+                              \Carbon::parse($course->accept_payments_untill)->format('Y-m-d')
+                           }}</span>
+                        </li>
+                        @endif 
+                     </ul>
+                     @if($course->accept_payments_untill> date('Y-m-d h:i:s'))
+                     <a href="/checkout?type=COURSE&type_id={{$course->id}}" class="default-btn">
+                        @if($course->type=="LIVE")
+                        أحجز
+                        @else 
+                        شراء
+                        @endif الآن
+                     </a>
+                     @endif
+                     @endif
+
+                     <div class="social-content">
+                        <p>
+                           مشاركة مع المهتمين
+                        </p>
+                        <div class="Social-media">
+						 
+						  <a href="https://www.facebook.com/sharer/sharer.php?u={{\Request::fullUrl()}}"><i class="bx bxl-facebook"></i></a>
+						  <a href="https://www.twitter.com/share?url={{\Request::fullUrl()}}"><i class="bx bxl-twitter"></i></a>
+						  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{\Request::fullUrl()}}"><i class="bx bxl-linkedin"></i></a>
+						  <a href="https://wa.me/?text={{\Request::fullUrl()}}"><i class="bx bxl-whatsapp"></i></a>
+						 
+						  
+						</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+	  
+	  
+	  	  <div class="modal fade product-view-one" id="product-view-one">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <button type="button" class="close" data-bs-dismiss="modal" id="close-modal-video">
+               <span aria-hidden="true">
+               <i class="bx bx-x"></i>
+               </span>
+               </button>
+               <div class="row align-items-center">
+                  <div class="col-12 video-response-container"> 
+                     
+						 
+					       </div> 
+                  </div>
+               </div>
+            </div>
+         </div>
+	  
+	  
+	  
+      <section class="courses-area-style pb-70">
+         <div class="container">
+            <div class="section-title">
+               <h2>دورات أخرى</h2>
+            </div>
+            <div class="row">
+
+               @php
+              $courses=\App\Models\Course::orderBy('id','DESC')->where('type','RECORDED')->withCount('ratings')->withSum('ratings','rate')/*->where('id','<>',$course->id)*/->inRandomOrder()->limit(12)->get();
+              @endphp
+
+
+              @foreach($courses as $course)
+
+              
+
+               <div class="col-lg-4 col-md-6">
+                  <div class="single-course">
+                     <a href="/course/{{$course->id}}-{{str_replace(' ', '-', $course->title)}}">
+                      <img src="{{$course->image()}}" alt="Image">
+                     </a>
+                     <div class="course-content">
+                        <span class="price">${{$course->price}}</span>
+                        <span class="tag">الدورات التعليمية</span>
+                        <a href="/course/{{$course->id}}-{{str_replace(' ', '-', $course->title)}}">
+                           <h3>{{$course->title}}</h3>
+                        </a>
+                         <div class="col-12 ">
+                           @include('templates.stars',['score'=>($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0,'size'=>14])
+                              <span>
+                                {{sprintf('%0.2f',($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0)}}</span>
+                              <a href="#">(تقييم {{$course->ratings_count}})</a>
+
+                         </div>
+                           
+                        <div class="col-12 px-0 py-3">
+                          <p style="border-bottom: 0px">{{mb_strimwidth(trim(strip_tags($course->description)), 0, 45, "...")}}</p>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </div>
+               @endforeach
+
+
+              
+            </div>
+         </div>
+      </section>
+      <script type="text/javascript">
+         $('.get-video-url').on('click',function(){
+            var self=this;
+            $.ajax({
+              method: "POST",
+              url: "{{route('get_video_access_url')}}",
+              data: { id: $(this).data('src'),'_token':'{{csrf_token()}}'}
+            })
+              .done(function( msg ) {
+               $('.video-response-container').empty().append(msg);
+
+               /*if($(self).data('type')=="LIVE"){
+                  $('#fixed-video').fadeOut(0);
+                  $('#zoom-link').fadeIn(0);
+                  $('#zoom-link').attr('href',msg.url);
+
+               }else{
+                  $('#fixed-video').fadeIn(0);
+                  var video = document.getElementById('fixed-video');
+                  var source = document.getElementById('source-fixed-video');
+
+                  source.setAttribute('src', '{{env('APP_URL')}}'+msg.url);
+                  video.load();
+                  video.play();
+               }*/
 
 
 
+               
 
+               /*$('.video-real-src').attr('src',msg.url); */
+              });
 
-
-    </div>
-
-</div>
-
+          /*  alert();*/
+         });
+         $('#close-modal-video ,#product-view-one').on('click',function(){
+            var video = document.getElementById('fixed-video'); 
+            video.pause();
+         }); 
+      </script>
 @endsection

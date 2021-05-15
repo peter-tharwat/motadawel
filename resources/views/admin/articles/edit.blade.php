@@ -63,6 +63,8 @@
 	 					
 	 						<option value="NEWS" @if($article->type=="NEWS") selected="" @endif>خبر</option> 
 	 						<option value="ARTICLE" @if($article->type=="ARTICLE") selected="" @endif>مقال</option> 
+	 						<option value="ARTICLE" @if($article->type=="IDEAS") selected="" @endif>آراء وتحليلات</option> 
+
 	 				</select> 
 	 			</div> 
 	 		</div>

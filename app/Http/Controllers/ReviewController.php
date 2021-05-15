@@ -37,8 +37,30 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+        $course=\App\Models\Course::where('id',$request->course_id)->firstOrFail();
+         
+        if($course->has_access_to_rate_course()){
+            $user_rating = $course->ratings()->where('user_id',auth()->user()->id)->first();
+            if($user_rating !=null){
+                $course->ratings()->where('user_id',auth()->user()->id)->update([
+                    'course_id'=>$request->course_id,
+                    'rate'=>$request->rate,
+                    'description'=>$request->description
+                ]); 
+            }else{
+                \App\Models\CourseReview::create([
+                    'course_id'=>$request->course_id,
+                    'user_id'=>auth()->user()->id,
+                    'rate'=>$request->rate,
+                    'description'=>$request->description
+                ]); 
+            }
+        }
+        emotify('success', 'تم التقييم بنجاح');
+        return redirect()->back();
+
     }
 
     /**

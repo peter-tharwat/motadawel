@@ -249,6 +249,16 @@
                             </div> 
                         </div>
                     </a>
+                    <a href="{{route('contacts.index')}}" class="col-12 px-0">
+                        <div class="col-12 item px-0 d-flex " >
+                            <div style="width: 50px" class="px-3 text-center">
+                                <span class="fal fa-phone font-3"> </span> 
+                            </div>
+                            <div style="width: calc(100% - 50px)" class="px-2">
+                               طلبات الاتصال
+                            </div> 
+                        </div>
+                    </a>
                     <a href="#" class="col-12 px-0" onclick="document.getElementById('logout-form').submit();">
                         <div class="col-12 item px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
@@ -369,10 +379,24 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#editor").richText();
+            $("#editor2").richText();
+            $("#editor3").richText();
          });
     </script>
     
     <script>
+        var myDropdown = document.getElementById('dropdown-notifications')
+        myDropdown.addEventListener('show.bs.dropdown', function () {
+            $.ajax({
+                method:'POST',
+                url:'{{route('see.notifications')}}',
+                data:{_token:'{{csrf_token()}}'}
+            }).done(function(msg){ 
+                $('#dropdown-notifications-icon').fadeOut();
+            }); 
+        })
+
+        
         $('.asideToggle').on('click',function(){
             $('.aside').toggleClass('active');
             $('.aside').toggleClass('in-active');

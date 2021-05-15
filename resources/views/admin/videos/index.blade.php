@@ -33,7 +33,9 @@
 		      <td scope="col">{{$video->id}}</td>
 		      <td scope="col">{{$video->title}}</td>
 		    {{--   <td scope="col">{{$video->description}}</td> --}}
-		      <td scope="col">{{$video->url}}</td>
+		      <td scope="col">
+		      	<a href="{{$video->url()}}" target="_blank">{{$video->url}}</a>
+		      	</td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('videos.destroy',$video)}}" id="video_delete_{{$video->id}}">@csrf @method('DELETE')</form>
 		      	<a href="{{route('videos.edit',$video)}}" style="width: 30px;height: 30px;color: #fff;background: #2381c6;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1">

@@ -1,22 +1,5 @@
 @extends('layouts.app')
 @section('content')
-{{-- @livewire('search-test')
---}}
-<div class="container mt-5"> 
-  
-
-  <div class="col-12 px-0 py-2" style="background: #f7f7f7">
-      <div class="container py-3 mt-3">
-          <h2 style="color: #232323" class="font-5 text-center">الفلتر الشرعي</h2> 
-          <h4 class="font-2 text-center" style="color: #232323">يتيح لك فلتر شرعي معرفة مدى شرعية كل سهم من الاسهم</h4>
-      </div>
-  </div>
-</div>
-{{-- <div class="col-12 px-0 " style="max-height: 30px;">
-    <div style="height: 120px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-            <path d="M-55.30,-42.92 C78.43,114.95 357.22,67.59 523.69,1.48 L491.53,-115.95 L-34.99,-72.53 Z" style="stroke: none; fill: #f7f7f7;"></path>
-        </svg></div>
-</div>  --}}
 @php  
  
 
@@ -85,20 +68,44 @@ if($response->ok() ){
 
 }
 @endphp
-<div class="col-12 px-0 py-5">
-    <div class="col-12 px-0 py-2 container" style="min-height: 100vh">
-      <div class="col-12 px-0 d-flex row justify-content-center">
-        <form class="col-12 px-0">
-          <div class="col-12 px-0 m-auto row d-flex" style="max-width: 600px;">
-            <div class="col-9 px-0">
-               <input type="" name="key" class="form-control" value="{{\Request::get('key')}}" placeholder="قم بإدخال كود السهم او الشركة">
+
+      <div class="page-title-area bg-17">
+         <div class="container">
+            <div class="page-title-content">
+               <h2>الفلتر الشرعي</h2>
+               <ul>
+                  <li>
+                     <a href="index.html">
+                     الرئيسية
+                     </a>
+                  </li>
+                  <li class="active">الفلتر الشرعي    </li>
+               </ul>
             </div>
-            <div class="col-3 px-0">
-              <button class="btn btn-success rounded-0 col-12"><span class="fal fa-search"></span> بحث</button>
-            </div>
-          </div>
-          </form>
-          @if(isset($interestIncome))
+         </div>
+      </div>
+     <div class="blog-column-two-area ptb-100">
+		   <div class="container">
+		   <div class="section-title">
+					   
+					   <h3>يتيح لك فلتر شرعي معرفة مدى شرعية كل سهم من الاسهم </h3>
+					</div>
+			  <div class="row">
+			
+				 <div class="col-lg-3"></div>
+				 <div class="col-lg-6">
+					<div class="widget-sidebar">
+					   <div class="sidebar-widget search">
+						  <form class="search-form">
+							 <input class="form-control" name="key" placeholder="قم بإدخال كود السهم أو الشركة" type="text" value="{{\Request::get('key')}}">
+							 <button class="search-button" type="submit" >
+							 <i class="bx bx-search"></i>
+							 </button>
+						  </form>
+
+
+
+                    @if(isset($interestIncome))
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
@@ -311,9 +318,191 @@ if($response->ok() ){
             
           </div>
           @endif
-      </div> 
-  </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
+
+
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-lg-3"></div>
+			  </div>
+		   </div>
+		</div>
+		<section class="courses-area-style pb-30">
+         <div class="container">
+		 <div class="section-title">
+               <span> دوراتنا التعليمية</span>
+               <h3> تعرف على أحدث الدورات التعليمية لدينا</h3>
+            </div>
+            <div class="row">
+              @php
+              $courses=\App\Models\Course::orderBy('id','DESC')->where('type','RECORDED')->withCount('ratings')->withSum('ratings','rate')->limit(3)->get();
+              @endphp
+
+
+              @foreach($courses as $course)
+
+              
+
+               <div class="col-lg-4 col-md-6">
+                  <div class="single-course">
+                     <a href="/course/{{$course->id}}-{{str_replace(' ', '_', $course->title)}}">
+                      <img src="{{$course->image()}}" alt="Image">
+                     </a>
+                     <div class="course-content">
+                        <span class="price">${{$course->price}}</span>
+                        <span class="tag">الدورات التعليمية</span>
+                        <a href="/course/{{$course->id}}-{{str_replace(' ', '_', $course->title)}}">
+                           <h3>{{$course->title}}</h3>
+                        </a>
+                         <div class="col-12 ">
+                           @include('templates.stars',['score'=>($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0,'size'=>14])
+                              <span>
+                                {{sprintf('%0.2f',($course->ratings_count!=0)?$course->ratings_sum_rate/$course->ratings_count:0)}}</span>
+                              <a href="#">(تقييم {{$course->ratings_count}})</a>
+
+                         </div>
+                           
+                        <div class="col-12 px-0 py-3">
+                          <p style="border-bottom: 0px">{{mb_strimwidth(trim(strip_tags($course->description)), 0, 45, "...")}}</p>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </div>
+               @endforeach
+
+              {{--  <div class="col-lg-4 col-md-6">
+                  <div class="single-course">
+                     <a href="single-course.html">
+                     <img src="assets/img/blog.jpg" alt="Image">
+                     </a>
+                     <div class="course-content">
+                        <span class="price">$39</span>
+                        <span class="tag">الاقتصاد</span>
+                        <a href="single-course.html">
+                           <h3>دورة تدربية  مدفوعة هذا الشهر</h3>
+                        </a>
+                        <ul class="rating">
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <span>0.5</span>
+                              <a href="#">(تقييم 1)</a>
+                           </li>
+                        </ul>
+                        <p>كوروس تجريبي مدفوع هذا الشهر </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <div class="single-course">
+                     <a href="single-course.html">
+                     <img src="assets/img/blog.jpg" alt="Image">
+                     </a>
+                     <div class="course-content">
+                        <span class="price">$39</span>
+                        <span class="tag">الاقتصاد</span>
+                        <a href="single-course.html">
+                           <h3>دورة تدربية  مدفوعة هذا الشهر</h3>
+                        </a>
+                        <ul class="rating">
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <i class="bx bxs-star"></i>
+                           </li>
+                           <li>
+                              <span>0.5</span>
+                              <a href="#">(تقييم 1)</a>
+                           </li>
+                        </ul>
+                        <p>كوروس تجريبي مدفوع هذا الشهر </p>
+                     </div>
+                  </div>
+               </div> --}}
+              
+              
+               
+            </div>
+         </div>
+      </section>
+		
+		<section class="subscribe-area ebeef5-bg-color ptb-100">
+		   <div class="container">
+			  <div class="subscribe-wrap">
+				 <h2>انضم الينا</h2>
+				 <p>اشترك معنا الآن في منصة المحلل الفني </p>
+				 <div class="row">
+				 <div class="col-lg-4"></div>
+				 <div class="col-lg-4">
+					<a href="/subscrpitions" class="default-btn wow fadeInLeft" data-wow-delay="0.9s">
+                           اشترك الآن
+                  </a>
+				 </div>
+				 <div class="col-lg-4"></div>
+				 </div>
+				 
+				 
+				 <div class="subscribe-img">
+					<img src="assets/img/join.svg" alt="Image"  style="height:250px">
+				 </div>
+			  </div>
+		   </div>
+		</section>
+		<div class="blog-column-three-area ptb-100">
+         <div class="container">
+			<div class="section-title">
+               <span>شركاء نجاحنا</span>
+               <h3>تعرف على شركاء نجاحنا وتمييزنا</h3>
+            </div>
+            <div class="row">
+
+             @php 
+               $partners=\App\Models\Partner::orderBy('id','DESC')->get();
+               @endphp
+               @foreach($partners as $partner)
+               <div class="col-lg-4 col-md-6">
+                  <div class="single-news">
+                     <a href="/partner/{{$partner->id}}-{{str_replace(' ', '-', $partner->title)}}">
+                        <img src="{{$partner->image()}}" alt="Image">
+                     </a>
+                     <div class="news-content"> 
+                        <a href="/partner/{{$partner->id}}-{{str_replace(' ', '-', $partner->title)}}">
+                           <h3>{{$partner->title}}</h3>
+                        </a>
+                        
+                     </div>
+                  </div>
+               </div>
+               @endforeach
+
+
+             
+               
+            </div>
+         </div>
+      </div>
 @endsection

@@ -19,6 +19,7 @@
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
+		      <th scope="col">الصورة</th>
 		      <th scope="col">العنوان</th>
 		      {{-- <th scope="col">الوصف</th> --}}
 		      <th scope="col">الرابط</th>
@@ -30,9 +31,16 @@
 		  	@foreach($partners as $partner)
 		    <tr>
 		      <td scope="col">{{$partner->id}}</td>
-		      <td scope="col">{{$partner->title}}</td>
+		      <td scope="col">
+		      	<img src="{{$partner->image()}}" style="width: 60px;" class="py-2">
+		      </td>
+		      <td scope="col">
+		      	
+
+		      	{{$partner->title}}</td>
 		      {{-- <td scope="col">{{$partner->description}}</td> --}}
-		      <td scope="col">{{$partner->url}}</td>
+		      <td scope="col">
+		      	<a href="{{$partner->url}}" target="_blank">{{$partner->url}}</a></td>
 		      <td class=" row d-flex">
 		      	<form method="POST" action="{{route('partners.destroy',$partner)}}" id="partner_delete_{{$partner->id}}">@csrf @method('DELETE')</form>
 		      	<a href="{{route('partners.edit',$partner)}}" style="width: 30px;height: 30px;color: #fff;background: #2381c6;border-radius: 2px" class="d-flex align-items-center justify-content-center mx-1">

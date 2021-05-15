@@ -14,6 +14,8 @@ class UsersController extends Controller
     {
     	$users=User::where(function($q)use($request){
     		$q->where('name','LIKE','%'.$request->key.'%');
+            if($request->id!=null)
+                $q->where('id',$request->id);
     	})->orderBy('id','DESC')->paginate();
     	return view('admin.users.index',compact('users'));
     }

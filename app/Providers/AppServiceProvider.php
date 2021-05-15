@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Order; 
+use App\Models\Contact; 
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+         Order::observe(\App\Observers\OrderObserver::class);
+         Contact::observe(\App\Observers\ContactObserver::class);
     }
 }
