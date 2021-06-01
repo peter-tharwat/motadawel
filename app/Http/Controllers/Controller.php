@@ -20,7 +20,10 @@ class Controller extends BaseController
     	if(isset($file)){ 
     		$file_name = uniqid() . '.' . $file->getClientOriginalExtension(); 
     		$filePath = '/'.$path.'/' . $file_name;
-    		\Storage::put($filePath, file_get_contents($file), $privacy);
+            if($privacy=="public")
+    		  \Storage::put($filePath, file_get_contents($file), $privacy);
+            else
+              \Storage::disk('s3_private')->put($filePath, file_get_contents($file), $privacy);
     		return $file_name; 
     	}
     	return '';
