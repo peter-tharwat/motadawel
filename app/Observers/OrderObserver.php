@@ -14,7 +14,10 @@ class OrderObserver
      */
     public function created(Order $order)
     {
-        //
+     
+        /*$order->load('payment');*/
+       
+
     }
 
     /**

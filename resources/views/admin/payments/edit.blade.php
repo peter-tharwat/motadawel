@@ -44,9 +44,9 @@
 	 				الطلب
 	 			</div>
 	 			<div class="col-12 px-2 font-3">
-	 				@if($payment->type=="COURSE")
+	 				@if($payment->type=="COURSE" && $payment->course!=null)
 	 					<a href="/admin/courses?id={{$payment->course->id}}">{{$payment->course->title}}</a> 
-					@else
+					@elseif($payment->type=="MOHALLEL")
 						<a href="/subscriptions" target="_blank">
 							باقة ( {{$payment->amount}} ) ريال
 						</a>

@@ -63,7 +63,7 @@
 		 		</div>
 		 		<div class="col-12 px-0 pb-2 accept_payments_untill" style="display: none;">
 		 			<div class="col-12 pb-2 px-0 py-2" style="width: 100px;">
-		 				الحجز متاح حتى
+		 				الحجز - الشراء متاح حتى
 		 			</div>
 		 			<div class="col-12 px-0">
 		 				<input type="datetime-local" name="accept_payments_untill" class="form-control accept_payments_untill"  min="{{date('Y-m-d h:i:s')}}" style="display: none;">

@@ -16,6 +16,8 @@ class OrderController extends Controller
     {
         $orders=Order::where(function($q)use($request){
             $q->where('type','LIKE','%'.$request->key.'%');
+            if($request->id!=null)
+                $q->where('id',$request->id);
         })->orderBy('id','DESC')->paginate();
         return view('admin.orders.index',compact('orders'));
     }

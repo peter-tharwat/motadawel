@@ -82,7 +82,7 @@
 		 		</div>
 		 		<div class="col-12 px-2 py-2 accept_payments_untill">
 		 			<div class=" col-12 px-0 pb-2" style="width: 100px">
-		 				الحجز متاح حتى
+		 				الحجز - الشراء متاح حتى
 		 			</div>
 		 			<div class="col-12 px-0">
 		 				<input type="datetime-local" name="accept_payments_untill" class="form-control accept_payments_untill" value="{{$course->accept_payments_untill}}" >

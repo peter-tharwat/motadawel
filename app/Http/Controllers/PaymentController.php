@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
-use Devinweb\LaravelHyperpay\Facades\LaravelHyperpay;
+use App\Exports\PaymentExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class PaymentController extends Controller
 {
     /**
@@ -15,18 +17,45 @@ class PaymentController extends Controller
     public $ENTITY_ID;
     public $ENTITY_TYPE;
     public $MOHALLEL_TYPE;
+
+
     public function index(Request $request)
     {
-        
-        $payments=Payment::where(function($q)use($request){
+        $payments=$this->get_data($request);
+        return view('admin.payments.index',compact('payments'));
+    }
+
+    public function export(Request $request) 
+    {
+        return Excel::download(new PaymentExport($this->get_data($request,1000000)), 'payments'.date('Y-m-d-h-i-s').'.xlsx');
+    }
+    public function get_data(Request $request,$paginate=15){
+      return Payment::where(function($q)use($request){
             $q->where('type','LIKE','%'.$request->key.'%');
             if($request->id!=null)
               $q->where('id',$request->id);
             if($request->order_id!=null)
               $q->where('order_id',$request->order_id);
-        })->orderBy('id','DESC')->paginate();
-        return view('admin.payments.index',compact('payments'));
+            if($request->date_from!=null)
+              $q->where('created_at','>=',$request->date_from);
+            if($request->date_to!=null)
+              $q->where('created_at','<=',$request->date_to);
+
+            if($request->type!=null && $request->type!="ALL")
+              $q->where('type',$request->type);
+            if($request->status!=null && $request->status!="ALL")
+              $q->where('status',$request->status);
+            
+            if($request->user_id!=null)
+              $q->where('user_id',$request->user_id);
+            if($request->price_from!=null)
+              $q->where('amount','>=',$request->price_from);
+            if($request->price_to!=null)
+              $q->where('amount','<=',$request->price_to);
+        })->with(['user','order'])->orderBy('id','DESC')->paginate($paginate);
     }
+
+
     public function make(Request $request)
     {
         $request->validate([

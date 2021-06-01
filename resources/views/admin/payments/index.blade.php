@@ -1,13 +1,98 @@
 @extends('layouts.admin')
 @section('content')
+<form method="post" action="{{route('payments.export').str_replace('/admin/payments', '', \Request::getRequestUri()) }}" id="export-form">@csrf</form>
 <div class="col-12 py-2 px-3 row">
 	 <div class="col-12 px-2 pt-4 " style="background: #fff;min-height: 80vh">
 	 	<div class="col-12 py-4 justify-content-between row d-flex">
-	 		<div class="col-12 col-lg-4 px-2 mb-2">
-	 			<form method="get" action="{{route('payments.index')}}">
-	 				<input type="" name="key" class="form-control" style="border-radius: 0px;border:1px solid #ddd" placeholder="بحث .. " autofocus="" value="{{request()->get('key')}}">
-	 			</form> 
-	 		</div>
+	 		<form method="get" action="{{route('payments.index')}}" class="row">
+	 			<div class="col-12 row px-0 pb-2">
+		 			<div class="col-12 col-lg-4">
+		 				<input type="" name="key" class="form-control" style="border-radius: 0px;border:1px solid #ddd" placeholder="بحث .. " autofocus="" value="{{request()->get('key')}}">
+		 			</div>
+		 			<div class="col-12 col-lg-4 row">
+		 				<div style="max-width: 50px" class="col">
+		 					من
+		 				</div>
+		 				<div class="col px-0">
+		 					<input type="date" name="date_from" class="form-control" value="{{request()->get('date_from')}}">
+		 				</div>
+		 				
+		 			</div>
+		 			<div class="col-12 col-lg-4 row">
+		 				<div style="max-width: 50px" class="col">
+		 					إلى
+		 				</div>
+		 				<div class="col px-0">
+		 					<input type="date" name="date_to" class="form-control" value="{{request()->get('date_to')}}">
+		 				</div>
+		 			</div>
+	 			</div>
+	 			<div class="col-12 row px-0 pb-2">
+		 			<div class="col-12 col-lg-4 row ">
+		 				<div style="max-width: 50px" class="col">
+		 					النوع
+		 				</div>
+		 				<div class="col px-0 ">
+		 					<select name="type" class="form-control">
+		 						<option value="ALL" @if(request()->get('type')=="ALL") selected="" @endif>الكل</option>
+		 						<option value="COURSE" @if(request()->get('type')=="COURSE") selected="" @endif>الكورسات</option>
+		 						<option value="MOHALLEL" @if(request()->get('type')=="MOHALLEL") selected="" @endif>المحلل الفني</option>
+		 					</select>
+		 				</div>
+		 			</div>
+		 			<div class="col-12 col-lg-4 row">
+		 				<div style="max-width: 50px" class="col">
+		 					الحالة
+		 				</div>
+		 				<div class="col px-0 ">
+		 					<select name="status" class="form-control">
+		 						<option value="ALL" @if(request()->get('status')=="ALL") selected="" @endif>الكل</option>
+		 						<option value="DONE" @if(request()->get('status')=="DONE") selected="" @endif>مكتمل</option>
+		 						<option value="PENDING" @if(request()->get('status')=="PENDING") selected="" @endif>معلق</option>
+		 					</select>
+		 				</div>
+		 			</div>
+		 			<div class="col-12 col-lg-4 row">
+		 				<div style="max-width: 50px;font-size: 11px!important" class="col">
+		 					كود
+		 					<br>
+		 					مستخدم
+		 				</div>
+		 				<div class="col px-0">
+		 					<input type="number" name="user_id" class="form-control" value="{{request()->get('user_id')}}">
+		 				</div>
+		 			</div>
+	 			</div>
+	 			<div class="col-12 row px-0 pb-2">
+		 			<div class="col-12 col-lg-4 row ">
+		 				<div style="max-width: 50px;font-size: 11px!important" class="col">
+		 					السعر
+		 					<br>
+		 					من
+		 				</div>
+		 				<div class="col px-0">
+		 					<input type="number" name="price_from" class="form-control" value="{{request()->get('price_from')}}">
+		 				</div>
+		 			</div>
+		 			<div class="col-12 col-lg-4 row">
+		 				<div style="max-width: 50px;font-size: 11px!important" class="col">
+		 					السعر
+		 					<br>
+		 					إلى
+		 				</div>
+		 				<div class="col px-0">
+		 					<input type="number" name="price_to" class="form-control" value="{{request()->get('price_to')}}">
+		 				</div>
+		 			</div>
+		 			<div class="col-12 col-lg-4 text-start">
+
+		 				<span class="btn btn-primary mr-2" style="cursor: pointer;" onclick="$('#export-form').submit();"> <span class="fal fa-table"></span> تصدير Excel</span>
+		 				<button class="btn btn-success mr-2"><span class="fal fa-search"></span> بحث</button>
+		 			</div>
+	 			</div>
+
+	 		</form>
+
 	 		{{-- <div class="col-12 col-lg-4 px-2 justify-content-end d-flex mb-2">
 	 			<a href="{{route('payments.create')}}">
 	 				<button class="btn btn-primary pb-2 rounded-0"><span class="fab fa-youtube"></span> إضافة دورة</button>

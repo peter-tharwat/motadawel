@@ -127,6 +127,7 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
     Route::get('/contacts',[ContactController::class,'index'])->name('contacts.index');
     Route::get('/contact/{contact}',[ContactController::class,'show'])->name('contacts.show');
     Route::post('/see/notifications',[NotificationController::class,'see'])->name('see.notifications');
+    Route::post('/payments-export',[PaymentController::class,'export'])->name('payments.export');
 
 });
 

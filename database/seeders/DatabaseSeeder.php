@@ -17,19 +17,20 @@ class DatabaseSeeder extends Seeder
         //(new HatabaseSeeder());
 
         
-	 
+	   if(!\App\Models\User::where('email','admin@admin.com')->count())
         \App\Models\User::create([
         	 'name'=>'admin',
         	 'email'=>'admin@admin.com',
         	 'password'=>bcrypt('password'),
         	 'power'=>'ADMIN'
         ]);
+      if(!\App\Models\User::where('email','user@admin.com')->count())
         \App\Models\User::create([
         	 'name'=>'user',
         	 'email'=>'user@admin.com',
         	 'password'=>bcrypt('password'),
         	 'power'=>'USER'
         ]);
-        \App\Models\Setting::create([]);
+        
     }
 }

@@ -3,7 +3,7 @@
 @php 
 $setting=\App\Models\Setting::first();
 @endphp
-	  <div class="banner-area-two " id="home">
+	  <div class="banner-area-two " id="home" style="margin: 6% 0 5% 0%!important">
 
          <div class="hero-slider-item slide2">
           <div class="d-table">
@@ -12,8 +12,8 @@ $setting=\App\Models\Setting::first();
                                       <div class="row align-items-center">
                      <div class="col-lg-6">
                         <div class="slider-content">
-                           <h1 style="line-height: 3" class="wow fadeInLeft" data-wow-delay="0.5s">فكرة شارت بوابتك إلى اللأسواق المالية العالمية</h1>
-                           <p style="line-height: 2.5" class="wow fadeInLeft" data-wow-delay="0.6s">شارك في الندوات الإلكترونية والحلقات التعليمية واستمتع بتعليم تفاعلي وتعرف على كيفية  التداول بسهولة مع بعض الأسهم الأكثر شعبية في العالم باستخدام الرافعة المالية التي تتيح لك زيادة استثماراتك بما يصل إلى 20 مرة.</p>
+                           <h1 style="line-height: 1.3;color: #f16327;font-weight: bold;" class="wow fadeInLeft font-3 font-lg-6" data-wow-delay="0.5s">فكرة شارت بوابتك إلى اللأسواق المالية العالمية</h1>
+                           <p style="line-height: 2.5" class="wow fadeInLeft font-2 mt-3" data-wow-delay="0.6s">شارك في الندوات الإلكترونية والحلقات التعليمية واستمتع بتعليم تفاعلي وتعرف على كيفية  التداول بسهولة مع بعض الأسهم الأكثر شعبية في العالم باستخدام الرافعة المالية التي تتيح لك زيادة استثماراتك بما يصل إلى 20 مرة.</p>
                            <a href="/courses" class="default-btn wow fadeInLeft mt-4" data-wow-delay="0.9s">
                            عرض المحاضرات التعليمية
                            </a>
@@ -21,7 +21,7 @@ $setting=\App\Models\Setting::first();
                      </div>
                      <div class="col-lg-6">
                         <div class="banner-img wow fadeInRight" data-wow-delay="0.3s" >
-                           <img src="/assets/img/9.png" alt="Image">
+                           <img src="/assets/img/home.png" alt="Image">
                            <div class="banner-shape-1">
                               <img src="/assets/img/10.png" alt="Image">
                            </div>

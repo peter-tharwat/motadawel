@@ -36,7 +36,9 @@
 		      		<a href="/admin/courses?id={{$order->course->id}}">{{$order->course->title}}</a> 
 				@else
 				<a href="/subscriptions" target="_blank">
+					@if(isset($order->payment))
 					باقة ( {{$order->payment->amount}} ) ريال
+					@endif
 				</a>
 				@endif</td>
 		      <td scope="col">{{$order->type}}</td>
