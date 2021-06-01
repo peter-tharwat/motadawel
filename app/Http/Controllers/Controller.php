@@ -17,14 +17,19 @@ class Controller extends BaseController
     	$privacy="public"
     )
     {
-       
+
     	if(isset($file)){ 
     		$file_name = uniqid() . '.' . $file->getClientOriginalExtension(); 
     		$filePath = '/'.$path.'/' . $file_name;
+
             if($privacy=="public")
     		  \Storage::put($filePath, file_get_contents($file), $privacy);
-            else if($privacy=="private")
+            else if($privacy=="private"){
               \Storage::disk('s3_private')->put($filePath, file_get_contents($file), $privacy);
+            }
+
+
+
     		return $file_name; 
     	}
     	return '';

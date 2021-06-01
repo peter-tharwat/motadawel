@@ -18,6 +18,8 @@ class CourseController extends Controller
             $q->where('title','LIKE','%'.$request->key.'%');
             if($request->id!=null)
                 $q->where('id',$request->id);
+            if($request->type!=null)
+                $q->where('type',$request->type);
         })->orderBy('id','DESC')->paginate();
         return view('admin.courses.index',compact('courses'));
     }

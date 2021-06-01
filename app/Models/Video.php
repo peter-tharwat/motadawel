@@ -37,7 +37,7 @@ class Video extends Model
     	else if ($this->type=="RECORDED"){
     		if($this->url==null)return $this->url;
     		else{	 
-                return Storage::temporaryUrl(
+                return Storage::disk('s3_private')->temporaryUrl(
                       'videos/' .$this->url ,
                       now()->addHour()
                   );  

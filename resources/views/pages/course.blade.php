@@ -24,7 +24,7 @@
       <section class="single-course-area  ptb-100">
          <div class="container">
             <div class="row">
-               <div class="col-lg-7 custom-card">
+               <div class="col-lg-7 custom-card mx-0">
                   <div class="single-course-content ">
                      <h3>{{$course->title}}</h3>
                      <div class="row align-items-center">
@@ -272,7 +272,7 @@
 	  
 	  	  <div class="modal fade product-view-one" id="product-view-one">
          <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content p-4">
                <button type="button" class="close" data-bs-dismiss="modal" id="close-modal-video">
                <span aria-hidden="true">
                <i class="bx bx-x"></i>

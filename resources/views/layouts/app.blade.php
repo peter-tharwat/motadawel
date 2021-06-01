@@ -17,6 +17,8 @@
       <link rel="stylesheet" href="/assets/css/style.css">
       <link rel="stylesheet" href="/assets/css/responsive.css">
       <link rel="stylesheet" href="/assets/css/rtl.css">
+      <link rel="stylesheet" href="/css/ckin.css">
+      <script src="/js/ckin.js"></script>
       <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/fontawsome.min.css">
       <link rel="stylesheet" type="text/css" href="/css/responsive-fonts.css">
       <link rel="icon" type="image/png" href="/assets/img/favicon.png">

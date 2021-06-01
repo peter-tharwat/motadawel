@@ -13,7 +13,7 @@
 		</div>
 		@elseif($video->type=="RECORDED")
 		<div class="col-12 px-0"> 
-			<video controls contextmenu class="col-12 px-0">
+			<video controls contextmenu class="col-12 px-0" src="{{$video->url()}}" controlsList="nodownload">
 				<source src="{{$video->url()}}" type="video/mp4">
 			</video>
 		</div>
