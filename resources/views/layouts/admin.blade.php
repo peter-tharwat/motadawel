@@ -136,8 +136,8 @@
                     مرحباً أبو رسيل
                 </div> 
             </div>
-            <div class="col-12 px-0">
-                <div class="col-12 px-0">
+            <div class="col-12 px-0" style="overflow:hidden;">
+                <div class="col-12 px-0" style="height: calc(100vh - 240px);">
 
                     <a href="{{route('admin.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex" >
