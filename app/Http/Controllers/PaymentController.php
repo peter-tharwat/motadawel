@@ -161,7 +161,8 @@ class PaymentController extends Controller
             }
             curl_close($ch);
  
-
+            dd($responseData);
+            
             if(
                 !(isset(( (array)json_decode($responseData,true))['payments'][0]["result"]["code"])
                 && ((array)json_decode($responseData,true))['payments'][0]["result"]["code"]=="000.000.000")
