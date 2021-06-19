@@ -124,8 +124,8 @@ class PaymentController extends Controller
 
 
     public function success(Request $request){
-  
-
+        
+        /*dd($request->all());*/
 
         $payment = \App\Models\Payment::where('payment_id',$request['id'])->firstOrFail(); 
         if($payment->status=="PENDING" && auth()->user()->id == $payment->user_id){
@@ -161,7 +161,7 @@ class PaymentController extends Controller
             }
             curl_close($ch);
  
-            dd((array)json_decode($responseData,true));
+            //dd((array)json_decode($responseData,true));
 
             if(
                 !(isset(( (array)json_decode($responseData,true))['payments'][0]["result"]["code"])

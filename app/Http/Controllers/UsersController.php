@@ -13,7 +13,10 @@ class UsersController extends Controller
     public function index(Request $request)
     {
     	$users=User::where(function($q)use($request){
-    		$q->where('name','LIKE','%'.$request->key.'%');
+    		$q->where('name','LIKE','%'.$request->key.'%')
+            ->orWhere('email','LIKE','%'.$request->key.'%')
+            ->orWhere('phone','LIKE','%'.$request->key.'%');
+            
             if($request->id!=null)
                 $q->where('id',$request->id);
     	})->orderBy('id','DESC')->paginate();
@@ -76,6 +79,7 @@ class UsersController extends Controller
     		'name'=>$request->name,
     		'email'=>$request->email,
     		'blocked'=>$request->blocked==1?$request->blocked:0,
+            'power'=>$request->power
     	]);
     	emotify('success', 'تم تعديل المستخدم بنجاح');
         return redirect()->route('users.index')->with('data',['alert'=>"تم تعديل المستخدم بنجاح","alert-type"=>"success"]);

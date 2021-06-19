@@ -29,7 +29,10 @@
 				<div class="custom-card">
                   <div class="single-blog-content">
                      <div class="blog-top-content">
-                        <img src="{{$course->banner()}}" class="" alt="Image">
+                        <div class="col-12">
+                           <img src="{{$course->image()}}" class="col-12" alt="Image">
+                        </div>
+                        
                         
                         <h3>{{$course->title}}</h3> 
 						      <div class="description-of-article col-12">{!!$course->description!!}</div>

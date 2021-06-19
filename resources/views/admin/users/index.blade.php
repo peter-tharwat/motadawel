@@ -26,7 +26,7 @@
 		      <td scope="col">{{$user->id}}</td>
 		      <td scope="col">{{$user->name}}</td>
 		      <td scope="col">{{$user->email}}</td>
-		      <td scope="col">{{$user->orders->count()}}</td>
+		      <td scope="col"><a href="/admin/orders?user_id={{$user->id}}">{{$user->orders->count()}}</a></td>
 		      <td scope="col">
 		      	<a href="{{route('users.edit',$user)}}" style="width: 30px;height: 30px;color: #fff;background: #2381c6;border-radius: 2px" class="d-flex align-items-center justify-content-center">
 		      		<span class="fal fa-edit"></span>

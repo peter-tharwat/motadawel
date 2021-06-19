@@ -28,7 +28,7 @@
 	 			<div class="col-9 px-2"> 
 	 				<select name="type" class="form-control" required="">
 	 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
-	 					<option @if($partners_link->type=="pdf") selected="" @endif value="pdf">PDF</option>
+	 					<option @if($partners_link->type=="file-pdf") selected="" @endif value="file-pdf">PDF</option>
 	 					<option @if($partners_link->type=="file") selected="" @endif value="file">ملف</option>
 	 					<option @if($partners_link->type=="link") selected="" @endif value="link">رابط</option>
 	 					<option @if($partners_link->type=="play") selected="" @endif value="play">فيديو</option>

@@ -5,7 +5,7 @@
 	 	<div class="col-12 px-3">
 	 		<h4>تعديل شريك النجاح</h4>
 	 	</div>
-	 	<div class="col-12 col-lg-9 px-3 py-5">
+	 	<div class="col-12  px-3 py-5">
 	 		<form class="col-12" method="POST" action="{{route('partners.update',$partner)}}" enctype="multipart/form-data">
 	 			@csrf
 	 			@method("PUT")
@@ -23,7 +23,7 @@
 	 				وصف الشريك
 	 			</div>
 	 			<div class="col-9 px-2">
-	 				<textarea type="" name="description" class="form-control" min="3" max="1000" style="min-height: 200px">{{$partner->description}}</textarea>
+	 				<textarea type="" name="description" id="editor" class="form-control" min="3" max="1000" style="min-height: 200px">{{$partner->description}}</textarea>
 	 			</div> 
 	 		</div>
 	 		<div class="col-12 col-md-6 px-0 d-flex mb-3">

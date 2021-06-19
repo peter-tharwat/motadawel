@@ -73,7 +73,7 @@
                   <li class="nav-item"><a href="/lectures" class="nav-link">المحاضرات التعليمية</a>
                         </li><li class="nav-item"><a href="/blog" class="nav-link">المدونة</a>
                         </li>
-                  </li><li class="nav-item"><a href="/mohallel" class="nav-link">المحلل الفني الإحترافي</a>
+                  </li><li class="nav-item"><a href="/mohallel" class="nav-link">منصة المحلل الفني</a>
                         </li>
                   <li class="nav-item"><a href="/partners" class="nav-link">شركاء النجاح</a>
                         </li>

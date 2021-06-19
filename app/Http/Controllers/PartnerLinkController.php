@@ -42,7 +42,7 @@ class PartnerLinkController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['partner_id'=>'exists:partners,id','title'=>"required|min:3",'url'=>"required|url",'type'=>'required|in:pdf,link,file,play']);
+        $request->validate(['partner_id'=>'exists:partners,id','title'=>"required|min:3",'url'=>"required|url",'type'=>'required|in:file-pdf,link,file,play']);
         $partners_link = PartnerLink::create([
             'user_id'=>auth()->user()->id,
             'partner_id'=>$request->partner_id,
@@ -87,7 +87,7 @@ class PartnerLinkController extends Controller
     public function update(Request $request, PartnerLink $partners_link)
     {   
         $partner_feature=$partners_link;
-        $request->validate(['partner_id'=>'exists:partners,id','title'=>"required|min:3",'url'=>"required|url",'type'=>'required|in:pdf,link,file,play']);
+        $request->validate(['partner_id'=>'exists:partners,id','title'=>"required|min:3",'url'=>"required|url",'type'=>'required|in:file-pdf,link,file,play']);
         $partners_link->update([  
             'title'=>$request->title,
             'url'=>$request->url,

@@ -21,7 +21,7 @@
             <div class="row">
 
                @php 
-               $lectures = \App\Models\Lecture::orderBy('id','DESC')->paginate(12);
+               $lectures = \App\Models\Lecture::orderBy('id','DESC')->paginate(9);
                @endphp
                @foreach($lectures as $lecture)
                <div class="col-lg-4 col-md-6">
@@ -31,11 +31,11 @@
 						<iframe width="100%" height="345" src="https://www.youtube.com/embed/{{$lecture->video_code()}}?controls=1&rel=0&showinfo=0&color=white" allowfullscreen>
 						</iframe>
 					 </div>
-                        <a href="#"> <h3>{{$lecture->title}}</h3></a>
-                        <p> {{mb_strimwidth(trim(strip_tags( $lecture->description)), 0, 45, "...")}}</p>
-                        <ul class="lessons">
+                        <a href="#"> <h3 class="pt-2">{{$lecture->title}}</h3></a>
+                        {{-- <p> {{mb_strimwidth(trim(strip_tags( $lecture->description)), 0, 45, "...")}}</p> --}}
+                      {{--   <ul class="lessons">
                            <li>{{\Carbon::parse($lecture->created_at)->diffForHumans()}}</li> 
-                        </ul>
+                        </ul> --}}
                      </div>
                   </div>
                </div>

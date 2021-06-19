@@ -38,7 +38,7 @@
 	 			<div class="col-9 px-2"> 
 	 				<select name="type" class="form-control" required="">
 	 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
-	 					<option value="pdf">PDF</option>
+	 					<option value="file-pdf">PDF</option>
 	 					<option value="file">ملف</option>
 	 					<option value="link">رابط</option>
 	 					<option value="play">فيديو</option> 

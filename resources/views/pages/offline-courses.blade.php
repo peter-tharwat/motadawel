@@ -27,7 +27,7 @@
                <div class="col-lg-4 col-md-6">
                   <div class="single-course">
                      <a href="/course/{{$course->id}}-{{str_replace(' ', '-', $course->title)}}">
-                     <img src="{{$course->image()}}" alt="Image">
+                        <img src="{{$course->image()}}" alt="Image">
                      </a>
                      <div class="course-content">
                  

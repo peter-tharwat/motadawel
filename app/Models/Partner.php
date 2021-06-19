@@ -12,13 +12,13 @@ class Partner extends Model
     public function image()
     {
     	if($this->image!=null)
-    		return '/storage/images/'.$this->image;
+    		return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/images/'.$this->image;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
     }
     public function banner()
     {
     	if($this->banner!=null)
-    		return '/storage/banners/'.$this->banner;
+    		return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/banners/'.$this->banner;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
     }
     public function partner_features()

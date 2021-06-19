@@ -52,9 +52,9 @@ class CourseController extends Controller
             'description'=>'required|min:3|max:100000', 
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
-            'price'=>'required|min:0|max:10000',
+            //'price'=>'required|min:0|max:10000',
             'available_at'=>'required|date',
-            'accept_payments_untill'=>'required|date',
+            //'accept_payments_untill'=>'required|date',
             'type'=>"required|string|in:RECORDED,LIVE,OFFLINE"
         ]); 
         $course = Course::create([
@@ -63,9 +63,9 @@ class CourseController extends Controller
             'description'=>$request->description, 
             'banner'=>$this->upload_file($request->file('banner'),'banners'),
             'image'=>$this->upload_file($request->file('image'),'images'),
-            'price'=>$request->price,
+            'price'=>$request->price==null?0:$request->price,
             'available_at'=>$request->available_at,
-            'accept_payments_untill'=>$request->accept_payments_untill,
+            'accept_payments_untill'=>$request->accept_payments_untill==null?\Carbon::parse(now())->addYears(10)->format('Y-m-d h:i:s'):$request->accept_payments_untill,
             'type'=>$request->type,
             'whatsapp_phone'=>$request->whatsapp_phone,
         ]); 
@@ -115,9 +115,9 @@ url*/
             'description'=>'required|min:3|max:100000', 
             'image' => 'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
             'banner'=>'nullable|sometimes|image|mimes:jpeg,jpg,png,gif|max:10000',
-            'price'=>'required|min:0|max:10000',
+            //'price'=>'required|min:0|max:10000',
             'available_at'=>"required|date",
-            'accept_payments_untill'=>'required|date',
+            //'accept_payments_untill'=>'required|date',
             'type'=>"required|string|in:RECORDED,LIVE,OFFLINE"
         ]);
         $course->update([ 
@@ -126,9 +126,9 @@ url*/
             'url'=>$request->url,
             'banner'=>$request->hasFile('banner')?$this->upload_file($request->file('banner'),'banners'):$course->banner,
             'image'=>$request->hasFile('image')?$this->upload_file($request->file('image'),'images'):$course->image,
-            'price'=>$request->price,
+            'price'=>$request->price==null?0:$request->price,
             'available_at'=>$request->available_at,
-            'accept_payments_untill'=>$request->accept_payments_untill,
+            'accept_payments_untill'=>$request->accept_payments_untill==null?\Carbon::parse(now())->addYears(10)->format('Y-m-d h:i:s'):$request->accept_payments_untill,
             'type'=>$request->type,
             'whatsapp_phone'=>$request->whatsapp_phone 
         ]);

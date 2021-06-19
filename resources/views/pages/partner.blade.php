@@ -27,11 +27,19 @@
                         
                         <h3>{{$partner->title}}</h3>
                         
-         						<p style="white-space: pre-line;">{!!$partner->description!!}</p>
+         						<div style="white-space: pre-line;" class="main-font-inside">{!!$partner->description!!}</div>
          						 <ul class="course-list">
 
                               @foreach($partner->partner_features()->orderBy('id','DESC')->get() as $feature)
                                  <li><i class="bx bx-check"></i> {{$feature->title}}</li>
+                              @endforeach
+
+                              @foreach($partner->partner_links()->orderBy('id','DESC')->get() as $link)
+                              <a href="{{$link->link}}" style="color: #f16327" class="border d-block  font-3 mb-3 py-2 px-4">
+                              
+                                 <h2 style="color: #f16327"><i class="fas fa-{{$link->type}}" style="color: #f16327"></i> {{$link->title}}</h2>
+                                 
+                              </a>
                               @endforeach
 									
 								 

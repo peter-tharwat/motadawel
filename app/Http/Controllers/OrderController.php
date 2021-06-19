@@ -18,6 +18,8 @@ class OrderController extends Controller
             $q->where('type','LIKE','%'.$request->key.'%');
             if($request->id!=null)
                 $q->where('id',$request->id);
+            if($request->user_id!=null)
+                $q->where('user_id',$request->user_id);
         })->orderBy('id','DESC')->paginate();
         return view('admin.orders.index',compact('orders'));
     }

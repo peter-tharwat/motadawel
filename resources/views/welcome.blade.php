@@ -180,7 +180,7 @@ $setting=\App\Models\Setting::first();
             </div>
             <div class="feedback-slider owl-theme owl-carousel">
                @php 
-               $reviews=\App\Models\CourseReview::orderBy('id','DESC')->where('featured','1')->whereNotNull('description')->limit(10)->get();
+               $reviews=\App\Models\CourseReview::orderBy('id','DESC')->where('featured','1')->whereNotNull('description')->limit(20)->get();
                @endphp
                @foreach($reviews as $review)
                <div class="feedback-item">
@@ -225,6 +225,59 @@ $setting=\App\Models\Setting::first();
             <img src="/assets/img/feedback-img/feedback-shape-2.png" alt="Image">
          </div>
       </section>
+
+      <section class="counter-area  pt-100 pb-70">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-counter">
+               <div class="counter-shape shape-1">
+                 <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+                 <h2>
+                   <span class="odometer" data-count="100">00</span>
+                   <span class="target">%</span>
+                 </h2>
+               </div>
+               <p>معدل النجاح</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-counter">
+               <div class="counter-shape shape-2">
+                 <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+                 <h2>
+                   <span class="odometer" data-count="{{\App\Models\User::count()}}">00</span>
+                 </h2>
+               </div>
+               <p>عدد الطلاب</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-counter">
+               <div class="counter-shape shape-3">
+                 <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+                 <h2>
+                   <span class="odometer" data-count="{{\App\Models\Lecture::count()}}">00</span>
+                 </h2>
+               </div>
+               <p>عدد المحاضرات التدربية</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-counter">
+               <div class="counter-shape shape-4">
+                 <img src="/assets/img/counter-shape/counter-shape-1.png" alt="Image" class="m-auto">
+                 <h2>
+                   <span class="odometer" data-count="{{\App\Models\Course::count()}}">00</span>
+                 </h2>
+               </div>
+               <p>عدد الدورات</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   </section>
+
 	  <section class="ptb-70">
 	  <div class="container">
             <div class="row">

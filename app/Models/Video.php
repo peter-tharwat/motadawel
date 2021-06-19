@@ -16,7 +16,7 @@ class Video extends Model
    	public function thumbnail()
    	{
    		if($this->thumbnail!=null)
-    		return '/storage/thumbnail/'.$this->thumbnail;
+    		return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/thumbnail/'.$this->thumbnail;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
 
    	}
