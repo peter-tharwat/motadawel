@@ -59,20 +59,20 @@
                                                     @if(\Request::get('type')=="MOHALLEL")
                                                     <div class="col-12">
                                                         <div class="input-box">
-                                                            <label class="label-text">إسم مستخدم تكرتشارت</label>
+                                                            <label class="label-text">إسم مستخدم المستخدم في تكرتشارت</label>
                                                             <div class="form-group">
                                                                 <span class="la la-credit-card form-icon"></span>
-                                                                <input class="form-control" type="text" name="mohallel_user_name" placeholder="إسم مستخدم تكر تشارت">
+                                                                <input class="form-control" type="text" name="mohallel_user_name" placeholder="إسم مستخدم تكر تشارت" required="">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12">
                                                         <div class="input-box">
-                                                            <label class="label-text">بريد تكر تشارت</label>
+                                                            <label class="label-text">رقم الجوال المستخدم في تكر تشارت</label>
                                                             <div class="form-group">
                                                                 <span class="la la-credit-card form-icon"></span>
-                                                                <input class="form-control" type="email" name="mohallel_email" placeholder="بريد منصة تكر تشارت">
+                                                                <input class="form-control" type="number" name="mohallel_phone" placeholder="رقم الجوال المستخدم في تكر تشارت" required="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -80,7 +80,7 @@
 
                                                     
                                                     
-                                                    <!--BRONZE-GOLD-DIAMOND-->
+                                                    <!--package1-package2-package3-->
 
 
 

@@ -73,7 +73,6 @@
 	 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
 	 					<option value="LIVE" @if(old('LIVE')) selected="" @endif >مباشر</option>
 	 					<option value="RECORDED" @if(old('RECORDED')) selected="" @endif >مسجل</option> 
-	 					<option value="OFFLINE" @if(old('OFFLINE')) selected="" @endif >دورة حضورية</option> 
 	 				</select> 
 	 			</div> 
 	 		</div> 

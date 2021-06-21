@@ -71,7 +71,15 @@ class SettingController extends Controller
      */
     public function update(Request $request,Setting $setting)
     {
-       
+        
+        
+
+
+
+
+
+
+
         $setting->update([ 
             'email'=>$request->email,
             'phone'=>$request->phone,
@@ -87,7 +95,14 @@ class SettingController extends Controller
             'message'=>$request->message,
             'vision'=>$request->vision,
             'terms'=>$request->terms,
-            'privacy'=>$request->privacy
+            'privacy'=>$request->privacy,
+            'whatsapp_phone_mohallel'=>$request->whatsapp_phone_mohallel,
+            'package1_price'=>$request->package1_price,
+            'package2_price'=>$request->package2_price,
+            'package3_price'=>$request->package3_price,
+            'package1_description'=>$request->package1_description,
+            'package2_description'=>$request->package2_description,
+            'package3_description'=>$request->package3_description
         ]);
         emotify('success', 'تم التحديث بنجاح');
         return redirect()->back();

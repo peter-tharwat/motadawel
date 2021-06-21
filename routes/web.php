@@ -110,6 +110,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
+    Route::get('users/export/',[UsersController::class,'export'])->name('export.users');
     Route::get('/',[AdminController::class,'index'])->name('admin.index');
     Route::resource('users',UsersController::class);
     Route::resource('lectures',LectureController::class);

@@ -37,6 +37,17 @@
 	 		</div>
 	 		<div class="col-12 col-md-6 px-0 d-flex mb-3">
 	 			<div class="col-3 px-2 text-start pt-1">
+	 				الرتبة
+	 			</div>
+	 			<div class="col-9 px-2  form-switch">
+	 				<select name="power" class="form-control">
+	 					<option @if($user->power=="USER") selected="" @endif value="USER">مستخدم عادي</option>
+	 					<option @if($user->power=="ADMIN") selected="" @endif value="ADMIN">أدمن</option>
+	 				</select>
+	 			</div>  
+	 		</div>
+	 		<div class="col-12 col-md-6 px-0 d-flex mb-3">
+	 			<div class="col-3 px-2 text-start pt-1">
 	 				 
 	 			</div>
 	 			<div class="col-9 px-2">

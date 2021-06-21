@@ -12,13 +12,13 @@ class Course extends Model
     public function image()
     {
     	if($this->image!=null)
-    		return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/images/'.$this->image;
+    		return env('AWS_URL').'/images/'.$this->image;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
     }
     public function banner()
     {
     	if($this->banner!=null)
-    		return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/banners/'.$this->banner;
+    		return env('AWS_URL').'/covers/'.$this->banner;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
     }
     public function getAvailableAtForHumansAttribute()

@@ -77,7 +77,7 @@ class User extends Authenticatable
         if($this->profile_photo_path==null)
             return '/images/profile.png';
         else
-            return 'https://chartidea-production-public.s3.eu-west-3.amazonaws.com/avatars/'.$this->profile_photo_path;
+            return env('AWS_URL').'/avatars/'.$this->profile_photo_path;
 
     }
 }

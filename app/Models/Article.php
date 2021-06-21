@@ -12,7 +12,7 @@ class Article extends Model
     public function image()
    	{
    		if($this->image!=null)
-    		return '/storage/images/'.$this->image;
+    		return env('AWS_URL').'/images/'.$this->image;
     	return "https://img.freepik.com/free-vector/abstract-shiny-lines-white-gray-background_1017-25097.jpg?size=626&ext=jpg";
 
    	}

@@ -55,7 +55,7 @@ class PartnerController extends Controller
             'title'=>$request->title,
             'description'=>$request->description,
             'url'=>$request->url,
-            'banner'=>$this->upload_file($request->file('banner'),'banners'),
+            'banner'=>$this->upload_file($request->file('banner'),'covers'),
             'image'=>$this->upload_file($request->file('image'),'images'),
         ]); 
         emotify('success', 'تم إضافة الشريك بنجاح');
@@ -110,7 +110,7 @@ url*/
             'title'=>$request->title,
             'description'=>$request->description,
             'url'=>$request->url,
-            'banner'=>$request->hasFile('banner')?$this->upload_file($request->file('banner'),'banners'):$partner->banner,
+            'banner'=>$request->hasFile('banner')?$this->upload_file($request->file('banner'),'covers'):$partner->banner,
             'image'=>$request->hasFile('image')?$this->upload_file($request->file('image'),'images'):$partner->image,
         ]);
 

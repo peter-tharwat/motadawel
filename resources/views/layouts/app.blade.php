@@ -211,12 +211,21 @@
 
 
                      <div class="Social-media">
-						  <a href="{{$setting->twitter_link}}"><i class="bx bxl-snapchat"></i></a>
-						  <a href="{{$setting->snap_link}}"><i class="bx bxl-twitter"></i></a>
-						  <a href="{{$setting->instagram_link}}"><i class="bx bxl-youtube"></i></a>
+                     @if($setting->snap_link!=null)
+						  <a href="{{$setting->snap_link}}"><i class="bx bxl-snapchat"></i></a>
+                    @endif
+                    @if($setting->twitter_link!=null)
+						  <a href="{{$setting->twitter_link}}"><i class="bx bxl-twitter"></i></a>
+                    @endif
+                    @if($setting->youtube_link!=null)
+						  <a href="{{$setting->youtube_link}}"><i class="bx bxl-youtube"></i></a>
+                    @endif
+                    @if($setting->whatsapp_phone!=null)
 						  <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&amp;text&amp;app_absent=0"><i class="bx bxl-whatsapp"></i></a>
-						  <a href="{{$setting->youtube_link}}"><i class="bx bxl-instagram-alt"></i></a>
-						  
+                    @endif
+                    @if($setting->instagram_link!=null)
+						  <a href="{{$setting->instagram_link}}"><i class="bx bxl-instagram-alt"></i></a>
+						  @endif
 						</div>
                   </div>
                </div>
@@ -239,8 +248,12 @@
          </div>
       </footer>
       <div class="go-top">
+         @if(Request::is('mohallel/*'))
+         <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone_mohallel}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a>
+         @else
          <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a>
-          <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a>
+         @endif
+          {{-- <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&text&app_absent=0"><i class='bx bxl-whatsapp'></i></a> --}}
       </div>
       <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
       <script src="/assets/js/bootstrap.bundle.min.js"></script>

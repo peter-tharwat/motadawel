@@ -97,7 +97,7 @@ if($response->ok() ){
 					<div class="widget-sidebar">
 					   <div class="sidebar-widget search">
 						  <form class="search-form">
-							 <input class="form-control" name="key" placeholder="قم بإدخال كود السهم أو الشركة" type="text" value="{{\Request::get('key')}}" id="filter_input" onfocus="document.getElementById('filter_input').value='';">
+							 <input class="form-control" name="key" placeholder="قم بإدخال رمز السهم أو الشركة" type="text" value="{{\Request::get('key')}}" id="filter_input" onfocus="document.getElementById('filter_input').value='';">
 							 <button class="search-button" type="submit" >
 							 <i class="bx bx-search"></i>
 							 </button>
@@ -106,6 +106,10 @@ if($response->ok() ){
 
 
                     @if(isset($interestIncome))
+
+                    <?php try{ ?> 
+
+
           <div class="col-12 px-0 d-flex mt-5 row">
             <div class="col-12 d-flex justify-content-start" >
               <div class="col-12 px-0 mx-auto row d-flex" style="max-width: 800px;">
@@ -317,10 +321,18 @@ if($response->ok() ){
             </div>
             
           </div>
+
+          <?php }catch(\Exception $e){ ?>
+            <div class="col-12 px-0 text-center">
+              <div class="alert alert-warning">
+                برجاء التأكد من رمز السهم أو اسم الشركة
+              </div>
+            </div>
+          <?php } ?>
           @elseif(\Request::get('key')!=null)
           <div class="col-12 px-0 text-center">
             <div class="alert alert-warning">
-              برجاء التأكد من كود السهم أو اسم الشركة
+              برجاء التأكد من رمز السهم أو اسم الشركة
             </div>
           </div>
           @endif

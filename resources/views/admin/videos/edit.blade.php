@@ -68,7 +68,7 @@
 	 					<option hidden="" selected="" disabled="">إختر من القائمة</option>
 	 					<option value="LIVE" @if($video['type']=="LIVE") selected="" @endif >مباشر</option>
 	 					<option value="RECORDED" @if($video['type']=="RECORDED") selected="" @endif >مسجل</option> 
-	 					<option value="OFFLINE" @if($video['type']=="OFFLINE") selected="" @endif >دورة حضورية</option> 
+	 				 
 	 				</select> 
 	 			</div> 
 	 		</div> 

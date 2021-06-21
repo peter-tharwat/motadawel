@@ -30,7 +30,7 @@
                   <div class="single-blog-content">
                      <div class="blog-top-content">
                         <div class="col-12">
-                           <img src="{{$course->image()}}" class="col-12" alt="Image">
+                           <img src="{{$course->banner()}}" class="col-12" alt="Image">
                         </div>
                         
                         

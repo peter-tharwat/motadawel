@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 class UsersController extends Controller
 {
     function __construct()
@@ -21,6 +23,11 @@ class UsersController extends Controller
                 $q->where('id',$request->id);
     	})->orderBy('id','DESC')->paginate();
     	return view('admin.users.index',compact('users'));
+    }
+
+    public function export(Request $request)
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
     /**
      * Show the form for creating a new resource.

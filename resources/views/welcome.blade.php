@@ -288,11 +288,21 @@ $setting=\App\Models\Setting::first();
 						   <img src="/assets/img/section-title-shape.png" alt="Image">
 						</div>
 						<div class="Social-media">
-                    <a href="{{$setting->twitter_link}}"><i class="bx bxl-snapchat"></i></a>
-                    <a href="{{$setting->snap_link}}"><i class="bx bxl-twitter"></i></a>
-                    <a href="{{$setting->instagram_link}}"><i class="bx bxl-youtube"></i></a>
+                     @if($setting->twitter_link!=null)
+                    <a href="{{$setting->twitter_link}}"><i class="bx bxl-twitter"></i></a>
+                    @endif
+                    @if($setting->snap_link!=null)
+                    <a href="{{$setting->snap_link}}"><i class="bx bxl-snapchat"></i></a>
+                    @endif
+                    @if($setting->instagram_link!=null)
+                    <a href="{{$setting->instagram_link}}"><i class="bx bxl-instagram-alt"></i></a>
+                    @endif
+                    @if($setting->whatsapp_phone!=null)
                     <a href="https://api.whatsapp.com/send/?phone={{$setting->whatsapp_phone}}&amp;text&amp;app_absent=0"><i class="bx bxl-whatsapp"></i></a>
-                    <a href="{{$setting->youtube_link}}"><i class="bx bxl-instagram-alt"></i></a>
+                    @endif
+                    @if($setting->youtube_link)
+                    <a href="{{$setting->youtube_link}}"><i class="bx bxl-youtube"></i></a>
+                    @endif
                     
                   </div>
 				</div>

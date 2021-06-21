@@ -2,12 +2,15 @@
 @section('content')
 <div class="col-12 py-2 px-3 row">
 	 <div class="col-12 px-2 pt-4" style="background: #fff;min-height: 80vh">
-	 	<div class="col-12 py-4">
+	 	<div class="col-12 py-4 d-flex justify-content-between">
 	 		<div class="col-4 px-2">
 	 			<form method="get" action="{{route('users.index')}}">
 	 				<input type="" name="key" class="form-control" style="border-radius: 0px;border:1px solid #ddd" placeholder="بحث .. " autofocus="" value="{{request()->get('key')}}">
 	 			</form>
 	 			
+	 		</div>
+	 		<div class="col-4 text-start">
+	 			<a href="{{route('export.users')}}" class="btn btn-primary"> تصدير المستخدمين Excel</a>
 	 		</div>
 	 	</div>
 	 	<table class="table">

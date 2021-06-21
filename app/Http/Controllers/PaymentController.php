@@ -59,14 +59,14 @@ class PaymentController extends Controller
     public function make(Request $request)
     {
         $request->validate([
-            'mohallel_type'=>"nullable|in:BRONZE,GOLD,DIAMOND,FREE",
+            'mohallel_type'=>"nullable|in:package1,package2,package3,FREE",
             'entity_id'=>"required|in:CREDIT,MADA",
             'type'=>"required|in:COURSE,MOHALLEL",
 
         ]);
 
         if($request->type=="MOHALLEL"){
-            $request->validate(["mohallel_user_name"=>"required|min:2","mohallel_email"=>"required|email"]);
+            $request->validate(["mohallel_user_name"=>"required|min:2","mohallel_phone"=>"required|numeric"]);
         }else if ($request->type=="COURSE"){ 
 
 
@@ -106,7 +106,7 @@ class PaymentController extends Controller
         $this->MOHALLEL_TYPE=$request->mohallel_type;
 
 
-        return $this->create_payment($request->type,$request->type_id,$request->mohallel_user_name,$request->mohallel_email,$request->mohallel_type);
+        return $this->create_payment($request->type,$request->type_id,$request->mohallel_user_name,$request->mohallel_phone,$request->mohallel_type);
     }
 
     public function check_if_user_has_old_order_course($course_id){
@@ -260,7 +260,7 @@ class PaymentController extends Controller
     }
 
 
-    public function create_payment($type,$type_id=null,$mohallel_user_name=null,$mohallel_email=null,$mohallel_type=1)
+    public function create_payment($type,$type_id=null,$mohallel_user_name=null,$mohallel_phone=null,$mohallel_type=1)
     {
 
 
@@ -341,12 +341,12 @@ class PaymentController extends Controller
             }*/
         }else if ($type=="MOHALLEL"){
 
-            if($mohallel_type=="BRONZE") 
-                $mohallel_price= 750.00;
-            else if ($mohallel_type=="GOLD")
-                $mohallel_price= 1250.00;
-            else if($mohallel_type=="DIAMOND")
-                $mohallel_price= 2250.00;
+            if($mohallel_type=="package1") 
+                $mohallel_price= \App\Models\Setting::first()->package1_price;
+            else if ($mohallel_type=="package2")
+                $mohallel_price= \App\Models\Setting::first()->package2_price;
+            else if($mohallel_type=="package3")
+                $mohallel_price= \App\Models\Setting::first()->package3_price;
             else if ($mohallel_type=="FREE")
                 $mohallel_price=0.00;
 
@@ -354,7 +354,7 @@ class PaymentController extends Controller
                 'user_id'=>auth()->user()->id,
                 'course_id'=>NULL,
                 'mohallel_user_name'=>$mohallel_user_name,
-                'mohallel_email'=>$mohallel_email,
+                'mohallel_phone'=>$mohallel_phone,
                 'type'=>$type,
                 'status'=>'PENDING' 
             ]);
@@ -422,7 +422,7 @@ class PaymentController extends Controller
                 "testMode"=>"EXTERNAL",
                 'merchantTransactionId'=>$order->id,
                 "customer"=>[
-                    'email'=>auth()->user()->email,
+                    'phone'=>auth()->user()->phone,
                     "givenName"=>current(explode(' ',auth()->user()->name)) ,
                     "surname"=>array_slice(explode(' ', auth()->user()->name), -1)[0]
                 ],

@@ -51,7 +51,7 @@
 							 
 							اسم المستخدم : {{$order->mohallel_user_name}}
 							<br>
-							البريد الالكتروني : {{$order->mohallel_email}}
+							رقم الجوال : {{$order->mohallel_phone}}
 						</div>
 							
 						
