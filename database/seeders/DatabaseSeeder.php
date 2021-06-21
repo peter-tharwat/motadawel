@@ -31,6 +31,10 @@ class DatabaseSeeder extends Seeder
         	 'password'=>bcrypt('password'),
         	 'power'=>'USER'
         ]);
+
+    $setting=\App\Models\Setting::first();
+    if($setting==null)
+        \App\Models\Setting::create();
         
     }
 }

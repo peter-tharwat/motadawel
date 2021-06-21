@@ -97,7 +97,7 @@ if($response->ok() ){
 					<div class="widget-sidebar">
 					   <div class="sidebar-widget search">
 						  <form class="search-form">
-							 <input class="form-control" name="key" placeholder="قم بإدخال كود السهم أو الشركة" type="text" value="{{\Request::get('key')}}">
+							 <input class="form-control" name="key" placeholder="قم بإدخال كود السهم أو الشركة" type="text" value="{{\Request::get('key')}}" id="filter_input" onfocus="document.getElementById('filter_input').value='';">
 							 <button class="search-button" type="submit" >
 							 <i class="bx bx-search"></i>
 							 </button>
@@ -316,6 +316,12 @@ if($response->ok() ){
 
             </div>
             
+          </div>
+          @elseif(\Request::get('key')!=null)
+          <div class="col-12 px-0 text-center">
+            <div class="alert alert-warning">
+              برجاء التأكد من كود السهم أو اسم الشركة
+            </div>
           </div>
           @endif
 
