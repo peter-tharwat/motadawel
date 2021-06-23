@@ -24,11 +24,11 @@ $setting=\App\Models\Setting::first();
                <div class="col-lg-12">
                   <div class="education-content">
                     <div class="col-12 px-0 row d-flex">
-                        <div class="col-8">
+                        <div class="col-12 col-md-8">
                             <span class="top-title">طريقك نحو النجاح</span>
                             <h2> <span>اشترك معنا في منصة المحلل الفني</span></h2>
                         </div>
-                        <div class="col-4 text-end">
+                        <div class="col-12 col-md-4 text-start text-md-end py-3 py-md-0 ">
                             <a href="/checkout?type=MOHALLEL&mohallel_type=FREE">
                                 <span class="default-btn py-2" style="cursor: pointer;border-radius: 90px">تجربة مجانية</span>
                             </a>
