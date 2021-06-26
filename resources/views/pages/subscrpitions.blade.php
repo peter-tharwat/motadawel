@@ -64,9 +64,9 @@
             <div class="col-lg-4 p-0">
                 <div class="package-card">
                     <div class="package-title">
-                        <h2 class="package__title">الباقة الذهبية</h2>
+                        <h2 class="package__title">الباقة البرونزية</h2>
                         <h3 class="package__price"><span>RSA</span>1250</h3>
-                        <h5 class="package__month">كل ستة أشهر</h5>
+                        <h5 class="package__month">اشتراك ستة أشهر</h5>
                         <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg>
                     </div><!-- end package-title -->
                     <ul class="list-items">
@@ -91,7 +91,7 @@
                     <div class="package-title">
                         <h2 class="package__title">الباقة الماسية</h2>
                         <h3 class="package__price"><span>RSA</span>2250</h3>
-                        <h5 class="package__month">كل سنة</h5>
+                        <h5 class="package__month">اشتراك سنتين</h5>
                         <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg>
                     </div><!-- end package-title -->
                     <ul class="list-items">
@@ -114,9 +114,9 @@
             <div class="col-lg-4 p-0">
                 <div class="package-card">
                     <div class="package-title">
-                        <h2 class="package__title">الباقة البرونزية</h2>
+                        <h2 class="package__title">الباقة الذهبية</h2>
                         <h3 class="package__price"><span>RSA</span>750</h3>
-                        <h5 class="package__month">كل ثلاثة أشهر</h5>
+                        <h5 class="package__month">اشتراك سنة</h5>
                         <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 10 0 0 A 90 59, 0, 0, 0, 100 0 L 100 10 Z"></path></svg>
                     </div><!-- end package-title -->
                      <ul class="list-items">

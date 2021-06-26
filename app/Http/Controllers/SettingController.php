@@ -72,19 +72,12 @@ class SettingController extends Controller
     public function update(Request $request,Setting $setting)
     {
         
-        
-
-
-
-
-
-
-
         $setting->update([ 
             'email'=>$request->email,
             'phone'=>$request->phone,
             'whatsapp_phone'=>$request->whatsapp_phone,
             'twitter_link'=>$request->twitter_link,
+            'telegram_link'=>$request->telegram_link,
             'snap_link'=>$request->snap_link,
             'instagram_link'=>$request->instagram_link,
             'youtube_link'=>$request->youtube_link,

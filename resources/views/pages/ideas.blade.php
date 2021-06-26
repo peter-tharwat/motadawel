@@ -27,11 +27,11 @@
          @endphp
          @foreach($articles as $article)
          <div class="col-lg-6 col-sm-6">
-            <div class="single-event">
+            <div class="single-event border rounded" >
                <a href="/idea/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
-               <img src="{{$article->image()}}" alt="Image" style="max-width: 100%;">
+               <img src="{{$article->image()}}" alt="Image" style="max-width: 100%;" class="rounded">
                </a>
-               <div class="event-content">
+               <div class="event-content d-block position-relative p-3" style="top:0px!important">
                   <ul>
                      <li>
                         <i class="bx bx-calendar"></i>
@@ -43,7 +43,7 @@
                      </li>
                   </ul>
                   <a href="/idea/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
-                     <h3>{{$article->title}}</h3>
+                     <h3 style="font-size:1.3rem">{{$article->title}}</h3>
                   </a>
                   
                </div>

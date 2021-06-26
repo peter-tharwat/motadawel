@@ -303,7 +303,9 @@ $setting=\App\Models\Setting::first();
                     @if($setting->youtube_link)
                     <a href="{{$setting->youtube_link}}"><i class="bx bxl-youtube"></i></a>
                     @endif
-                    
+                    @if($setting->telegram_link!=null)
+                    <a href="{{$setting->telegram_link}}"><i class="fab fa-telegram" style="color:#2196f3"></i></a>
+                    @endif
                   </div>
 				</div>
 			</div>

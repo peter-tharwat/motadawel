@@ -226,6 +226,9 @@
                     @if($setting->instagram_link!=null)
 						  <a href="{{$setting->instagram_link}}"><i class="bx bxl-instagram-alt"></i></a>
 						  @endif
+                    @if($setting->telegram_link!=null)
+                    <a href="{{$setting->telegram_link}}"><i class="fab fa-telegram" style="color:#2196f3"></i></a>
+                    @endif
 						</div>
                   </div>
                </div>

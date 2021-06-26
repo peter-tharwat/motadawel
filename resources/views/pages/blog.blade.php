@@ -22,24 +22,29 @@
                $articles=\App\Models\Article::whereIn('type',['NEWS','ARTICLE'])->orderBy('id','DESC')->paginate(12);
                @endphp 
                @foreach($articles as $article)
-               <div class="col-lg-4 col-md-6">
-                  <div class="single-news">
-                     <a href="/article/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
-                     <img src="{{$article->image()}}" alt="Image" style="width: 100%;">
-                     </a>
-                     <div class="news-content">
-                        <span class="tag">مقال</span>
-                        <a href="/article/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
-                           <h3>{{$article->title}}</h3>
-                        </a>
-                        
-                        <ul class="lessons">
-                          {{--  <li>نشر: <a href="#">أحمد محمد </a></li> --}}
-                           <li class="float">{{\Carbon::parse($article->created_at)->diffForHumans()}}</li>
-                        </ul>
-                     </div>
-                  </div>
+               <div class="col-lg-6 col-sm-6">
+            <div class="single-event border rounded" >
+               <a href="/idea/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
+               <img src="{{$article->image()}}" alt="Image" style="max-width: 100%;" class="rounded">
+               </a>
+               <div class="event-content d-block position-relative p-3" style="top:0px!important">
+                  <ul>
+                     <li>
+                        <i class="bx bx-calendar"></i>
+                        {{\Carbon::parse($article->created_at)->format('Y-m-d')}} 
+                     </li>
+                     <li>
+                        <i class="bx bx-time"></i>
+                        {{\Carbon::parse($article->created_at)->format('h:i')}}
+                     </li>
+                  </ul>
+                  <a href="/idea/{{$article->id}}-{{str_replace(' ', '-', $article->title)}}">
+                     <h3 style="font-size:1.3rem">{{$article->title}}</h3>
+                  </a>
+                  
                </div>
+            </div>
+         </div>
                @endforeach
              {{--  <div class="col-lg-4 col-md-6">
                   <div class="single-news">

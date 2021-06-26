@@ -183,6 +183,15 @@
 		 		</div>
 		 		<div class="col-12  px-0  mb-3">
 		 			<div class="col-12 px-2 pb-3 pt-1" >
+		 			 	رابط تيليجرام
+		 			</div>
+		 			<div class="col-12 px-2">
+		 				<input type="" name="telegram_link" class="form-control" value="{{$setting->telegram_link}}" >
+		 			</div> 
+		 		</div>
+		 		
+		 		<div class="col-12  px-0  mb-3">
+		 			<div class="col-12 px-2 pb-3 pt-1" >
 		 			 	رابط يوتيوب
 		 			</div>
 		 			<div class="col-12 px-2">

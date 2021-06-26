@@ -223,7 +223,7 @@
 				  <img src="{{$course->image()}}" alt="Image">
                      <ul>
                         <li>
-                           السعر <span class="bold">${{sprintf('%0.2f',$course->price)}}</span>
+                           السعر <span class="bold">ريال {{sprintf('%0.2f',$course->price)}}</span>
                         </li>
                         @php 
                      

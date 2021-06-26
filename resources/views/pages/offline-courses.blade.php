@@ -20,7 +20,7 @@
             <div class="row">
 
                @php
-              $courses=\App\Models\Course::orderBy('id','DESC')->where('type','OFFLINE')->withCount('ratings')->withSum('ratings','rate')->paginate(12);
+           $courses=\App\Models\Course::orderBy('id','DESC')->where('type','OFFLINE')->withCount('ratings')->withSum('ratings','rate')->paginate(12);
               @endphp
 
               @foreach($courses as $course)

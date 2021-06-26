@@ -33,7 +33,7 @@
                         <div class="blog-top-content">
                            <img src="{{$article->image()}}" alt="Image" style="max-width: 100%;">
                            <span class="research">مقال</span>
-                           <h3>كيف تحدد جمهورك المستهدف في 6 خطوات</h3>
+                           <h3>{{$article->title}}</h3>
                            <div class="post-details"> 
                                  {{\Carbon::parse($article->created_at)->diffForHumans()}} 
                            </div>
