@@ -312,7 +312,7 @@
                       <img src="{{$course->image()}}" alt="Image">
                      </a>
                      <div class="course-content">
-                        <span class="price" style="font-size:.8rem;line-height: 1;padding: 13px 0px;">{{$course->price}}<br>ريال</span>
+                        <span class="price" style="display: flex;font-size: .8rem;line-height: 1;text-align: center;justify-content: center;align-items: center;">{{$course->price}}<br>ريال</span>
                         <span class="tag">الدورات التعليمية</span>
                         <a href="/course/{{$course->id}}-{{str_replace(' ', '-', $course->title)}}">
                            <h3>{{$course->title}}</h3>
