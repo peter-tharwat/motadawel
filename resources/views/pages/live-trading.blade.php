@@ -10,7 +10,7 @@
                      الرئيسية
                      </a>
                   </li>
-                  <li class="active">الدورات </li>
+                  <li class="active">دورات اون لاين</li>
                </ul>
             </div>
          </div>

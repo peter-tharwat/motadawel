@@ -16,7 +16,7 @@
                      الرئيسية
                      </a>
                   </li>
-                  <li class="active">الدورات التدربية</li>
+                  <li class="active">الدورات التدريبية</li>
                </ul>
             </div>
          </div>

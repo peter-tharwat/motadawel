@@ -10,7 +10,7 @@
                      الرئيسية
                      </a>
                   </li>
-                  <li class="active">الدورات التدربية</li>
+                  <li class="active">الدورات التدريبية</li>
                </ul>
             </div>
          </div>
@@ -36,7 +36,7 @@
 					  <div class="">
 						<img src="assets/img/lectures.jpg" class="" alt="Image">
 					 </div>
-                        <a href="live-trading"> <h3>Live Trading</h3></a>
+                        <a href="live-trading"> <h3>دورات اون لاين</h3></a>
                         <p>يوفر لك موقعنا العديد من الدورات التدريبية التي تعزز من مهاراتك </p>
                      </div>
                   </div>

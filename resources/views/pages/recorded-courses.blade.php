@@ -10,7 +10,7 @@
                      الرئيسية
                      </a>
                   </li>
-                  <li class="active">الدورات التدربية</li>
+                  <li class="active">الدورات التدريبية</li>
                </ul>
             </div>
          </div>
@@ -33,7 +33,7 @@
                       <img src="{{$course->image()}}" alt="Image">
                      </a>
                      <div class="course-content">
-                        <span class="price">ريال {{$course->price}}</span>
+                        <span class="price" style="font-size:.8rem">{{$course->price}}<br>ريال</span>
                         <span class="tag">الدورات التعليمية</span>
                         <a href="/course/{{$course->id}}-{{str_replace(' ', '-', $course->title)}}">
                            <h3>{{$course->title}}</h3>

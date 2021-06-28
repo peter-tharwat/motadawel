@@ -26,7 +26,7 @@
                $partners=\App\Models\Partner::orderBy('id','DESC')->get();
                @endphp
                @foreach($partners as $partner)
-               <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                   <div class="single-news">
                      <a href="/partner/{{$partner->id}}-{{str_replace(' ', '-', $partner->title)}}">
                         <img src="{{$partner->image()}}" alt="Image">
