@@ -35,7 +35,7 @@
                               @endforeach
 
                               @foreach($partner->partner_links()->orderBy('id','DESC')->get() as $link)
-                              <a href="{{$link->link}}" style="color: #f16327" class="border d-block  font-3 mb-3 py-2 px-4">
+                              <a href="{{$link->url}}" style="color: #f16327" class="border d-block  font-3 mb-3 py-2 px-4" target="_blank">
                               
                                  <h2 style="color: #f16327"><i class="fas fa-{{$link->type}}" style="color: #f16327"></i> {{$link->title}}</h2>
                                  
