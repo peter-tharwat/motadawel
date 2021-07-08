@@ -45,7 +45,7 @@
 								 
 									
 						 </ul>
-							<a href="{{$partner->url}}" class="default-btn">دخول الآن</a>						 
+							<a href="{{$partner->url}}" class="default-btn" target="_blank">دخول الآن</a>						 
                      </div>
                      </div>
                   </div>
