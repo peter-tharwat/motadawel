@@ -156,7 +156,7 @@ Route::get('/lectures', function () { return view('pages.lectures'); });
 Route::get('/recorded-courses', function () { return view('pages.recorded-courses'); });
 Route::get('/live-trading', function () { return view('pages.live-trading'); });
 Route::get('/single-attendance', function () { return view('pages.single-attendance'); });
-Route::get('/subscrpitions', function () { return view('pages.subscrpitions'); });
+/*Route::get('/subscrpitions', function () { return view('pages.subscrpitions'); });*/
 Route::get('/offline-courses', function () { return view('pages.offline-courses'); });
 
 

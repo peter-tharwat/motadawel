@@ -476,7 +476,7 @@ if($response->ok() ){
 				 <div class="row">
 				 <div class="col-lg-4"></div>
 				 <div class="col-lg-4">
-					<a href="/subscrpitions" class="default-btn wow fadeInLeft" data-wow-delay="0.9s">
+					<a href="/subscriptions" class="default-btn wow fadeInLeft" data-wow-delay="0.9s">
                            اشترك الآن
                   </a>
 				 </div>
