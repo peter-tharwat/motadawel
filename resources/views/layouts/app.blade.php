@@ -33,9 +33,10 @@
          .main-font-inside ,.main-font-inside *{
             font-family:  var(--font-family)!important;
          }
+
          .nav-link{
-             font-weight: bold!important;
-             font-size: 15px!important;
+             /*font-weight: bold!important;*/
+             font-size: 16px!important;
              margin: 0px 10px!important;
          }
       </style>
@@ -67,7 +68,7 @@
                   <img src="/assets/img/logo.png" alt="Logo">
                   </a>
                   <div class="collapse navbar-collapse mean-menu">
-                     <ul class="navbar-nav m-auto">
+                     <ul class="navbar-nav ps-2">
                         <li class="nav-item"><a href="/" class="nav-link"> الرئيسية</a></li>
                   
                         <li class="nav-item"><a href="/courses" class="nav-link">الدورات</a>
@@ -84,7 +85,7 @@
                   <li class="nav-item"><a href="/partners" class="nav-link">شركاء النجاح</a>
                         </li>
                      </ul>
-                     <div class="others-option">
+                     <div class="others-option ms-auto">
                         @if(auth()->check())
                         <!-- Example split danger button -->
                         <div class="btn-group">
