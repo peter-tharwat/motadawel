@@ -39,8 +39,8 @@
                               </div>
                               <div class="col-lg-6 col-sm-6">
                                  <div class="form-group">
-                                    <label>رقم الموبايل *</label>
-                                    <input type="number" name="phone"  class="form-control" required data-error="رقم الموبايل مطلوب" min="999999">
+                                    <label>رقم الجوال *</label>
+                                    <input type="number" name="phone"  class="form-control" required data-error="رقم الجوال مطلوب" min="999999">
                                     <div class="help-block with-errors"></div>
                                  </div>
                               </div>
