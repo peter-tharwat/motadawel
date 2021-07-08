@@ -340,6 +340,14 @@
          </div>
       </section>
       <script type="text/javascript">
+
+         $('#product-view-one').on('hidden.bs.modal', function (e) {
+           /*var video = document.getElementById('current-playing-video'); */
+           var myPlayer = videojs('current-playing-video');
+            myPlayer.pause();
+         });
+
+         
          $('.get-video-url').on('click',function(){
             var self=this;
             $.ajax({
@@ -373,10 +381,6 @@
               });
 
           /*  alert();*/
-         });
-         $('#close-modal-video ,#product-view-one').on('click',function(){
-            var video = document.getElementById('fixed-video'); 
-            video.pause();
          }); 
       </script>
 @endsection

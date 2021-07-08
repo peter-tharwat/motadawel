@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <script src="/assets/js/jquery.min.js"></script>
+
       <link rel="stylesheet" href="/assets/css/bootstrap.rtl.min.css">
       <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
       <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
@@ -280,14 +281,30 @@
       <script src="/assets/js/form-validator.min.js"></script>
       <script src="/assets/js/contact-form-script.js"></script>
       <script src="/assets/js/ajaxchimp.min.js"></script>
-
+       
       <script src="/assets/js/custom.js"></script>
       <script type="text/javascript">
          // Others Option For Responsive JS
       $(".others-option-for-responsive .dot-menu").on("click", function(){
          $(".others-option-for-responsive .container .container").toggleClass("active");
       });
+
       </script>
+      <script type="text/javascript">
+         /*Zoom Of Image*/
+         $(document).ready(function(){let t=document.getElementById("NZoomImg"),e=t.getAttribute("data-NZoomscale")<=0?1:t.getAttribute("data-NZoomscale"),s=t.clientWidth,o=t.clientHeight;$("#NZoomImg").replaceWith('<div id="NZoomContainer">'+t.outerHTML+"</div>");let i=$("#NZoomContainer"),n=$("#NZoomImg");i.css("width",s+"px"),i.css("height",o+"px"),i.mousemove(function(t){let e=$(this).offset(),i=(t.pageX-e.left)/s*100<=100?(t.pageX-e.left)/s*100:100,c=(t.pageY-e.top)/o*100<=100?(t.pageY-e.top)/o*100:100;n.css("transform-origin",i+"% "+c+"%")}),i.mouseenter(function(){n.css("cursor","crosshair"),n.css("width",s+"px"),n.css("height",o+"px"),n.css("transition","0.2s"),n.css("transform","scale("+e+")")}).mouseleave(function(){n.css("transition","0.2s"),n.css("transform","scale(1)")})});
+      </script>
+      <style type="text/css">
+         .zoomArea {
+           overflow: hidden;
+           border:1px solid
+         }
+
+         .zoomArea > img {
+           width: 100%;
+           height: 100%;
+         }
+      </style>
       @notifyJs
    </body>
 </html>

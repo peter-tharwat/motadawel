@@ -31,8 +31,10 @@
                <div class="" style="">
                   <div class="single-blog-content">
                         <div class="blog-top-content">
-                           <img src="{{$article->image()}}" alt="Image" style="max-width: 100%;">
-                           <span class="research">آراء وتحليلات</span>
+                            <div class="col-12 zoomArea">
+                              <img src="{{$article->image()}}" data-NZoomscale="2" id="NZoomImg" alt="Image" style="max-width: 100%;">
+                           </div>
+                           <span class="research pt-3">آراء وتحليلات</span>
                            <h3>{{$article->title}}</h3>
                            <div class="post-details"> 
                                  {{\Carbon::parse($article->created_at)->diffForHumans()}} 

@@ -13,9 +13,33 @@
 		</div>
 		@elseif($video->type=="RECORDED")
 		<div class="col-12 px-0"> 
-			<video controls contextmenu class="col-12 px-0" src="{{$video->url()}}" controlsList="nodownload">
+
+		 	<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+			  <video
+			    id="current-playing-video"
+			    class="video-js"
+			    controls
+			    preload="auto"
+			    style="width: 100%;min-height: 400px;"
+			    {{-- poster="MY_VIDEO_POSTER.jpg" --}}
+			    data-setup='{ "playbackRates": [0.5, 0.75 , 1, 1.5, 2, 4] }'
+			  >
+			    <source src="{{$video->url()}}" type="video/mp4" />
+			    {{-- <source src="MY_VIDEO.webm" type="video/webm" /> --}}
+			    <p class="vjs-no-js">
+			      لعرض الفيديو برجاء تفعيل جافاسكريبت او إستخدام متصفح أحدث
+			      {{-- 
+
+			      <a href="https://videojs.com/html5-video-support/" target="_blank"
+			        >supports HTML5 video</a> --}}
+			    </p>
+			  </video>
+			  <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+			
+
+			{{-- <video controls contextmenu class="col-12 px-0" src="{{$video->url()}}" controlsList="nodownload">
 				<source src="{{$video->url()}}" type="video/mp4">
-			</video>
+			</video> --}}
 		</div>
 		@elseif($video->type=="OFFLINE")
 		<div class="col-12 px-0">
