@@ -31,9 +31,17 @@
                <div class="" style="">
                   <div class="single-blog-content">
                         <div class="blog-top-content">
-                            <div class="col-12 zoomArea">
-                              <img src="{{$article->image()}}" data-NZoomscale="2" id="NZoomImg" alt="Image" style="max-width: 100%;">
-                           </div>
+                            <a
+  href="{{$article->image()}}"
+  data-fancybox="gallery"
+  data-caption="{{$article->title}}"
+{{--   data-width="640"
+  data-height="480" --}}
+  class="col-12"
+>
+ <img src="{{$article->image()}}"  alt="Image" style="max-width: 100%;">
+</a>
+
                            <span class="research pt-3">آراء وتحليلات</span>
                            <h3>{{$article->title}}</h3>
                            <div class="post-details"> 
