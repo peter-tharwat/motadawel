@@ -17,6 +17,7 @@
       <link rel="stylesheet" href="/assets/css/style.css">
       <link rel="stylesheet" href="/assets/css/responsive.css">
       <link rel="stylesheet" href="/assets/css/rtl.css">
+      <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/cust-fonts.css">
       <link rel="stylesheet" href="/css/ckin.css">
       <script src="/js/ckin.js"></script>
       <link rel="stylesheet" type="text/css" href="https://nafezly.com/css/fontawsome.min.css">
@@ -31,6 +32,11 @@
       <style type="text/css">
          .main-font-inside ,.main-font-inside *{
             font-family:  var(--font-family)!important;
+         }
+         .nav-link{
+             font-weight: bold!important;
+             font-size: 15px!important;
+             margin: 0px 10px!important;
          }
       </style>
       <form method="POST" action="{{route('logout')}}" id="logout-form">@csrf</form>

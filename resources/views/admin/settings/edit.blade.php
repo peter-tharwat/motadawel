@@ -251,10 +251,26 @@
 
 		 		
 
+		 		<div class="col-12  px-0  mb-3">
+		 			<div class="col-12 px-2 pb-3 pt-1" >
+		 			 	سعر الباقة البرونزية
+		 			</div>
+		 			<div class="col-12 px-2">
+		 				<input type="number" name="package3_price" class="form-control" value="{{$setting->package3_price}}" required="" min="0">
+		 			</div> 
+		 		</div>
+		 		<div class="col-12  px-0  mb-3">
+		 			<div class="col-12 px-2 pb-3 pt-1" >
+		 				ميزات الباقة البرونزية
+		 			</div>
+		 			<div class="col-12 px-2" >
+			 				<textarea class="form-control " name="package3_description"   style="min-height: 200px;direction: rtl;">{{$setting->package3_description}}</textarea> 
+		 			</div> 
+		 		</div>
 
 		 		<div class="col-12  px-0  mb-3">
 		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 			 	سعر الباكدج رقم 1 
+		 			 	سعر الباقة الذهبية
 		 			</div>
 		 			<div class="col-12 px-2">
 		 				<input type="number" name="package1_price" class="form-control" value="{{$setting->package1_price}}" required="" min="0">
@@ -262,7 +278,7 @@
 		 		</div>
 		 		<div class="col-12  px-0  mb-3">
 		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 				ميزات الباكدج رقم 1 
+		 				ميزات الباقة الذهبية
 		 			</div>
 		 			<div class="col-12 px-2" >
 			 				<textarea class="form-control " name="package1_description"   style="min-height: 200px;direction: rtl;">{{$setting->package1_description}}</textarea> 
@@ -271,7 +287,7 @@
 
 		 		<div class="col-12  px-0  mb-3">
 		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 			 	سعر الباكدج رقم 2 
+		 			 	سعر الباقة الماسية
 		 			</div>
 		 			<div class="col-12 px-2">
 		 				<input type="number" name="package2_price" class="form-control" value="{{$setting->package2_price}}" required="" min="0">
@@ -279,29 +295,14 @@
 		 		</div>
 		 		<div class="col-12  px-0  mb-3">
 		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 				ميزات الباكدج رقم 1 
+		 				ميزات الباقة الماسية
 		 			</div>
 		 			<div class="col-12 px-2" >
 			 				<textarea class="form-control " name="package2_description"   style="min-height: 200px;direction: rtl;">{{$setting->package2_description}}</textarea> 
 		 			</div> 
 		 		</div>
 
-		 		<div class="col-12  px-0  mb-3">
-		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 			 	سعر الباكدج رقم 3 
-		 			</div>
-		 			<div class="col-12 px-2">
-		 				<input type="number" name="package3_price" class="form-control" value="{{$setting->package3_price}}" required="" min="0">
-		 			</div> 
-		 		</div>
-		 		<div class="col-12  px-0  mb-3">
-		 			<div class="col-12 px-2 pb-3 pt-1" >
-		 				ميزات الباكدج رقم 3 
-		 			</div>
-		 			<div class="col-12 px-2" >
-			 				<textarea class="form-control " name="package3_description"   style="min-height: 200px;direction: rtl;">{{$setting->package3_description}}</textarea> 
-		 			</div> 
-		 		</div>
+		 		
 
 		 	 
 

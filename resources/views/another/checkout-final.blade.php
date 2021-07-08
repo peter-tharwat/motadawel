@@ -26,7 +26,16 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active"  role="tabpanel" aria-labelledby="credit-card-tab">
                                 <div class="contact-form-action">
-                                    <form action="{{route('payment.success')}}" class="paymentWidgets" data-brands="VISA MASTER MADA"></form>  
+
+                                   
+                                    @if($payment->source=="MADA")
+                                    <form action="{{route('payment.success')}}" class="paymentWidgets" data-brands="MADA"></form>
+                                    @elseif($payment->source=="CREDIT")
+                                    <form action="{{route('payment.success')}}" class="paymentWidgets" data-brands="VISA MASTER"></form>  
+                                    @endif
+
+
+                                    
                                 </div><!-- end contact-form-action -->
                             </div><!-- end tab-pane-->
                             

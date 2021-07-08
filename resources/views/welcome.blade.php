@@ -85,7 +85,7 @@ $setting=\App\Models\Setting::first();
                <div class="video-content">
 			   
                   <a href="{{$setting->youtube_video_link}}" class="video-btn popup-youtube">
-                  <i class="flaticon-play-button"></i>
+                     <i class="flaticon-play-button"></i>
                   </a>
                </div>
                <div class="event-shape-1 rotated">

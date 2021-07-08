@@ -128,11 +128,13 @@ class PaymentController extends Controller
         /*dd($request->all());*/
 
         $payment = \App\Models\Payment::where('payment_id',$request['id'])->firstOrFail(); 
+        
         if($payment->status=="PENDING" && auth()->user()->id == $payment->user_id){
             $order=\App\Models\Order::where('id',$payment->order_id)->firstOrFail();
 
-
+          
             //$entityId="";
+
             if($payment->source=="CREDIT")
                 $entityId=env('HYPERPAY_CREDIT_ID');
             else if($payment->source=="MADA")
@@ -143,9 +145,9 @@ class PaymentController extends Controller
             //dd($entityId);
 
 
-            $url = env("HYPERPAY_BASE_URL")."/v1/query";
+            $url = env("HYPERPAY_BASE_URL")."/v1/checkouts/".$request['id']."/payment";
             $url .= "?entityId=".$entityId;
-            $url .="&merchantTransactionId=".$order->id;
+            //$url .="&merchantTransactionId=".$order->id; 
 
 
             $ch = curl_init();
@@ -160,28 +162,20 @@ class PaymentController extends Controller
                 return curl_error($ch);
             }
             curl_close($ch);
- 
-            //dd((array)json_decode($responseData,true));
+            $final_result= (array)json_decode($responseData,true);
 
-            if(
-                !(isset(( (array)json_decode($responseData,true))['payments'][0]["result"]["code"])
-                && ((array)json_decode($responseData,true))['payments'][0]["result"]["code"]=="000.000.000")
-              ){
-                
-                $payment->update(['status'=>"DONE"]);
+            //dd($final_result);
+
+            if($final_result["result"]["code"]=="000.000.000"){
+                $payment->update(['status'=>"DONE",'process_data'=>json_encode(json_decode($responseData,true))]);
                 \App\Models\Order::where('id',$payment->order_id)->update(['status'=>"DONE"]);
                 emotify('success', 'تمت عملية الدفع بنجاح');
                 return redirect('/'); 
 
             }else{
-
-                
-                emotify('error', 'حدث خطأ أثناء عملية الدفع راجع البنك الخاص بك ');
-                return redirect('/');
-
-                
-            }
-                 
+                emotify('error', 'حدث خطأ أثناء عملية الدفع راجع البنك الخاص بك '. $final_result["result"]["description"] );
+                return redirect('/');  
+            } 
             return 0;
 
 
@@ -263,7 +257,7 @@ class PaymentController extends Controller
     public function create_payment($type,$type_id=null,$mohallel_user_name=null,$mohallel_phone=null,$mohallel_type=1)
     {
 
-
+       
         if($type=="COURSE"){  
 
             $course = \App\Models\Course::where('id',$type_id)->firstOrFail();
@@ -296,6 +290,7 @@ class PaymentController extends Controller
                       "&billing.state=riyadh".
                       "&billing.country=SA".
                       "&billing.postcode=123456" .
+                      "&customer.email=".auth()->user()->email.
                       "&customer.givenName=".current(explode(' ',auth()->user()->name)).
                       "&customer.surname=".array_slice(explode(' ', auth()->user()->name), -1)[0]
                       ;
@@ -316,13 +311,17 @@ class PaymentController extends Controller
 
 
            
+          
+
+
+
 
             $payment_id=json_decode($responseData)->id;
             $payment->update(['payment_id'=>$payment_id]);
 
 
 
-            return view('another.checkout-final',compact('payment_id'));
+            return view('another.checkout-final',compact('payment_id','payment'));
 
 
 
@@ -390,6 +389,7 @@ class PaymentController extends Controller
                       "&billing.state=riyadh".
                       "&billing.country=SA".
                       "&billing.postcode=123456" .
+                      "&customer.email=".auth()->user()->email.
                       "&customer.givenName=".current(explode(' ',auth()->user()->name)).
                       "&customer.surname=".array_slice(explode(' ', auth()->user()->name), -1)[0]
                       ;
@@ -437,7 +437,7 @@ class PaymentController extends Controller
             ]); */
             $payment_id=json_decode($responseData)->id;
             $payment->update(['payment_id'=>$payment_id]);
-            return view('another.checkout-final',compact('payment_id'));
+            return view('another.checkout-final',compact('payment_id','payment'));
  
             
 

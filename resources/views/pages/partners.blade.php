@@ -17,9 +17,9 @@
       </div>
       <div class="blog-column-three-area ptb-100">
          <div class="container">
-			<div class="section-title">
-               <span>شركاء نجاحنا</span>
-               <h3>دائماً ستجد شركائنا معك حيثما تكون . معك لتقديم الدعم لك و تعزيز عملية التداول الخاصة بك</h3>
+			   <div class="section-title">
+               <span style="font-size: 25px;font-weight: bold;">شركاء نجاحنا</span>
+               <h3 style="font-size: 22px;">دائماً ستجد شركائنا معك حيثما تكون . معك لتقديم الدعم لك و تعزيز عملية التداول الخاصة بك</h3>
             </div>
             <div class="row">
                @php 
