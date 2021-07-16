@@ -137,7 +137,7 @@
                 </div> 
             </div>
             <div class="col-12 px-0" style="overflow:hidden;">
-                <div class="col-12 px-0" style="height: calc(100vh - 240px);">
+                <div class="col-12 px-0" style="height: calc(100vh - 180px);">
 
                     <a href="{{route('admin.index')}}" class="col-12 px-0">
                         <div class="col-12 item px-0 d-flex" >
@@ -256,6 +256,26 @@
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2">
                                طلبات الاتصال
+                            </div> 
+                        </div>
+                    </a>
+                    <a href="{{route('mohallel.index')}}" class="col-12 px-0">
+                        <div class="col-12 item px-0 d-flex " >
+                            <div style="width: 50px" class="px-3 text-center">
+                                <span class="fal fa-desktop font-3"> </span> 
+                            </div>
+                            <div style="width: calc(100% - 50px)" class="px-2">
+                              المحلل الفني
+                            </div> 
+                        </div>
+                    </a>
+                    <a href="{{route('tickerchart.index')}}" class="col-12 px-0">
+                        <div class="col-12 item px-0 d-flex " >
+                            <div style="width: 50px" class="px-3 text-center">
+                                <span class="fal fa-chart-bar font-3"> </span> 
+                            </div>
+                            <div style="width: calc(100% - 50px)" class="px-2">
+                              تكرشارت
                             </div> 
                         </div>
                     </a>

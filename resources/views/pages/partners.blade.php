@@ -22,6 +22,22 @@
                <h3 style="font-size: 22px;">دائماً ستجد شركائنا معك حيثما تكون . معك لتقديم الدعم لك و تعزيز عملية التداول الخاصة بك</h3>
             </div>
             <div class="row">
+
+               <div class="col-lg-3 col-md-6">
+                  <div class="single-news">
+                     <a href="/tickerchart">
+                        <img src="https://chartidea-production-public.s3.eu-west-3.amazonaws.com/images/60d8915064167.png" alt="Image">
+                     </a>
+                     <div class="news-content"> 
+                        <a href="/tickerchart">
+                           <h3>تكرتشارت .. مزود بيانات</h3>
+                        </a>
+                        
+                     </div>
+                  </div>
+               </div>
+
+
                @php 
                $partners=\App\Models\Partner::orderBy('id','DESC')->get();
                @endphp

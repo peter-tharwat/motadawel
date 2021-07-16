@@ -20,6 +20,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MohallelController;
+use App\Http\Controllers\MohallelVideoController;
+use App\Http\Controllers\TickerchartController;
+use App\Http\Controllers\TickerchartVideoController;
+
+
 
 
 
@@ -123,6 +129,10 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
     Route::resource('orders',OrderController::class);
     Route::resource('payments',PaymentController::class);
     Route::resource('articles',ArticleController::class);
+    Route::resource('mohallel',MohallelController::class);
+    Route::resource('mohallel-videos',MohallelVideoController::class);
+    Route::resource('tickerchart',TickerchartController::class);
+    Route::resource('tickerchart-videos',TickerchartVideoController::class);
     //Route::resource('socials',SocialController::class);
     Route::resource('settings',SettingController::class);
     Route::get('/contacts',[ContactController::class,'index'])->name('contacts.index');
@@ -132,12 +142,18 @@ Route::prefix('admin')->middleware(['IsAdmin'])->group(function () {
 
 });
 
+
+Route::get('/test', [SettingController::class,'test']);
+
 Route::get('/checkout', function () { return view('another.checkout'); });
 Route::get('/subscriptions', function () { return view('another.subscriptions'); });
 Route::get('/mohallel', function () { return view('another.mohallel'); });
 Route::get('/about', function () { return view('another.about'); });
 Route::get('/terms', function () { return view('another.terms'); });
 Route::get('/privacy', function () { return view('another.privacy'); });
+
+
+Route::get('/tickerchart', function () { return view('pages.tickerchart'); });
 
 Route::post('/get_video_access_url',[AccessController::class,'get_video_url'])->name('get_video_access_url');
 

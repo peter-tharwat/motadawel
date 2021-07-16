@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Setting;
+use Illuminate\Support\Facades\Http;
 class SettingController extends Controller
 {
     /**
@@ -11,6 +12,17 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+    public function test()
+    {
+  
+        
+       return 1;
+    }
+
+
     public function index()
     {
         $settings=\App\Models\Setting::first(); 

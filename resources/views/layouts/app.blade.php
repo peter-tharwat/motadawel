@@ -269,6 +269,13 @@
       </div>
       <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
       <script src="/assets/js/bootstrap.bundle.min.js"></script>
+      
+      <script type="text/javascript">
+         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+              return new bootstrap.Popover(popoverTriggerEl)
+            })
+      </script>
       <script src="/assets/js/meanmenu.min.js"></script>
       <script src="/assets/js/owl.carousel.min.js"></script>
       <script src="/assets/js/wow.min.js"></script>
@@ -303,6 +310,50 @@
            width: 100%;
            height: 100%;
          }
+
+         .popover-body{
+            background: #f16327!important;
+            color: #fff!important;
+            border-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=top]>.popover-arrow::after, .bs-popover-top>.popover-arrow::after {
+             bottom: 1px;
+             border-width: .5rem .5rem 0;
+             border-top-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=top]>.popover-arrow::before, .bs-popover-top>.popover-arrow::before {
+             bottom: 0;
+             border-width: .5rem .5rem 0;
+             border-top-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=left]>.popover-arrow::before, .bs-popover-start>.popover-arrow::before {
+             left: 0;
+             border-width: .5rem .5rem .5rem 0;
+             border-right-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=left]>.popover-arrow::after, .bs-popover-start>.popover-arrow::after {
+              left: 0px;
+             border-width: .5rem .5rem .5rem 0;
+             border-right-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=right]>.popover-arrow::before, .bs-popover-start>.popover-arrow::before {
+             right: 0;
+             border-width: .5rem .5rem .5rem 0;
+             border-right-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=right]>.popover-arrow::before, .bs-popover-end>.popover-arrow::before {
+             right: 1px;
+             border-width: .5rem 0 .5rem .5rem;
+             border-left-color: #f16327;
+         }
+         .bs-popover-auto[data-popper-placement^=right]>.popover-arrow::after, .bs-popover-end>.popover-arrow::after{
+              right: 1px;
+             border-width: .5rem .5rem .5rem 0;
+             border-left-color: #f16327;
+         }
+
+
+
       </style>
       @notifyJs
    </body>

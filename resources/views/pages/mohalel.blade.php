@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-      <div class="page-title-area bg-17">
+{{--       <div class="page-title-area bg-17">
          <div class="container">
             <div class="page-title-content">
                <h2>منصة المحلل الفني الإحترافي</h2>
@@ -13,6 +13,11 @@
                   <li class="active">المحلل الفني الإحترافي</li>
                </ul>
             </div>
+         </div>
+      </div> --}}
+      <div class="col-12 py-5 my-5">
+         <div class="container">
+            1122
          </div>
       </div>
       <section class="education-area-two ptb-100">
